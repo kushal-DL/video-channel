@@ -1,0 +1,19 @@
+{
+    "env": {
+        "ANTHROPIC_BASE_URL": "http://localhost:1234",
+        "ANTHROPIC_AUTH_TOKEN": "sk-lm-X8wXAO4p:I6nuoG0hT8kKCCeQFWUx",
+        "CLAUDE_CODE_ATTRIBUTION_HEADER": "0",
+        "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
+        "MAX_THINKING_TOKENS": "1024",
+        "CLAUDE_CODE_AUTO_MODE_SERVER": "0",
+        "CLAUDE_CODE_MAX_OUTPUT_TOKENS": "150000",
+        "ANTHROPIC_MODEL": "qwen3.8-27b-fable-5-coding-distilled",
+        "ANTHROPIC_SMALL_FAST_MODEL": "qwen3.5-9b-the-defiant-fable-uncensored-heretic-neo-imatrix-max-mtp",
+        "ANTHROPIC_DEFAULT_OPUS_MODEL": "qwen3.8-27b-fable-5-coding-distilled",
+        "ANTHROPIC_DEFAULT_SONNET_MODEL": "qwen3.5-9b-the-defiant-fable-uncensored-heretic-neo-imatrix-max-mtp",
+        "ANTHROPIC_DEFAULT_HAIKU_MODEL": "qwen3.5-9b-the-defiant-fable-uncensored-heretic-neo-imatrix-max-mtp"
+    },
+    "permissions": {
+        "defaultMode": "auto"
+    }
+}
