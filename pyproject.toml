@@ -1,0 +1,11 @@
+[project]
+name = "video-channel"
+version = "0.1.0"
+description = "Math tutorial video production pipeline using manimgx"
+requires-python = ">=3.13"
+dependencies = [
+    "manimgx>=0.1.1",
+]
+
+[tool.uv]
+dev-dependencies = []

@@ -10,11 +10,11 @@
 
 | Item | Story | Status |
 |------|-------|--------|
-| E1-I1 | Create project venv and install manimgx | Not started |
-| E1-I2 | Render smoke test | Not started |
-| E1-I3 | LaTeX toolchain verification for MathTex | Not started |
+| E1-I1 | Create project venv and install manimgx | Built |
+| E1-I2 | Render smoke test | Built |
+| E1-I3 | LaTeX toolchain verification for MathTex | Built |
 | E1-I4 | Install and verify ffmpeg/ffprobe | Not started |
-| E1-I5 | Codify the productions layout | Not started |
+| E1-I5 | Codify the productions layout | Built |
 
 Status values: **Not started** (no work begun) · **In progress** (build loop running) · **Built** (implemented, awaiting nemesis verification) · **Done** (built and tested, nemesis verdict CLEAN).
 
