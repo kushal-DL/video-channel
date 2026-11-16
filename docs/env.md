@@ -72,13 +72,19 @@ ulimit -v 16384
 .venv/bin/manimgx render <scene_file> <SceneClass> -o <output.mp4>
 ```
 
-### Example smoke test command (CPU-only, safer for testing)
+### Example smoke test command (Safe, low-resource testing)
 ```bash
-# CPU-only mode — no GPU/RAM spike
-.venv/bin/manimgx render --cpu productions/_smoke/scenes/smoke.py SmokeTest -o /tmp/output.mp4
+# Low resolution + timeout wrapper — fast validation without GPU/RAM spike
+./scripts/render-with-timeout.sh 60 .venv/bin/manimgx render productions/_smoke/scenes/smoke.py SmokeTest -r 640x360 -o /tmp/output.mp4
 
-# Or use the timeout wrapper script
-./scripts/render-with-timeout.sh 60 .venv/bin/manimgx render productions/_smoke/scenes/smoke.py SmokeTest -o /tmp/output.mp4
+# Full episode test (low res for quick verification)
+./scripts/render-with-timeout.sh 120 .venv/bin/manimgx render productions/episode-001-introduction-to-calculus/scenes/full_episode.py IntroScene -r 640x360 -o /tmp/output.mp4
+```
+
+### Production render (Full resolution)
+```bash
+# Full HD with timeout wrapper — prevents silent hangs
+./scripts/render-with-timeout.sh 180 .venv/bin/manimgx render productions/episode-001-introduction-to-calculus/scenes/full_episode.py IntroScene -o productions/episode-001-introduction-to-calculus/final.mp4
 ```
 
 ### Available options
