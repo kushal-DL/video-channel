@@ -25,7 +25,7 @@ class IntroScene(m.Scene):
             color=m.GRAY_B,
         )
 
-        group = m.VGroup(title, subtitle).arrange(DOWN, buff=0.4)
+        group = m.VGroup(title, subtitle).arrange(m.DOWN, buff=0.4)
 
         self.play(m.FadeIn(group))
         self.wait(2)
