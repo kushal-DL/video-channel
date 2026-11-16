@@ -1,0 +1,209 @@
+{
+  "slug": "episode-001-introduction-to-calculus",
+  "total_duration_ms": 360000,
+  "fps": 60,
+  "beats": [
+    {
+      "id": 1,
+      "text": "Every driver has asked this question while driving: What does my speedometer actually tell me right now?",
+      "start_ms": 0,
+      "duration_ms": 30000,
+      "scene_id": 1
+    },
+    {
+      "id": 2,
+      "text": "Is it an average? A guess? Or something more precise? The answer leads us directly to calculus—and specifically, to derivatives.",
+      "start_ms": 30000,
+      "duration_ms": 30000,
+      "scene_id": 2
+    },
+    {
+      "id": 3,
+      "text": "By the end of this episode, you'll understand exactly what a derivative means in physical terms, not just as symbols on a page.",
+      "start_ms": 60000,
+      "duration_ms": 30000,
+      "scene_id": 3
+    },
+    {
+      "id": 4,
+      "text": "Let's start with something familiar: average velocity. If you drive from point A to point B, covering 60 miles in one hour, your average velocity is 60 miles per hour.",
+      "start_ms": 90000,
+      "duration_ms": 60000,
+      "scene_id": 4
+    },
+    {
+      "id": 5,
+      "text": "Simple division—distance divided by time. But here's the problem: that single number hides everything that happened along the way.",
+      "start_ms": 150000,
+      "duration_ms": 60000,
+      "scene_id": 5
+    },
+    {
+      "id": 6,
+      "text": "Maybe you stopped at a red light for two minutes. Maybe you sped up on the highway. Average velocity smooths over all of it.",
+      "start_ms": 210000,
+      "duration_ms": 60000,
+      "scene_id": 6
+    },
+    {
+      "id": 7,
+      "text": "What about instantaneous velocity—the speed right now, this exact moment? Your speedometer attempts to answer this question.",
+      "start_ms": 270000,
+      "duration_ms": 60000,
+      "scene_id": 7
+    },
+    {
+      "id": 8,
+      "text": "But how does it do that mathematically? This is where calculus steps in with a powerful idea: we approximate the instant by shrinking time itself.",
+      "start_ms": 330000,
+      "duration_ms": 60000,
+      "scene_id": 8
+    },
+    {
+      "id": 9,
+      "text": "Imagine tracking your car's position over time. At each moment t, you have a position p of t.",
+      "start_ms": 390000,
+      "duration_ms": 60000,
+      "scene_id": 9
+    },
+    {
+      "id": 10,
+      "text": "Now ask: what's the rate of change of position with respect to time? In everyday language, that's velocity.",
+      "start_ms": 450000,
+      "duration_ms": 60000,
+      "scene_id": 10
+    },
+    {
+      "id": 11,
+      "text": "Mathematically, we calculate this by looking at how much position changes divided by how much time passes.",
+      "start_ms": 510000,
+      "duration_ms": 60000,
+      "scene_id": 11
+    },
+    {
+      "id": 12,
+      "text": "We write this as the change in position—p of t plus h minus p of t—divided by the change in time, which is just h.",
+      "start_ms": 570000,
+      "duration_ms": 60000,
+      "scene_id": 12
+    },
+    {
+      "id": 13,
+      "text": "This ratio gives us average velocity over a tiny interval of length h. Now here's the key insight: if we shrink h toward zero, this average becomes instantaneous.",
+      "start_ms": 630000,
+      "duration_ms": 60000,
+      "scene_id": 13
+    },
+    {
+      "id": 14,
+      "text": "The derivative of position with respect to time IS velocity.",
+      "start_ms": 690000,
+      "duration_ms": 60000,
+      "scene_id": 14
+    },
+    {
+      "id": 15,
+      "text": "We express this precisely using limit notation. The derivative of p at t is defined as the limit, as h approaches zero, of the difference quotient we just saw.",
+      "start_ms": 750000,
+      "duration_ms": 60000,
+      "scene_id": 15
+    },
+    {
+      "id": 16,
+      "text": "In symbols: dp/dt equals the limit as h goes to zero of p of t plus h minus p of t all over h.",
+      "start_ms": 810000,
+      "duration_ms": 60000,
+      "scene_id": 16
+    },
+    {
+      "id": 17,
+      "text": "Let me unpack this carefully. The numerator measures change in position. The denominator measures change in time.",
+      "start_ms": 870000,
+      "duration_ms": 60000,
+      "scene_id": 17
+    },
+    {
+      "id": 18,
+      "text": "Their ratio is velocity. Taking the limit as h approaches zero means we're asking: What does this ratio approach when our time interval becomes infinitesimally small?",
+      "start_ms": 930000,
+      "duration_ms": 60000,
+      "scene_id": 18
+    },
+    {
+      "id": 19,
+      "text": "That limiting value IS the instantaneous rate of change—the derivative.",
+      "start_ms": 990000,
+      "duration_ms": 60000,
+      "scene_id": 19
+    },
+    {
+      "id": 20,
+      "text": "You've probably seen this before: dp/dt. This is Leibniz notation, named after the mathematician who formalized calculus in the 1600s.",
+      "start_ms": 1050000,
+      "duration_ms": 60000,
+      "scene_id": 20
+    },
+    {
+      "id": 21,
+      "text": "The beauty of this notation is that it reminds you exactly what's happening: d of p over d of t—change in position divided by change in time.",
+      "start_ms": 1110000,
+      "duration_ms": 60000,
+      "scene_id": 21
+    },
+    {
+      "id": 22,
+      "text": "And here's a practical note about units. If position is measured in meters and time in seconds, then dp/dt has units of meters per second.",
+      "start_ms": 1170000,
+      "duration_ms": 60000,
+      "scene_id": 22
+    },
+    {
+      "id": 23,
+      "text": "The derivative inherits the per time dimension from its denominator. This dimensional consistency is one reason calculus works so well across physics and engineering.",
+      "start_ms": 1230000,
+      "duration_ms": 60000,
+      "scene_id": 23
+    },
+    {
+      "id": 24,
+      "text": "To recap: the derivative measures instantaneous rate of change. For position versus time, that's velocity.",
+      "start_ms": 1290000,
+      "duration_ms": 60000,
+      "scene_id": 24
+    },
+    {
+      "id": 25,
+      "text": "We calculate it by taking a limit of average rates as our time interval shrinks to zero.",
+      "start_ms": 1350000,
+      "duration_ms": 60000,
+      "scene_id": 25
+    },
+    {
+      "id": 26,
+      "text": "And we write it elegantly as dp/dt—a notation that's been trusted for over three hundred years.",
+      "start_ms": 1410000,
+      "duration_ms": 60000,
+      "scene_id": 26
+    },
+    {
+      "id": 27,
+      "text": "In the next episode, we'll apply this concept to real functions and compute actual derivatives using rules rather than limits from scratch.",
+      "start_ms": 1470000,
+      "duration_ms": 60000,
+      "scene_id": 27
+    },
+    {
+      "id": 28,
+      "text": "Until then—keep asking what things mean, not just memorizing formulas.",
+      "start_ms": 1530000,
+      "duration_ms": 60000,
+      "scene_id": 28
+    }
+  ],
+  "metadata": {
+    "narration_engineer_version": "1.0",
+    "generated_at": "2026-11-17T02:45:00Z",
+    "audio_sample_rate": 48000,
+    "voice_profile": "tutor-calm"
+  }
+}
