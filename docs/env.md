@@ -63,8 +63,8 @@ export MANIMGX_MAX_MEMORY_MB=4096
 # CPU quota: max 2 cores for rendering
 export MANIMGX_CPU_COUNT=2
 
-# Virtual memory limit per session (~8GB)
-ulimit -v 8192
+# Virtual memory limit per session (~16GB)
+ulimit -v 16384
 ```
 
 ### Basic render syntax (manimgx v0.1.1)
