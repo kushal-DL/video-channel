@@ -25,6 +25,7 @@
 - **ffmpeg/ffprobe:** Not installed locally (requires sudo or alternative install method)
   - Ubuntu: `sudo apt-get install ffmpeg`
   - macOS: `brew install ffmpeg`
+  - Snap: `snap install ffmpeg --classic` (if available)
   - **Note:** If sudo is unavailable, use Docker with pre-installed ffmpeg or request admin privileges
 
 ### LaTeX Math Rendering

@@ -1,0 +1,5 @@
+# Video-Channel Requirements
+# Generated 2026-11-17
+# Python >= 3.13 required
+
+manimgx>=0.1.1
