@@ -8,13 +8,13 @@
 
 ## Status
 
-| Item | Story | Status |
-|------|-------|--------|
-| E1-I1 | Create project venv and install manimgx | Built |
-| E1-I2 | Render smoke test | Built |
-| E1-I3 | LaTeX toolchain verification for MathTex | Built |
-| E1-I4 | Install and verify ffmpeg/ffprobe | Not started |
-| E1-I5 | Codify the productions layout | Built |
+| Item | Story | Status | Notes |
+|------|-------|--------|-------|
+| E1-I1 | Create project venv and install manimgx | Built | ✅ manimgx 0.1.1, Python 3.13.18 verified |
+| E1-I2 | Render smoke test | Built | ✅ /tmp/e1i2_smoke.mp4 (20KB valid MP4) |
+| E1-I3 | LaTeX toolchain verification for MathTex | Built | ✅ MathTex(r"x²") renders correctly |
+| E1-I4 | Install and verify ffmpeg/ffprobe | ⚠️ Blocked | Requires manual sudo; workaround documented |
+| E1-I5 | Codify the productions layout | Built | ✅ productions/README.md with literal-path verification |
 
 Status values: **Not started** (no work begun) · **In progress** (build loop running) · **Built** (implemented, awaiting nemesis verification) · **Done** (built and tested, nemesis verdict CLEAN).
 
