@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+
+# manimgx renders
+productions/*/final.mp4
+productions/*/*.mp4
+productions/*/*.storyboard.png
+productions/*/*.layout.json
+
+# Build artifacts
+*.log
+.DS_Store
