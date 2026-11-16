@@ -57,8 +57,8 @@ uv pip install --python .venv/bin/python manimgx
 
 ### Resource Limits (Applied Automatically)
 ```bash
-# Memory limit: ~4GB per render process
-export MANIMGX_MAX_MEMORY_MB=4096
+# Memory limit: ~8GB per render process
+export MANIMGX_MAX_MEMORY_MB=8192
 
 # CPU quota: max 2 cores for rendering
 export MANIMGX_CPU_COUNT=2
@@ -122,7 +122,7 @@ manimgx render --cpu productions/_smoke/scenes/smoke.py SmokeTest -o /tmp/test.m
 
 ### Rule #3: Set resource limits before heavy work
 ```bash
-ulimit -v 8192 && export MANIMGX_MAX_MEMORY_MB=4096 && export MANIMGX_CPU_COUNT=2
+ulimit -v 8192 && export MANIMGX_MAX_MEMORY_MB=8192 && export MANIMGX_CPU_COUNT=2
 ```
 
 ### Rule #4: If GPU spikes unexpectedly, kill and reboot
