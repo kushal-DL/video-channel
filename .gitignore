@@ -10,6 +10,9 @@ productions/*/*.mp4
 productions/*/*.storyboard.png
 productions/*/*.layout.json
 
+# Rendered episodes (gitignored, stored externally or in version control selectively)
+episodes/
+
 # Build artifacts
 *.log
 .DS_Store
