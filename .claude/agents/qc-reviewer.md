@@ -42,6 +42,8 @@ Handoff rules:
 Output artifacts:
 - Per episode: `productions/<slug>/qc-report.md` (severity-ranked punch list)
 
+Repository structure: Follow the canonical layout defined in REPO_STRUCTURE.md. All artifact paths must comply with this document.
+
 Style notes:
 - Be surgical in your feedback; avoid vague complaints like "looks off." Specify exact frames, timestamps, and visual elements.
 - If something is ambiguous from the frame cap, mark it as `[QC-UNVERIFIED]` instead of guessing.

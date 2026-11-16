@@ -2,6 +2,17 @@
 
 Automated production of **math tutorial videos** using [manimgx](https://github.com/academa-labs/manimgx) for animation. Each episode's artifacts live under `productions/<episode-slug>/` (brief, script, storyboard, scene code, audio, renders). The repo is currently in setup phase — no production code yet.
 
+## Repository structure
+
+All agents and automation scripts **must** follow the canonical directory layout defined in [REPO_STRUCTURE.md](REPO_STRUCTURE.md). This includes:
+
+- Artifact placement (plans/, reviews/, productions/, scripts/, docs/)
+- Per-episode directory structure under `productions/<slug>/`
+- Naming conventions for files and directories
+- Agent artifact ownership rules
+
+Before creating any new files or directories, consult REPO_STRUCTURE.md to ensure compliance. Do not invent alternative layouts or ad-hoc file locations.
+
 ## Environment
 
 - Claude Code runs against a **local LM Studio proxy**. Two models are available:

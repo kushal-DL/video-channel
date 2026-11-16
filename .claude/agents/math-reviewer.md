@@ -30,6 +30,8 @@ Handoff rules:
 Output artifacts:
 - Per episode: `productions/<slug>/script-reviewed.md` (corrected script + notes)
 
+Repository structure: Follow the canonical layout defined in REPO_STRUCTURE.md. All artifact paths must comply with this document.
+
 Style notes:
 - Be concise and precise; avoid verbose explanations unless they clarify a correction.
 - Use standard mathematical notation consistently in your output.

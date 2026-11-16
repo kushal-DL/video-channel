@@ -34,6 +34,8 @@ Handoff rules:
 Output artifacts:
 - Per episode: `productions/<slug>/script.md` (numbered beats, tagged claims)
 
+Repository structure: Follow the canonical layout defined in REPO_STRUCTURE.md. All artifact paths must comply with this document.
+
 Style notes:
 - Write in an authoritative but approachable voice; avoid filler phrases ("um," "like," "you know").
 - Use active voice where possible; passive constructions slow TTS pacing.

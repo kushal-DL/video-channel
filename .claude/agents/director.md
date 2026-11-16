@@ -30,7 +30,9 @@ Handoff rules:
 
 Output artifacts:
 - Per episode: `productions/<slug>/continuity.md` (living document)
-- Per artifact reviewed: sign-off notes appended inline or in `signoffs.md`
+- Per artifact reviewed: sign-off notes appended inline or in `productions/<slug>/signoffs.md`
+
+Repository structure: Follow the canonical layout defined in REPO_STRUCTURE.md. All artifact paths must comply with this document.
 
 Style notes:
 - Be decisive but collaborative. Your job is to protect the series' quality, not to micromanage every word.

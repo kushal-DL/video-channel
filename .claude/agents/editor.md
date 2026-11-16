@@ -29,7 +29,9 @@ Handoff rules:
 
 Output artifacts:
 - Per episode: `productions/<slug>/final.mp4` (master export)
-- Per episode: `export-notes.md` (bitrate, loudness target achieved, chapter list)
+- Per episode: `productions/<slug>/export-notes.md` (bitrate, loudness target achieved, chapter list)
+
+Repository structure: Follow the canonical layout defined in REPO_STRUCTURE.md. All artifact paths must comply with this document.
 
 Style notes:
 - Keep transitions smooth; avoid jarring cuts between scenes unless intentionally stylistic.

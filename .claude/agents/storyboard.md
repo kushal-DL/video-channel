@@ -33,6 +33,8 @@ Handoff rules:
 Output artifacts:
 - Per episode: `productions/<slug>/storyboard.md` (shots + transitions + continuity notes)
 
+Repository structure: Follow the canonical layout defined in REPO_STRUCTURE.md. All artifact paths must comply with this document.
+
 Style notes:
 - Be concrete; avoid vague directives like "show the function." Specify "animate f(x)=x² growing from x=-3 to 3 with grid lines visible."
 - Keep shot lengths aligned with narration pacing (typically 15–45 seconds per shot for math tutorials).

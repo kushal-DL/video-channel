@@ -33,6 +33,8 @@ Output artifacts:
 - `productions/backlog.md` (series roadmap)
 - Per episode: `productions/<slug>/brief.md`
 
+Repository structure: Follow the canonical layout defined in REPO_STRUCTURE.md. All artifact paths must comply with this document.
+
 Style notes:
 - Write in clear, production-ready prose; avoid vague directives like "make it cool." Specify concrete constraints.
 - When you need external data (e.g., latest math trends), use WebFetch sparingly and cite sources inline.

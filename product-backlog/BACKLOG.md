@@ -2,10 +2,52 @@
 
 Engineering backlog for automating end-to-end production of polished math-tutorial videos. This is NOT the episode-content roadmap: producer.md owns `productions/backlog.md` (episode topics). This file owns tooling and automation work only. Every item below is implemented later through this repo's mandatory build loop (athena -> gaia -> nemesis; animation portions routed to studio agents per CLAUDE.md) — this backlog implements nothing itself.
 
+## Status
+
+| Item | Story | Status |
+|------|-------|--------|
+| E1-I1 | Create project venv and install manimgx | Not started |
+| E1-I2 | Render smoke test | Not started |
+| E1-I3 | LaTeX toolchain verification for MathTex | Not started |
+| E1-I4 | Install and verify ffmpeg/ffprobe | Not started |
+| E1-I5 | Codify the productions layout | Not started |
+| E2-I1 | Options evaluation spike (no vendor committed) | Not started |
+| E2-I2 | Pluggable TTS adapter contract | Not started |
+| E2-I3 | Per-beat audio and timing-map integration | Not started |
+| E3-I1 | Channel bible and pilot brief | Not started |
+| E3-I2 | Script, adversarial math review, director sign-off | Not started |
+| E3-I3 | Storyboard and continuity register mechanics | Not started |
+| E3-I4 | Scene code driven by the timing map | Not started |
+| E3-I5 | Editor assembly to final.mp4 | Not started |
+| E3-I6 | QC gate loop to clean | Not started |
+| E3-I7 | Release artifact | Not started |
+| E4-I1 | One-command episode orchestrator | Not started |
+| E4-I2 | Machine-readable gate verdicts | Not started |
+| E4-I3 | Parallel animator and narration-engineer execution | Not started |
+| E5-I1 | Deterministic chapters and thumbnail extraction | Not started |
+| E5-I2 | Publish preflight check | Not started |
+| E6-I1 | Transition smoothing pass | Not started |
+| E6-I2 | Parallel scene rendering benchmark | Not started |
+| E6-I3 | Snapshot regression tests for generated scenes | Not started |
+| E6-I4 | Loudness measurement automation and music-bed provenance | Not started |
+| E6-I5 | Episode archiving and cleanup policy | Not started |
+
+Status values: **Not started** (no work begun) · **In progress** (build loop running) · **Built** (implemented, awaiting nemesis verification) · **Done** (built and tested, nemesis verdict CLEAN).
+
+## Epics
+
+- [Epic 1: Environment setup](epic-1-environment-setup.md) — detailed
+- [Epic 2: TTS and voice cloning](epic-2-tts-and-voice-cloning.md) — detailed
+- [Epic 3: Pilot episode end-to-end (studio pipeline)](epic-3-pilot-episode-end-to-end.md)
+- [Epic 4: Automation glue](epic-4-automation-glue.md)
+- [Epic 5: Publishing and release tooling](epic-5-publishing-and-release-tooling.md)
+- [Epic 6: Polish and iteration (surfaced by the pilot)](epic-6-polish-and-iteration.md)
+
 ## Conventions
 - Item ids are stable: `E<n>-I<m>`; an id never changes once its item is done.
 - Ordering rule: epics appear in fixed order E1..E6; every item's dependencies reference only items that appear earlier in this file (global topological order). An item is ready when all of its dependencies are done.
 - Every item has exactly these fields, one line each: Description, Depends on, Acceptance criteria.
+- Status is tracked in the table above and in each epic file's own table; update both when an item changes state.
 - TTS policy: Epic E2 evaluates options and defines the adapter contract only; no item commits a TTS vendor/backend as the channel default until the user's separately downloaded voice-cloning model lands (status tracked as "pending user model download" in `productions/tts-options.md`).
 
 ## E1: Environment setup

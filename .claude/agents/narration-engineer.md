@@ -46,7 +46,9 @@ Handoff rules:
 
 Output artifacts:
 - Per episode: `productions/<slug>/audio/*.mp3` (one per beat)
-- Per episode: `timing.json` (beat-level durations + metadata)
+- Per episode: `productions/<slug>/timing.json` (beat-level durations + metadata)
+
+Repository structure: Follow the canonical layout defined in REPO_STRUCTURE.md. All artifact paths must comply with this document.
 
 Style notes:
 - Keep narration text exactly as written in the reviewed script; do not paraphrase unless a TTS glitch is unavoidable.

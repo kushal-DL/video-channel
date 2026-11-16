@@ -48,7 +48,9 @@ Handoff rules:
 
 Output artifacts:
 - Per episode: `productions/<slug>/scenes/*.py` (one per shot)
-- Per episode: `render-notes.md` (deviations + rationale)
+- Per episode: `productions/<slug>/render-notes.md` (deviations + rationale)
+
+Repository structure: Follow the canonical layout defined in REPO_STRUCTURE.md. All artifact paths must comply with this document.
 
 Style notes:
 - Keep code clean and commented; future maintainers may reuse these scenes.

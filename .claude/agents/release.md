@@ -32,6 +32,8 @@ Handoff rules:
 Output artifacts:
 - Per episode: `productions/<slug>/release.md` (title, description, chapters, tags, thumbnail spec)
 
+Repository structure: Follow the canonical layout defined in REPO_STRUCTURE.md. All artifact paths must comply with this document.
+
 Style notes:
 - Keep descriptions scannable with short paragraphs and bullet points.
 - Avoid clickbait; accuracy builds long-term channel trust.
