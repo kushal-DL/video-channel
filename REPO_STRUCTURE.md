@@ -22,19 +22,20 @@ Video-channel/
 │   └── epic-*.md                # Detailed epic files
 ├── productions/                 # Episode production artifacts
 │   ├── README.md                # Productions layout documentation (E1-I5)
-│   ├── channel-bible.md         # Channel-wide standards (E3-I1)
-│   ├── tts-options.md           # TTS evaluation document (E2-I1)
+│   ├── channel-bible.md         # Channel-wide standards (E4-I1)
+│   ├── tts-options.md           # TTS evaluation document (E3-I1)
 │   ├── _smoke/                  # Smoke test artifacts (E1-I2, E1-I3)
 │   │   └── scenes/
 │   │       ├── smoke.py
 │   │       └── smoke_latex.py
-│   ├── tts-fixture/             # TTS integration test fixture (E2-I3)
+│   ├── tts-fixture/             # TTS integration test fixture (E3-I3)
 │   │   ├── script-reviewed.md
 │   │   ├── audio/
 │   │   │   ├── beat_01.mp3
 │   │   │   └── ...
 │   │   └── timing.json
 │   └── <episode-slug>/          # Per-episode production directory
+│       ├── scope.md             # Episode scope — mandatory first artifact (producer)
 │       ├── brief.md             # Episode brief (producer)
 │       ├── script.md            # Original script (screenwriter)
 │       ├── script-reviewed.md   # Math-reviewed script (math-reviewer)
@@ -52,24 +53,24 @@ Video-channel/
 │       ├── export-notes.md      # Export/loudness notes (editor)
 │       ├── qc-report.md         # QC review report (qc-reviewer)
 │       ├── release.md           # Release metadata (release-agent)
-│       ├── thumbnail.png        # Thumbnail image (E5-I1)
-│       └── gates/               # Machine-readable gate verdicts (E4-I2)
+│       ├── thumbnail.png        # Thumbnail image (E6-I1)
+│       └── gates/               # Machine-readable gate verdicts (E5-I2)
 │           ├── script-review.json
 │           ├── math-review.json
 │           └── ...
 ├── scripts/                     # Automation scripts
-│   ├── tts.py                   # TTS adapter (E2-I2)
-│   ├── orchestrate.py           # Episode orchestrator (E4-I1)
-│   ├── gate-verdict.py          # Gate verdict generator (E4-I2)
-│   ├── chapters.py              # Chapter extraction (E5-I1)
-│   ├── thumbnails.py            # Thumbnail generation (E5-I1)
-│   ├── preflight.py             # Publish preflight check (E5-I2)
-│   ├── scene_snapshots.py       # Snapshot regression tests (E6-I3)
-│   ├── archive_episode.sh       # Episode archiving (E6-I5)
+│   ├── tts.py                   # TTS adapter (E3-I2)
+│   ├── orchestrate.py           # Episode orchestrator (E5-I1)
+│   ├── gate-verdict.py          # Gate verdict generator (E5-I2)
+│   ├── chapters.py              # Chapter extraction (E6-I1)
+│   ├── thumbnails.py            # Thumbnail generation (E6-I1)
+│   ├── preflight.py             # Publish preflight check (E6-I2)
+│   ├── scene_snapshots.py       # Snapshot regression tests (E7-I3)
+│   ├── archive_episode.sh       # Episode archiving (E7-I5)
 │   └── ...
 ├── docs/                        # Documentation
 │   ├── env.md                   # Environment setup documentation (E1-I1)
-│   └── render-benchmark.md      # Render benchmark results (E6-I2)
+│   └── render-benchmark.md      # Render benchmark results (E7-I2)
 ├── tests/                       # Test files
 │   └── test_*.py
 ├── assets/                      # Shared assets (music beds, fonts, etc.)
@@ -85,7 +86,7 @@ Each agent is responsible for specific artifacts. This table maps agents to the 
 
 | Agent | Creates/Modifies |
 |-------|-----------------|
-| producer | `productions/channel-bible.md`, `productions/<slug>/brief.md` |
+| producer | `productions/channel-bible.md`, `productions/<slug>/scope.md`, `productions/<slug>/brief.md` |
 | screenwriter | `productions/<slug>/script.md` |
 | math-reviewer | `productions/<slug>/script-reviewed.md` |
 | director | `productions/<slug>/signoffs.md`, `productions/<slug>/continuity.md` (approves/amends) |
@@ -113,6 +114,7 @@ Every episode follows this exact structure under `productions/<slug>/`:
 
 ```
 productions/<slug>/
+├── scope.md              # Required: Episode scope (mandatory first artifact)
 ├── brief.md              # Required: Episode brief
 ├── script.md             # Required: Original script
 ├── script-reviewed.md    # Required: Math-reviewed script

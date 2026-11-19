@@ -22,11 +22,9 @@
 - **manimgx:** 0.1.1
 
 ### Media Processing
-- **ffmpeg/ffprobe:** Not installed locally (requires sudo or alternative install method)
-  - Ubuntu: `sudo apt-get install ffmpeg`
-  - macOS: `brew install ffmpeg`
-  - Snap: `snap install ffmpeg --classic` (if available)
-  - **Note:** If sudo is unavailable, use Docker with pre-installed ffmpeg or request admin privileges
+- **ffmpeg:** 7.0.2-static (installed in `~/.local/bin/ffmpeg`, verified on system PATH)
+- **ffprobe:** 7.0.2-static (installed in `~/.local/bin/ffprobe`, verified on system PATH)
+- **Status:** Installed and verified (exit 0)
 
 ### LaTeX Math Rendering
 - **Status:** Already present on system (verified via MathTex smoke test)
@@ -161,5 +159,5 @@ class MyScene(m.Scene):  # Not from manim import *
 
 ## Next Steps (Epic 1 Remaining)
 
-- [ ] E1-I4: Install ffmpeg/ffprobe on system PATH
-- [ ] E1-I5: Document productions layout in `productions/README.md`
+- [x] E1-I4: Install ffmpeg/ffprobe on system PATH (v7.0.2-static verified)
+- [x] E1-I5: Document productions layout in `productions/README.md` (completed)

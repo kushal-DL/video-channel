@@ -1,27 +1,31 @@
-# Epic 6: Polish and iteration (surfaced by the pilot)
+# Epic 7: Polish and iteration (surfaced by the re-render)
 
-**Goal:** Refine the production pipeline based on lessons learned from the pilot episode, addressing performance bottlenecks, quality issues, and operational inefficiencies that only become apparent through real production experience.
+**Goal:** Refine the production pipeline based on lessons learned from the re-rendered Episode 1, addressing performance bottlenecks, quality issues, and operational inefficiencies that only become apparent through real production experience.
 
-**Why this matters:** The pilot episode exposes real-world problems that planning and design can't predict. This epic systematically addresses those issues, transforming the pipeline from "works for one episode" to "robust for a series." It's the difference between a proof of concept and a production system.
+**Why this matters:** The re-render exposes real-world problems that planning and design can't predict. This epic systematically addresses those issues, transforming the pipeline from "works for one episode" to "robust for a series." It's the difference between a proof of concept and a production system.
 
-**Estimated effort:** 5-10 days of build loop work (depends on pilot findings)
+> **Note on ordering vs. Epic 2:** The *quality* gaps found in Episode 1 are fixed first (Epic 2) so the re-render (Epic 4) is shippable; this epic handles the *performance/operational* refinements that come after a working pipeline exists.
+
+**Execution order:** #7 in the backlog sequence (after Epic 6 Publishing; before Epic 8 Agent Definitions). It depends on the re-rendered Episode 1's artifacts (scenes, QC report, timing map).
+
+**Estimated effort:** 5-10 days of build loop work (depends on re-render findings)
 
 ## Status
 
 | Item | Story | Status |
 |------|-------|--------|
-| E6-I1 | Transition smoothing pass | Not started |
-| E6-I2 | Parallel scene rendering benchmark | Not started |
-| E6-I3 | Snapshot regression tests for generated scenes | Not started |
-| E6-I4 | Loudness measurement automation and music-bed provenance | Not started |
-| E6-I5 | Episode archiving and cleanup policy | Not started |
+| E7-I1 | Transition smoothing pass | Not started |
+| E7-I2 | Parallel scene rendering benchmark | Not started |
+| E7-I3 | Snapshot regression tests for generated scenes | Not started |
+| E7-I4 | Loudness measurement automation and music-bed provenance | Not started |
+| E7-I5 | Episode archiving and cleanup policy | Not started |
 
 Status values: **Not started** (no work begun) · **In progress** (build loop running) · **Built** (implemented, awaiting nemesis verification) · **Done** (built and tested, nemesis verdict CLEAN).
 
-## E6-I1: Transition smoothing pass
+## E7-I1: Transition smoothing pass
 
 - **Description:** Analyze transition quality across the pilot episode and implement improvements to make scene transitions smoother, more professional, and pedagogically effective.
-- **Depends on:** E3-I6 (QC review complete)
+- **Depends on:** E4-I3 (re-rendered Episode 1 QC review complete)
 - **Rationale:** Transitions are often overlooked but significantly impact perceived quality. Poor transitions distract viewers and break immersion. This story systematically improves transition quality based on actual production experience.
 - **Transition quality aspects:**
   - Visual smoothness (no jarring cuts or jumps)
@@ -49,10 +53,10 @@ Status values: **Not started** (no work begun) · **In progress** (build loop ru
   - Director approves improved transition quality
   - Standards are documented for future episodes
 
-## E6-I2: Parallel scene rendering benchmark
+## E7-I2: Parallel scene rendering benchmark
 
 - **Description:** Benchmark and optimize parallel scene rendering to reduce total production time, identifying bottlenecks and implementing improvements.
-- **Depends on:** E3-I4 (scene rendering complete)
+- **Depends on:** E4-I3 (re-rendered Episode 1 scene rendering complete)
 - **Rationale:** Rendering time directly impacts production throughput. Understanding and optimizing parallel rendering can significantly reduce the time from script to final video, enabling faster iteration and more frequent publishing.
 - **Benchmarking requirements:**
   - Measure sequential vs parallel rendering times
@@ -80,10 +84,10 @@ Status values: **Not started** (no work begun) · **In progress** (build loop ru
   - Performance characteristics documented for planning
   - Recommendations provided for future optimization
 
-## E6-I3: Snapshot regression tests for generated scenes
+## E7-I3: Snapshot regression tests for generated scenes
 
 - **Description:** Implement visual regression testing to catch unintended changes in rendered output, ensuring consistency across episodes and preventing quality regressions.
-- **Depends on:** E3-I4 (scene rendering complete)
+- **Depends on:** E4-I3 (re-rendered Episode 1 scene rendering complete)
 - **Rationale:** As the pipeline evolves, it's important to catch unintended visual changes. Snapshot regression tests provide a safety net that ensures rendered output remains consistent and meets quality standards over time.
 - **Regression testing requirements:**
   - Capture baseline snapshots of key frames
@@ -111,10 +115,10 @@ Status values: **Not started** (no work begun) · **In progress** (build loop ru
   - Integration with build pipeline complete
   - Tests catch intentional and unintentional changes
 
-## E6-I4: Loudness measurement automation and music-bed provenance
+## E7-I4: Loudness measurement automation and music-bed provenance
 
 - **Description:** Automate loudness measurement and normalization, and establish provenance tracking for music beds and audio assets used in episodes.
-- **Depends on:** E3-I5 (editor assembly complete)
+- **Depends on:** E4-I3 (re-rendered Episode 1 editor assembly complete)
 - **Rationale:** Consistent audio loudness is critical for professional quality. Automated measurement and normalization ensure every episode meets broadcast standards. Music-bed provenance ensures licensing compliance and proper attribution.
 - **Loudness automation requirements:**
   - Measure integrated loudness (LUFS)
@@ -142,10 +146,10 @@ Status values: **Not started** (no work begun) · **In progress** (build loop ru
   - Licensing information is recorded and tracked
   - Attribution credits are generated automatically
 
-## E6-I5: Episode archiving and cleanup policy
+## E7-I5: Episode archiving and cleanup policy
 
 - **Description:** Establish policies and tooling for archiving completed episodes and cleaning up temporary files, ensuring efficient storage use and easy access to historical content.
-- **Depends on:** E3-I7 (pilot episode complete)
+- **Depends on:** E4-I3 (re-rendered Episode 1 complete)
 - **Rationale:** Without proper archiving and cleanup, storage costs grow unbounded and finding historical content becomes difficult. This story establishes sustainable practices for managing the lifecycle of episode artifacts.
 - **Archiving requirements:**
   - Define what to archive (final outputs, key artifacts)

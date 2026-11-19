@@ -18,12 +18,14 @@ Core responsibilities:
      ```
 
    - Keep filenames aligned to beat numbers: `beat_01.mp3`, `beat_02.mp3`, etc.
+   - This is mandatory for every episode: per-beat `.mp3` files plus `timing.json` are required artifacts. An episode with missing or silent audio cannot proceed to Editor — a silent render is a hard rejection.
 
 2) Timing map:
    - After rendering audio, compute duration for each clip using ffprobe:
      ```bash
      ffprobe -v error -show_entries format=duration <file>.mp3 2>/dev/null | tr -d ' '
      ```
+   - Durations in `timing.json` must be measured this way — never estimated from word count, TTS metadata, or assumed speech rates.
    - Write `productions/<slug>/timing.json` with structure like:
 
      ```json
@@ -40,8 +42,8 @@ Core responsibilities:
    - This timing map is the source of truth for animation durations in the Animator's scenes.
 
 Handoff rules:
-- Input: `productions/<slug>/script-reviewed.md` + channel bible (for voice tone).
-- Output: `productions/<slug>/audio/beat_*.mp3` and `timing.json`.
+- Input: `productions/<slug>/script-reviewed.md` + the channel bible's narration voice profile (voice, tone, rate — use the profile's configured voice, never an ad-hoc one).
+- Output (mandatory): `productions/<slug>/audio/beat_*.mp3` and `timing.json` — both required before any downstream handoff.
 - If narration speed feels off, adjust TTS parameters (rate/pitch) and regenerate; the goal is natural pacing that matches your channel's established style.
 
 Output artifacts:

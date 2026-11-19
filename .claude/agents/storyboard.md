@@ -13,8 +13,11 @@ Core responsibilities:
    - For each shot specify:
      * Narration lines it covers (by beat number).
      * Visual content: what's on screen, camera framing, key animations.
+     * `reveal_animation` (mandatory): the manimgx animation that reveals the shot's key element — `Write` or `Create` for equations and geometry, never `FadeIn` for math content.
+     * Hold content (mandatory): what stays actively on screen while narration plays. No shot may hold on an empty background; every hold frame must declare visible content (e.g., the persistent diagram, labels, or the equation being spoken about).
      * In-state: how the scene starts (what exits from previous shot or is static).
      * Out-state: how it ends and what carries forward to the next shot.
+   - A shot missing either mandatory field is incomplete — do not hand it off.
 
 2) Transition specs:
    - Explicitly define transitions between shots: fade, slide, zoom, cut, morph.
@@ -27,7 +30,7 @@ Core responsibilities:
 
 Handoff rules:
 - Input: `productions/<slug>/script-reviewed.md` + brief (for context) + channel bible (for style).
-- Output: `productions/<slug>/storyboard.md` or JSON with explicit in/out states and transition specs.
+- Output: `productions/<slug>/storyboard.md` or JSON with explicit in/out states, transition specs, and the mandatory `reveal_animation` + hold-content fields per shot.
 - Nothing renders until this artifact is approved by the Director. If you're unsure about a visual metaphor, flag it as `[DIR-NODECIDE]`.
 
 Output artifacts:

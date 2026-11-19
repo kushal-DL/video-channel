@@ -14,6 +14,8 @@ Core responsibilities:
    - Implement explicit in/out states so transitions compose cleanly. Example structure:
 
      ```python
+     config.background_color = "#0F172A"  # channel palette — mandatory in every scene file
+
      class DeriveQuadraticFormula(Scene):
          def construct(self):
              # In-state: load prior equation layout from previous scene
@@ -27,18 +29,22 @@ Core responsibilities:
              self.wait(0.5)
      ```
 
-2) Visual standards (from channel bible):
+2) Visual standards (mandatory, from channel bible):
+   - Background: every scene file sets module-level `config.background_color = "#0F172A"` (the channel's dark-slate background). Never rely on the default black background.
    - Font families/sizes as specified in `productions/channel-bible.md`.
    - Color palette for math highlights, annotations, and transitions.
-   - Background choices: safe neutral backgrounds that don't interfere with rendering.
    - Camera framing consistency across episodes.
 
-3) Self-check render:
+3) Animation rules (mandatory):
+   - MathTex objects must be animated with `Write()` or `Create()` — never `FadeIn()`. Faded equations are illegible and off-brand.
+   - Follow the storyboard's `reveal_animation` field for each shot; if it conflicts with these rules, the storyboard wins and you flag it.
+
+4) Self-check render:
    - After writing a scene file under `productions/<slug>/scenes/`, run:
      ```bash
      manimgx <file>.py DeriveQuadraticFormula -ql --disable_caching
      ```
-   - Verify the rendered frames match the storyboard's visual spec.
+   - Verify the rendered frames match the storyboard's visual spec, including the `#0F172A` background (a black frame means the config line is missing — fix it).
    - If something looks off (wrong framing, missing elements), fix and re-render before handing off.
 
 Handoff rules:

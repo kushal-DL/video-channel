@@ -20,15 +20,32 @@ Before creating any new files or directories, consult REPO_STRUCTURE.md to ensur
   - **9B model** ("Qwen 3.8 9B") — registered as `qwen3.5-9b-the-defiant-fable-uncensored-heretic-neo-imatrix-max-mtp`
 - Web tools (WebSearch/WebFetch) are unavailable through the local proxy — do not use them; work from the codebase and local files only.
 
-## Build protocol (mandatory)
+## Tool execution & anti-loop rules (mandatory)
 
-Whenever building anything from this project's context, run the agent trio in order — never implement build tasks directly in the main session:
+All agents and sessions must strictly obey these anti-loop rules:
+1. **No Identical Retries**: NEVER repeat an identical or near-identical tool call or command that failed. If a command returns an error, carefully inspect the exact error message and correct the arguments/syntax before calling it again.
+2. **Two-Strike Circuit Breaker**: If any command, parameter, or sub-task approach fails 2 times consecutively, immediately stop that approach. Switch to a completely different strategy or stop and report the blocker. Never attempt a 3rd try with the same approach.
+3. **Strict Scope Verification**: Restrict verification exclusively to the explicit Acceptance Criteria of the task or plan. Never invent auxiliary test suites, secondary stress tests, or benchmark suites beyond what is asked.
 
-1. **athena** (planner, 27B) — spawn FIRST for any build task. It writes an executable plan with acceptance criteria to `plans/<task>.md`. No code until a plan exists.
+## Execution modes & agent routing
+
+To avoid unnecessary latency and token churn, follow this tiered execution model:
+
+### 1. Fast Path (Direct in Main Session — No Athena / Gaia / Nemesis)
+Execute directly in the main session without spawning subagents for:
+- **Backlog & docs management**: Reordering, renaming, creating, or editing tasks in `BACKLOG.md`, `plans/`, `docs/`, `reviews/`, or `REPO_STRUCTURE.md`.
+- **Environment & config edits**: `.claude/settings.json`, `.env`, installing packages/tools, setting environment variables or flags.
+- **Bug fixes & targeted patches**: Small bug fixes, syntax corrections, or code updates under ~25 lines where a formal architectural plan is overhead.
+- **Quick audits & queries**: Inspecting file trees, checking status, running smoke tests, or verifying syntax.
+
+### 2. Full Build Protocol (Athena → Gaia → Nemesis)
+Mandatory **ONLY** for new feature implementations, new automation tools (`scripts/*.py`), or substantial multi-file pipeline changes:
+
+1. **athena** (planner, 27B) — spawn FIRST. Writes an executable implementation plan with acceptance criteria to `plans/<task>.md`. No code until a plan exists.
 2. **gaia** (builder, 9B, minimal thinking) — implements the plan exactly: code plus tests, runs them until green, reports actual command output.
-3. **nemesis** (red team: 27B attack plan via subagent + 9B execution) — independently re-verifies everything gaia claims, detects spoofed/stubbed work and hallucinations, checks security gaps and artifact quality, writes `reviews/<task>-<ts>.md`.
+3. **nemesis** (red team: 27B attack plan via subagent + 9B execution) — independently re-verifies what gaia claims, checks security gaps and artifact quality, writes `reviews/<task>-<ts>.md`.
 
-On a nemesis `VERDICT: FAIL`, re-spawn **gaia** with the review file as feedback; loop until nemesis returns `VERDICT: CLEAN`. Never skip nemesis for anything that ships. Trivial single-line fixes (typos, config values) may be made directly without the loop.
+On a nemesis `VERDICT: FAIL`, re-spawn **gaia** with the review file as feedback; loop until nemesis returns `VERDICT: CLEAN`.
 
 ## Animation studio agents
 

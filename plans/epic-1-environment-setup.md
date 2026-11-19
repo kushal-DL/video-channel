@@ -19,7 +19,7 @@ This plan implements the remaining work from Epic 1: Environment Setup. The envi
 | E1-I1: venv + manimgx | ✅ Built | `.venv/` exists at repo root; `manimgx --version` works (v0.1.1); import test passes |
 | E1-I2: Smoke render pipeline | ⚠️ Pending verification | Scenes exist (`smoke.py`, `smoke_latex.py`) but no render output confirmed |
 | E1-I3: LaTeX toolchain | ✅ Built | MathTex smoke scene exists; env.md claims successful test of `x^2` expression |
-| E1-I4: ffmpeg/ffprobe | ❌ Not installed | Neither binary found on PATH (`which ffmpeg` fails) |
+| E1-I4: ffmpeg/ffprobe | ✅ Built | `ffmpeg` and `ffprobe` v7.0.2 installed to `~/.local/bin` on system PATH (`ffmpeg -version` / `ffprobe -version` exit 0) |
 | E1-I5: Productions layout doc | ⚠️ Pending creation | No comprehensive README exists in `productions/` directory |
 
 ---

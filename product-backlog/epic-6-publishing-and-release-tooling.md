@@ -1,8 +1,10 @@
-# Epic 5: Publishing and release tooling
+# Epic 6: Publishing and release tooling
 
 **Goal:** Build automated tooling that transforms a completed, QC-approved episode into a publication-ready YouTube upload with deterministic chapter markers, optimized thumbnails, and comprehensive preflight validation.
 
 **Why this matters:** Manual publishing is error-prone and inconsistent. Automated release tooling ensures every episode meets quality standards before upload, has proper chapter markers for navigation, eye-catching thumbnails, and complete metadata. This epic closes the loop from production to publication.
+
+**Execution order:** #6 in the backlog sequence (after Epic 5 Automation; before Epic 7 Polish). It depends on a QC-approved re-rendered Episode 1 (E4-I3) with a timing map.
 
 **Estimated effort:** 3-5 days of build loop work
 
@@ -10,15 +12,15 @@
 
 | Item | Story | Status |
 |------|-------|--------|
-| E5-I1 | Deterministic chapters and thumbnail extraction | Not started |
-| E5-I2 | Publish preflight check | Not started |
+| E6-I1 | Deterministic chapters and thumbnail extraction | Not started |
+| E6-I2 | Publish preflight check | Not started |
 
 Status values: **Not started** (no work begun) · **In progress** (build loop running) · **Built** (implemented, awaiting nemesis verification) · **Done** (built and tested, nemesis verdict CLEAN).
 
-## E5-I1: Deterministic chapters and thumbnail extraction
+## E6-I1: Deterministic chapters and thumbnail extraction
 
 - **Description:** Build tools that automatically extract chapter markers from the timing map and generate thumbnail candidates from key frames of the rendered video.
-- **Depends on:** E3-I7 (pilot episode complete with timing map)
+- **Depends on:** E4-I3 (re-rendered Episode 1 complete with measured timing map)
 - **Rationale:** Chapter markers improve viewer navigation and retention. Thumbnails are critical for click-through rate. Both should be generated deterministically from production artifacts rather than manually created, ensuring consistency and saving time.
 - **Chapter extraction requirements:**
   - Parse timing.json to identify beat boundaries
@@ -48,7 +50,7 @@ Status values: **Not started** (no work begun) · **In progress** (build loop ru
   - Branding is applied consistently
   - Output includes ready-to-use YouTube description text with chapters
 
-## E5-I2: Publish preflight check
+## E6-I2: Publish preflight check
 
 - **Description:** Build a comprehensive preflight validation tool that checks all aspects of an episode before upload, ensuring nothing is missed and all quality standards are met.
 - **Depends on:** E5-I1

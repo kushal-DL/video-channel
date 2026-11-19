@@ -4,6 +4,8 @@
 
 **Why this matters:** Every downstream production agent (animator, narrator, editor, QC reviewer) depends on specific tools being available and working correctly. Without a verified environment, renders fail unpredictably and debugging is difficult. This epic eliminates environment-related uncertainty before any creative work begins.
 
+**Execution order:** #1 in the backlog sequence — the foundation everything else builds on (TTS, re-render, automation all assume a working manimgx + LaTeX + ffmpeg toolchain).
+
 **Estimated effort:** 1-2 days of build loop work
 
 ## Status
@@ -13,7 +15,7 @@
 | E1-I1 | Create project venv and install manimgx | Built | ✅ manimgx 0.1.1, Python 3.13.18 verified |
 | E1-I2 | Render smoke test | Built | ✅ /tmp/e1i2_smoke.mp4 (20KB valid MP4) |
 | E1-I3 | LaTeX toolchain verification for MathTex | Built | ✅ MathTex(r"x²") renders correctly |
-| E1-I4 | Install and verify ffmpeg/ffprobe | ⚠️ Blocked | Requires manual sudo; workaround documented |
+| E1-I4 | Install and verify ffmpeg/ffprobe | Built | ✅ ffmpeg 7.0.2-static, ffprobe 7.0.2-static on system PATH |
 | E1-I5 | Codify the productions layout | Built | ✅ productions/README.md with literal-path verification |
 
 Status values: **Not started** (no work begun) · **In progress** (build loop running) · **Built** (implemented, awaiting nemesis verification) · **Done** (built and tested, nemesis verdict CLEAN).
@@ -97,6 +99,10 @@ Status values: **Not started** (no work begun) · **In progress** (build loop ru
   - `ffprobe -version` exits 0 and prints version information
   - Both versions are recorded in `docs/env.md`
   - ffmpeg and ffprobe are on the system PATH (not just installed in venv)
+- **Status & Verification (2026-11-18):**
+  - Static release binaries of ffmpeg and ffprobe (v7.0.2) installed to `~/.local/bin/` (in system PATH).
+  - Verified `ffmpeg -version` and `ffprobe -version` both exit 0 on system PATH.
+  - Verified with `./scripts/e1-verify.sh` and `./scripts/verify-env.sh`.
 
 ## E1-I5: Codify the productions layout
 

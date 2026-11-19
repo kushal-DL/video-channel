@@ -7,12 +7,14 @@
         "CLAUDE_CODE_AUTO_MODE_SERVER": "0",
         "MAX_THINKING_TOKENS": "4096",
         "CLAUDE_CODE_MAX_OUTPUT_TOKENS": "32000",
+        "CLAUDE_CODE_MAX_TURNS": "30",
         "ANTHROPIC_SMALL_FAST_MODEL": "qwen3.5-9b-the-defiant-fable-uncensored-heretic-neo-imatrix-max-mtp",
-        "ANTHROPIC_DEFAULT_OPUS_MODEL": "qwen3.8-27b-turbo-fable-cold-fusion-735-882-heretic-uncensored-neo-coder-max-mtp",
-        "ANTHROPIC_DEFAULT_SONNET_MODEL": "qwen3.5-9b-the-defiant-fable-uncensored-heretic-neo-imatrix-max-mtp",
+        "ANTHROPIC_DEFAULT_OPUS_MODEL": "qwen3.8-27b-fable-5-coding-distilled",
+        "ANTHROPIC_DEFAULT_SONNET_MODEL": "qwen3.8-27b-fable-5-coding-distilled",
         "ANTHROPIC_DEFAULT_HAIKU_MODEL": "qwen3.5-9b-the-defiant-fable-uncensored-heretic-neo-imatrix-max-mtp"
     },
     "permissions": {
         "defaultMode": "auto"
-    }
+    },
+    "model": "sonnet"
 }

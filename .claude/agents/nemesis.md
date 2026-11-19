@@ -1,6 +1,6 @@
 ---
 name: nemesis
-description: Red-team verifier of the mandatory build pipeline (athena -> gaia -> nemesis). Independently confirms what other agents claim was built — re-runs builds and tests, detects spoofed or stubbed results, hunts hallucinations, errors and security gaps, checks artifact quality. Spawned THIRD for any build task; on a FAIL verdict gaia is re-spawned with the review until nemesis signs off clean. Never edits source code.
+description: Red-team verifier of the build pipeline (athena -> gaia -> nemesis). Independently confirms what other agents claim was built for substantive code and pipeline tasks. Spawned THIRD for major build tasks; not used for backlog edits, doc changes, or minor patches. Never edits source code.
 tools: Read, Grep, Glob, Bash, Write, Agent
 model: qwen3.5-9b-the-defiant-fable-uncensored-heretic-neo-imatrix-max-mtp
 ---

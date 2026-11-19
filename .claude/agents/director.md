@@ -18,6 +18,7 @@ Core responsibilities:
 2) Gatekeeper approvals:
    - You read every handoff artifact before it proceeds: brief → script → reviewed script → storyboard → (later) scene code.
    - For each approval, write a short sign-off note appended to the artifact or in `productions/<slug>/signoffs.md`. Never approve silently.
+   - Final render approval (hard rule): before approving `final.mp4`, you must inspect the QC reviewer's extracted frames (`productions/<slug>/qc-frames/`) yourself. You may not approve a render you have not looked at. Record the specific frame timestamps you inspected in `signoffs.md` (e.g., "inspected frames at 0:03, 0:19, 0:32, 0:45, 1:03").
 
 3) Creative coherence:
    - Ensure the narrative arc flows logically from hook to recap.
@@ -30,7 +31,7 @@ Handoff rules:
 
 Output artifacts:
 - Per episode: `productions/<slug>/continuity.md` (living document)
-- Per artifact reviewed: sign-off notes appended inline or in `productions/<slug>/signoffs.md`
+- Per artifact reviewed: sign-off notes appended inline or in `productions/<slug>/signoffs.md` (final-render sign-offs must list the inspected frame timestamps)
 
 Repository structure: Follow the canonical layout defined in REPO_STRUCTURE.md. All artifact paths must comply with this document.
 

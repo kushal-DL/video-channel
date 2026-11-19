@@ -1,8 +1,10 @@
-# Epic 4: Automation glue
+# Epic 5: Automation glue
 
 **Goal:** Build the orchestration layer that automates the episode production pipeline, enabling one-command episode builds, machine-readable quality gates, and parallel execution of independent workstreams.
 
 **Why this matters:** Manual orchestration of the production pipeline is error-prone and slow. Automation glue ensures consistent execution, reduces human error, enables parallelization of independent tasks, and provides machine-readable status for integration with CI/CD and monitoring systems. This epic transforms the pipeline from a manual process into a reliable, repeatable system.
+
+**Execution order:** #5 in the backlog sequence (after Epic 4 Re-render; before Epic 6 Publishing). It depends on the re-rendered Episode 1 proving the fixed pipeline end-to-end.
 
 **Estimated effort:** 5-7 days of build loop work
 
@@ -10,16 +12,16 @@
 
 | Item | Story | Status |
 |------|-------|--------|
-| E4-I1 | One-command episode orchestrator | Not started |
-| E4-I2 | Machine-readable gate verdicts | Not started |
-| E4-I3 | Parallel animator and narration-engineer execution | Not started |
+| E5-I1 | One-command episode orchestrator | Not started |
+| E5-I2 | Machine-readable gate verdicts | Not started |
+| E5-I3 | Parallel animator and narration-engineer execution | Not started |
 
 Status values: **Not started** (no work begun) · **In progress** (build loop running) · **Built** (implemented, awaiting nemesis verification) · **Done** (built and tested, nemesis verdict CLEAN).
 
-## E4-I1: One-command episode orchestrator
+## E5-I1: One-command episode orchestrator
 
 - **Description:** Build a CLI tool that orchestrates the complete episode production pipeline from brief to final MP4 with a single command, handling all agent invocations, artifact management, and error recovery.
-- **Depends on:** E3-I7 (pilot episode complete, pipeline proven)
+- **Depends on:** E4-I3 (re-rendered Episode 1 complete, fixed pipeline proven end-to-end)
 - **Rationale:** The one-command orchestrator is the crown jewel of automation. It encapsulates all the complexity of the production pipeline behind a simple interface, making it easy to produce new episodes consistently. It handles dependencies, error recovery, and state management automatically.
 - **Orchestrator capabilities:**
   - Parse episode brief and determine required steps
@@ -61,7 +63,7 @@ Status values: **Not started** (no work begun) · **In progress** (build loop ru
   - CLI interface is intuitive and well-documented
   - Tested with at least one complete episode build
 
-## E4-I2: Machine-readable gate verdicts
+## E5-I2: Machine-readable gate verdicts
 
 - **Description:** Implement structured, machine-readable verdict files at each quality gate in the pipeline, enabling automated decision-making and integration with monitoring systems.
 - **Depends on:** E4-I1
@@ -111,7 +113,7 @@ Status values: **Not started** (no work begun) · **In progress** (build loop ru
   - Human-readable summaries are also generated
   - Tested with both PASS and FAIL verdicts
 
-## E4-I3: Parallel animator and narration-engineer execution
+## E5-I3: Parallel animator and narration-engineer execution
 
 - **Description:** Refactor the pipeline to allow animator and narration-engineer to work in parallel, reducing total production time by overlapping independent workstreams.
 - **Depends on:** E4-I1
