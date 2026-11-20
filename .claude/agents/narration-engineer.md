@@ -11,16 +11,22 @@ Core responsibilities:
 1) Audio generation:
    - Read `productions/<slug>/script-reviewed.md` (numbered beats).
    - Generate TTS audio for each beat as a separate file under `productions/<slug>/audio/`.
-   - Use your configured TTS provider; default is edge-tts for zero-cost, high quality:
+   - Use your configured TTS provider. The voice name and provider are finalized in Epic 3 — check `productions/channel-bible.md` Voice section for the current approved voice. **Do not use `en-US-Standard-A`** — that is a Google Cloud TTS voice name; it is not valid for edge-tts. If no approved voice is recorded yet, halt and report the blocker.
 
      ```bash
-     tts --voice "en-US-Standard-A" --output-file <file>.mp3 "<text>"
+     python scripts/tts.py --voice "<approved-voice-from-channel-bible>" --output-file <file>.mp3 "<text>"
      ```
 
    - Keep filenames aligned to beat numbers: `beat_01.mp3`, `beat_02.mp3`, etc.
    - This is mandatory for every episode: per-beat `.mp3` files plus `timing.json` are required artifacts. An episode with missing or silent audio cannot proceed to Editor — a silent render is a hard rejection.
 
-2) Timing map:
+2) Register and pacing guidance:
+   - The target register is warm and unhurried — not robotic or clipped. If the TTS voice sounds flat on a sentence, adjust rate/pitch parameters rather than accepting the first output.
+   - Insert a brief pause (0.3–0.5 s of silence) at each concept boundary: after the hook, after the motivation section, before the worked example, before the recap.
+   - Slow down the TTS rate slightly for the worked example section — viewers need time to read each step on screen.
+   - Narration speed target is ~150 wpm; verify against word count / measured duration after generation.
+
+3) Timing map:
    - After rendering audio, compute duration for each clip using ffprobe:
      ```bash
      ffprobe -v error -show_entries format=duration <file>.mp3 2>/dev/null | tr -d ' '
@@ -35,16 +41,16 @@ Core responsibilities:
          {"id": 2, "audio_file": "beat_02.mp3", "duration_sec": 3.8}
        ],
        "total_duration_sec": 127.5,
-       "narration_speed_wpm": 160
+       "narration_speed_wpm": 150
      }
      ```
 
    - This timing map is the source of truth for animation durations in the Animator's scenes.
 
 Handoff rules:
-- Input: `productions/<slug>/script-reviewed.md` + the channel bible's narration voice profile (voice, tone, rate — use the profile's configured voice, never an ad-hoc one).
+- Input: `productions/<slug>/script-reviewed.md` + the channel bible's Voice section (approved voice name, rate, tone — use the approved voice, never an ad-hoc one).
 - Output (mandatory): `productions/<slug>/audio/beat_*.mp3` and `timing.json` — both required before any downstream handoff.
-- If narration speed feels off, adjust TTS parameters (rate/pitch) and regenerate; the goal is natural pacing that matches your channel's established style.
+- If narration speed feels off, adjust TTS parameters (rate/pitch) and regenerate; the goal is natural pacing that matches the channel's warm, unhurried register.
 
 Output artifacts:
 - Per episode: `productions/<slug>/audio/*.mp3` (one per beat)
