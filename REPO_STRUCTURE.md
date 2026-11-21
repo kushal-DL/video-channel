@@ -24,6 +24,7 @@ Video-channel/
 │   ├── README.md                # Productions layout documentation (E1-I5)
 │   ├── channel-bible.md         # Channel-wide standards (E4-I1)
 │   ├── tts-options.md           # TTS evaluation document (E3-I1)
+│   ├── series-curriculum.md     # Master curriculum index — all series and episodes
 │   ├── _smoke/                  # Smoke test artifacts (E1-I2, E1-I3)
 │   │   └── scenes/
 │   │       ├── smoke.py
@@ -34,7 +35,20 @@ Video-channel/
 │   │   │   ├── beat_01.mp3
 │   │   │   └── ...
 │   │   └── timing.json
-│   └── <episode-slug>/          # Per-episode production directory
+│   ├── elementary/              # Series: Math Sparks — Elementary School (Class 1–8)
+│   │   ├── series-curriculum.md # Series curriculum — episode list (producer)
+│   │   └── <episode-slug>/      # Per-episode production directory (see layout below)
+│   ├── middle-school/           # Series: Proof & Power — Middle School (Class 9–10)
+│   │   ├── series-curriculum.md # Series curriculum — episode list (producer)
+│   │   └── <episode-slug>/
+│   ├── high-school/             # Series: The Math Frontier — High School (Class 11–12)
+│   │   ├── series-curriculum.md # Series curriculum — episode list (producer)
+│   │   └── <episode-slug>/
+│   └── cracked/                 # Series: Cracked — math/science riddles (Class 6–12)
+│       ├── series-curriculum.md # Series curriculum — episode list (producer)
+│       └── <episode-slug>/      # Per-episode production directory
+│
+│   Per-episode layout (applies to every <series-slug>/<episode-slug>/):
 │       ├── scope.md             # Episode scope — mandatory first artifact (producer)
 │       ├── brief.md             # Episode brief (producer)
 │       ├── script.md            # Original script (screenwriter)
@@ -86,34 +100,63 @@ Each agent is responsible for specific artifacts. This table maps agents to the 
 
 | Agent | Creates/Modifies |
 |-------|-----------------|
-| producer | `productions/channel-bible.md`, `productions/<slug>/scope.md`, `productions/<slug>/brief.md` |
-| screenwriter | `productions/<slug>/script.md` |
-| math-reviewer | `productions/<slug>/script-reviewed.md` |
-| director | `productions/<slug>/signoffs.md`, `productions/<slug>/continuity.md` (approves/amends) |
-| storyboardist | `productions/<slug>/storyboard.md`, `productions/<slug>/continuity.md` (proposes) |
-| animator | `productions/<slug>/scenes/*.py`, `productions/<slug>/render-notes.md` |
-| narration-engineer | `productions/<slug>/audio/*.mp3`, `productions/<slug>/timing.json` |
-| editor | `productions/<slug>/final.mp4`, `productions/<slug>/export-notes.md` |
-| qc-reviewer | `productions/<slug>/qc-report.md` |
-| release-agent | `productions/<slug>/release.md` |
+| producer | `productions/channel-bible.md`, `productions/series-curriculum.md`, `productions/<series-slug>/series-curriculum.md`, `productions/<series-slug>/<episode-slug>/scope.md`, `productions/<series-slug>/<episode-slug>/brief.md` |
+| screenwriter | `productions/<series-slug>/<episode-slug>/script.md` |
+| math-reviewer | `productions/<series-slug>/<episode-slug>/script-reviewed.md` |
+| director | `productions/<series-slug>/<episode-slug>/signoffs.md`, `productions/<series-slug>/<episode-slug>/continuity.md` (approves/amends) |
+| storyboardist | `productions/<series-slug>/<episode-slug>/storyboard.md`, `productions/<series-slug>/<episode-slug>/continuity.md` (proposes) |
+| animator | `productions/<series-slug>/<episode-slug>/scenes/*.py`, `productions/<series-slug>/<episode-slug>/render-notes.md` |
+| narration-engineer | `productions/<series-slug>/<episode-slug>/audio/*.mp3`, `productions/<series-slug>/<episode-slug>/timing.json` |
+| editor | `productions/<series-slug>/<episode-slug>/final.mp4`, `productions/<series-slug>/<episode-slug>/export-notes.md` |
+| qc-reviewer | `productions/<series-slug>/<episode-slug>/qc-report.md` |
+| release-agent | `productions/<series-slug>/<episode-slug>/release.md` |
 | athena | `plans/<task>.md` |
 | gaia | Implementation files per plan |
 | nemesis | `reviews/<task>-<timestamp>.md` |
 
 ## Naming Conventions
 
-- **Episode slugs:** Use kebab-case, descriptive slugs (e.g., `pilot-01-quadratic-formula`, `ep-02-completing-the-square`)
+- **Episode slugs:** Use kebab-case with a series prefix and sequence number (e.g., `hs-01-sets-venn-diagrams`, `ms-03-linear-equations`, `es-02-skip-counting`, `cr-01-birthday-paradox`)
+- **Series slugs:** kebab-case lowercase — the four canonical series are `elementary`, `middle-school`, `high-school`, `cracked`
 - **Scene files:** `scene_<NN>.py` where NN is a zero-padded sequence number
 - **Audio files:** `beat_<NN>.mp3` where NN is a zero-padded beat number
 - **Plan files:** `<task-name>.md` (e.g., `tts-adapter.md`, `orchestrator.md`)
 - **Review files:** `<task-name>-<timestamp>.md` (e.g., `tts-adapter-20261117-143022.md`)
 
-## Per-Episode Directory Structure
+## Series Directory Structure
 
-Every episode follows this exact structure under `productions/<slug>/`:
+The `productions/` directory is organised by series. Each series has its own subfolder with a `series-curriculum.md` (series overview and episode list) and episode subdirectories beneath it:
 
 ```
-productions/<slug>/
+productions/
+├── series-curriculum.md         # Master index across all series
+├── elementary/                  # Class 1–8: Math Sparks
+│   ├── series-curriculum.md     # Series episode list
+│   └── <episode-slug>/
+├── middle-school/               # Class 9–10: Proof & Power
+│   ├── series-curriculum.md
+│   └── <episode-slug>/
+├── high-school/                 # Class 11–12: The Math Frontier
+│   ├── series-curriculum.md
+│   └── <episode-slug>/
+└── cracked/                     # Class 6–12: Cracked (math/science riddles)
+    ├── series-curriculum.md
+    └── <episode-slug>/
+```
+
+The slug `cracked` is the canonical series slug for the riddles series ("Cracked").
+
+**Naming convention for episode slugs within a series:**
+`<series-prefix>-<NN>-<short-concept>` — e.g. `hs-01-sets-venn-diagrams`, `ms-01-rational-numbers`, `es-01-counting-shapes`, `cr-01-birthday-paradox`.
+
+Series prefix shorthands: `es` = elementary, `ms` = middle-school, `hs` = high-school, `cr` = cracked.
+
+## Per-Episode Directory Structure
+
+Every episode follows this exact structure under `productions/<series-slug>/<episode-slug>/`:
+
+```
+productions/<series-slug>/<episode-slug>/
 ├── scope.md              # Required: Episode scope (mandatory first artifact)
 ├── brief.md              # Required: Episode brief
 ├── script.md             # Required: Original script
@@ -161,6 +204,7 @@ All automation scripts in `scripts/` follow these conventions:
 - `productions/README.md` — Productions layout documentation
 - `productions/channel-bible.md` — Channel-wide creative standards
 - `productions/tts-options.md` — TTS options evaluation
+- `productions/series-curriculum.md` — Master curriculum index across all series
 
 ## Version Control
 

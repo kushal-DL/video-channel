@@ -1,0 +1,27 @@
+# Math Sparks — Where numbers come alive.
+
+**Series slug:** `elementary`
+**Episodes 241–260** | Part 13 of 14
+
+| # | Title | Chapter | Strand | Concept | Worked Example | Hook |
+|---|-------|---------|--------|---------|----------------|------|
+| 241 | Triple Power: Spotting Perfect Cubes | Cubes and Cube Roots | Number System | Perfect cubes: identification using prime factorisation and key properties | Is 1728 a perfect cube? Use prime factorisation (1728 = 2⁶ × 3³) to decide and explain. | surprising-number |
+| 242 | Finding the Root Inside the Cube | Cubes and Cube Roots | Number System | Cube roots of perfect cubes by prime factorisation | Find ∛13824 using prime factorisation. | you-already-do-this |
+| 243 | Profit, Loss, and the Power of 100 | Comparing Quantities | Number System | Percentage: profit %, loss %, and finding selling price or cost price | A shopkeeper buys a chair for ₹1200 and sells it for ₹1500. Find the profit percentage. | real-world-scenario |
+| 244 | The Price Tag Is Never the Final Price | Comparing Quantities | Number System | Discount and sales tax/GST: calculating final price | A TV marked ₹25,000 is sold at 15% discount and 12% GST. Find the final price paid by the customer. | real-world-scenario |
+| 245 | Interest on Interest: The Snowball Effect | Comparing Quantities | Number System | Compound interest: concept and formula A = P(1 + r/100)ⁿ | Find the compound interest on ₹5000 at 10% per annum for 3 years, compounded annually, and compare with simple interest. | surprising-number |
+| 246 | Half-Yearly Rates, Growth, and Depreciation | Comparing Quantities | Number System | Compound interest compounded half-yearly and depreciation of assets | A car worth ₹4,00,000 depreciates at 10% per year. Find its value after 2 years. | real-world-scenario |
+| 247 | Every Term Meets Every Other Term | Algebraic Expressions and Identities | Algebra | Multiplication of monomials, binomials, and polynomials | Expand and simplify (3x + 2)(2x² − x + 5). | you-already-do-this |
+| 248 | The Squaring Shortcut No Calculator Needs | Algebraic Expressions and Identities | Algebra | Standard identities: (a + b)² = a² + 2ab + b² and (a − b)² = a² − 2ab + b² | Expand (3x + 4y)² using the identity and use (a + b)² to calculate 101² mentally. | surprising-number |
+| 249 | Two Squares Subtracted, One Quick Product | Algebraic Expressions and Identities | Algebra | Standard identity: (a + b)(a − b) = a² − b² | Use (a + b)(a − b) = a² − b² to calculate 103 × 97 mentally. | surprising-number |
+| 250 | Four Identities, Unlimited Shortcuts | Algebraic Expressions and Identities | Algebra | Identity (x + a)(x + b) = x² + (a + b)x + ab and mixed application of all four identities | Expand (x + 3)(x + 7) using the identity, then use it in reverse to factorise x² + 10x + 21. | you-already-do-this |
+| 251 | One Object, Three Faces to Draw | Visualising Solid Shapes | Geometry | Front, side, and top views of 3D solids built from unit cubes | Sketch the three views (front, side, top) of an L-shaped solid built from 5 unit cubes in a specific arrangement. | real-world-scenario |
+| 252 | Every Polyhedron Obeys One Equation | Visualising Solid Shapes | Geometry | Euler's formula for polyhedra: F + V − E = 2 | A polyhedron has 8 faces and 12 edges. Use Euler's formula to find the number of vertices. | paradox |
+| 253 | Two Parallel Sides and the Magic Half | Mensuration | Mensuration | Area of a trapezium using A = ½(a + b)h | A trapezoidal field has parallel sides 20 m and 14 m with perpendicular height 8 m. Find its area. | real-world-scenario |
+| 254 | Breaking Any Polygon Into Simple Shapes | Mensuration | Mensuration | Area of general polygons by decomposition into triangles and trapezoids | Find the area of a hexagonal park by dividing it into two trapezoids, given all relevant dimensions. | real-world-scenario |
+| 255 | Wrapping a Box: How Much Paper? | Mensuration | Mensuration | Total surface area and lateral surface area of cube and cuboid | A cuboid measures 10 cm × 6 cm × 4 cm. Find (a) its total surface area and (b) its lateral surface area. | real-world-scenario |
+| 256 | Peeling the Label Off a Tin Can | Mensuration | Mensuration | Curved surface area and total surface area of a right circular cylinder | A cylinder has radius 7 cm and height 15 cm. Find its curved surface area and total surface area (use π = 22/7). | real-world-scenario |
+| 257 | How Much Fits Inside a Box? | Mensuration | Mensuration | Volume of cube and cuboid and applications to capacity | A rectangular tank 2 m × 1.5 m × 1 m is half full. How many litres does it hold when completely full? | real-world-scenario |
+| 258 | Rolling Up Volume: The Cylinder Formula | Mensuration | Mensuration | Volume of a right circular cylinder: V = πr²h | A cylindrical water pipe has diameter 14 cm and length 20 m. Find the volume of water it can hold (in litres). | real-world-scenario |
+| 259 | What Does a Negative Exponent Even Mean? | Exponents and Powers | Number System | Negative and zero exponents and the laws of exponents | Simplify (2⁻³ × 3⁻²) ÷ 6⁻¹ and express the result with a positive exponent. | paradox |
+| 260 | Writing the Unwritably Large and Small | Exponents and Powers | Number System | Standard form (scientific notation): expressing very large and very small numbers as m × 10ⁿ | Express the Sun–Earth distance (150,000,000 km) and an atom's radius (0.00000001 cm) in standard form. | surprising-number |

@@ -2,7 +2,7 @@
 name: gaia
 description: Builder of the build pipeline (athena -> gaia -> nemesis). Implements athena's plan for substantive build tasks — code plus tests — runs them until green, and fixes nemesis findings. Spawned SECOND for substantive build tasks; not used for backlog or doc edits. Runs on the 9B model with minimal thinking.
 tools: Read, Grep, Glob, Edit, Write, Bash
-model: qwen3.5-9b-the-defiant-fable-uncensored-heretic-neo-imatrix-max-mtp
+model: anthropic--claude-haiku-latest
 reasoning_effort: low
 ---
 

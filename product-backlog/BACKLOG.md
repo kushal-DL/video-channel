@@ -4,15 +4,15 @@
 
 The epics below are numbered in **execution order** — the authoritative order they should be tackled. Each epic has a corresponding specification file in `product-backlog/epic-*.md`.
 
-| # | Epic | Why this position |
-|---|------|-------------------|
-| 1 | **Epic 1: Environment Setup** | Foundation — manimgx, LaTeX, ffmpeg must work before anything renders. |
-| 2 | **Epic 2: Update Agent Definitions & Channel Bible** | Fix the rules first. Encodes the Episode 1 post-mortem fixes directly into `.claude/agents/*.md` and `channel-bible.md` so the studio team knows what to produce. |
-| 3 | **Epic 3: TTS and Voice Cloning** | Provides real narration + music that the re-render requires. |
-| 4 | **Epic 4: Re-render & Validate Episode 1** | End-to-end proof that the fixed pipeline and updated agents produce a shippable video. |
-| 5 | **Epic 5: Automation Glue** | One-command builds + machine-readable gates, once the fixed pipeline is proven. |
-| 6 | **Epic 6: Publishing and Release Tooling** | Chapters/thumbnails/preflight for a QC-approved episode. |
-| 7 | **Epic 7: Polish and Iteration** | Performance/operational refinements surfaced by the re-render. |
+| # | Epic | Status | Why this position |
+|---|------|--------|-------------------|
+| 1 | **Epic 1: Environment Setup** | Done | Foundation — manimgx, LaTeX, ffmpeg must work before anything renders. |
+| 2 | **Epic 2: Update Agent Definitions & Channel Bible** | Done | Fix the rules first. Encodes the Episode 1 post-mortem fixes directly into `.claude/agents/*.md` and `channel-bible.md` so the studio team knows what to produce. |
+| 3 | **Epic 3: TTS and Voice Cloning** | Done | Provides real narration + music that the re-render requires. |
+| 4 | **Epic 4: Re-render & Validate Episode 1** | Not started | End-to-end proof that the fixed pipeline and updated agents produce a shippable video. |
+| 5 | **Epic 5: Automation Glue** | Not started | One-command builds + machine-readable gates, once the fixed pipeline is proven. |
+| 6 | **Epic 6: Publishing and Release Tooling** | Not started | Chapters/thumbnails/preflight for a QC-approved episode. |
+| 7 | **Epic 7: Polish and Iteration** | Not started | Performance/operational refinements surfaced by the re-render. |
 
 ---
 
@@ -47,6 +47,7 @@ The epics below are numbered in **execution order** — the authoritative order 
 | E2-I7 | qc-reviewer: frame extraction & hard rejection | Done | Fast Path (main session) | `qc-reviewer.md` requires frame extraction evidence and explicit rejection of silent/off-palette/out-of-range renders. |
 | E2-I8 | director: real sign-off on inspected frames | Done | Fast Path (main session) | `director.md` requires actual frame inspection and recording inspected timestamps in signoffs.md. |
 | E2-I9 | channel bible & REPO_STRUCTURE updates | Done | Fast Path (main session) | `channel-bible.md` includes Animation Style section; `REPO_STRUCTURE.md` includes scope.md in per-episode tree. |
+| E2-I10 | House Style / TED-Ed register upgrade | Done | Fast Path (main session) | Post-mortem fixes made the agents *safe*; this made them produce the right *style*. `channel-bible.md` has a House Style section (hook menu, concrete→abstract rule, equation-persistence rule, pacing budget, one-idea-per-beat); screenwriter/animator/storyboard/narration-engineer carry matching guidance; the local model is never told to emulate a named reference. See `_workspace/claude_plans/archive/ted-ed-style-agent-upgrade.md`. |
 
 ---
 
@@ -54,11 +55,13 @@ The epics below are numbered in **execution order** — the authoritative order 
 
 **Goal:** Implement a production-ready text-to-speech pipeline that generates narration audio from scripts, extracts beat markers for scene transitions, and supports voice cloning for brand consistency.
 
+> **Carried over from the 2026-11-20 audit:** The old `en-US-Standard-A` voice name (a Google Cloud TTS name wrongly attributed to edge-tts) has been removed from `channel-bible.md` and `narration-engineer.md`; voice selection is now explicitly deferred to this epic. `narration-engineer.md` invokes a `tts` CLI and reads the approved voice from the channel bible Voice section — the pipeline script below must satisfy both.
+
 | Item | Story | Status | Owner | Acceptance Criteria |
 |------|-------|--------|-------|---------------------|
-| E3-I1 | Evaluate TTS options (ElevenLabs vs local) | Not started | athena → gaia | Decision document in `docs/tts-decision.md`; cost/latency/quality matrix; voice matches the profile. |
-| E3-I2 | Generate narration pipeline script | Not started | gaia | `scripts/generate_narration.py` produces per-beat `.mp3` + measured `timing.json` from a test script. |
-| E3-I3 | Implement beat extraction from audio | Not started | gaia | `scripts/extract_beats.py` maps timing.json beats to audio segments; outputs editor-compatible metadata. |
+| E3-I1 | Evaluate TTS options (ElevenLabs vs local) | Done | gaia | Decision document in `docs/tts-decision.md`; cost/latency/quality matrix; chosen voice is a **real, valid** voice name for the chosen provider (verified by a test synth), and that name is written back into the `channel-bible.md` Voice section. |
+| E3-I2 | Generate narration pipeline script | Done | gaia | `scripts/tts.py` produces per-beat `.mp3` + measured `timing.json` from a test script. `narration-engineer.md` updated to call `python scripts/tts.py --voice ... --output-file ... "<text>"`. Note: duration measurement uses mutagen (ffprobe not available on dev machine — verify ffprobe is on PATH before Epic 4). |
+| E3-I3 | Implement beat extraction from audio | Done | gaia | `scripts/extract_beats.py` maps timing.json beats to audio segments; outputs editor-compatible metadata. Tested against `productions/tts-fixture/`. |
 
 ---
 
@@ -66,10 +69,13 @@ The epics below are numbered in **execution order** — the authoritative order 
 
 **Goal:** Run the fixed pipeline (Epic 2 quality gates + Epic 3 TTS) over episode-001 to produce a genuinely shippable video, proving end-to-end that the rewritten roster works.
 
+> **Blocker to resolve before E4-I3 (from the 2026-11-20 audit):** `editor.md` treats a missing background music bed as a hard failure, but no `assets/music/` folder exists on disk (REPO_STRUCTURE lists it but it is absent). E4-I0 below must be resolved first or the editor gate rejects every render.
+
 | Item | Story | Status | Owner | Acceptance Criteria |
 |------|-------|--------|-------|---------------------|
+| E4-I0 | Resolve the music-bed source | Done | Fast Path | Option (b): `editor.md` updated — music optional when `assets/music/` absent; pilot proceeds without bed, tracked under E7-I4. `narration-engineer.md` updated with mutagen fallback (ffprobe not on PATH on dev machine). |
 | E4-I1 | Write episode scope + script with worked example | Not started | producer + screenwriter | `scope.md` (all five sections) → brief references it; `script.md` has [MR] tags and ≥1 fully-solved worked example. |
-| E4-I2 | Math review and storyboard (per-shot reveal animation) | Not started | math-reviewer + storyboardist | `script-reviewed.md` re-derives the worked example; `storyboard.md` names a reveal animation per shot. |
+| E4-I2 | Math review and storyboard (per-shot reveal animation) | Not started | math-reviewer + storyboardist | `script-reviewed.md` re-derives the worked example; `storyboard.md` names a reveal animation per shot, plus the `concrete_visual` ↔ `abstract_symbol` pairing per shot (per House Style). |
 | E4-I3 | Full re-render pipeline test (narration + music, 4–11 min) | Not started | full studio team | New `final.mp4`: audio stream present, on-palette (`#0F172A`), ffprobe duration ∈ [240s, 660s], QC zero-critical with frame evidence; nemesis CLEAN. |
 
 ---

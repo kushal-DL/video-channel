@@ -1,0 +1,27 @@
+# Math Sparks — Where numbers come alive.
+
+**Series slug:** `elementary`
+**Episodes 221–240** | Part 12 of 14
+
+| # | Title | Chapter | Strand | Concept | Worked Example | Hook |
+|---|-------|---------|--------|---------|----------------|------|
+| 221 | One Rule That Rules Them All | Rational Numbers | Number System | Distributivity of multiplication over addition and finding additive/multiplicative inverses | Compute 3/5 × (2/7 + 4/9) using distributivity and verify against direct calculation. | you-already-do-this |
+| 222 | Placing Every Fraction on a Line | Rational Numbers | Number System | Representation of rational numbers on the number line | Mark −3/5, 7/4, and −5/3 on a number line and arrange them in ascending order. | real-world-scenario |
+| 223 | Infinite Numbers Between Any Two Numbers | Rational Numbers | Number System | Finding rational numbers between two given rational numbers using the mean method | Find 5 rational numbers between 1/4 and 1/2. | paradox |
+| 224 | Balancing Both Sides of the Scale | Linear Equations in One Variable | Algebra | Solving linear equations with variables on both sides using the balancing method | Solve: 3x + 5 = 2x − 7 and verify the solution by substitution. | you-already-do-this |
+| 225 | Clearing Fractions From Equations | Linear Equations in One Variable | Algebra | Solving linear equations involving fractions and brackets | Solve: (2x + 1)/3 − (x − 2)/4 = 1. | real-world-scenario |
+| 226 | Turning Word Problems Into Equations | Linear Equations in One Variable | Algebra | Forming and solving word problems using linear equations | The sum of two consecutive odd numbers is 56. Find both numbers. | real-world-scenario |
+| 227 | Cross-Multiplying Fractions Into Solutions | Linear Equations in One Variable | Algebra | Equations of the form (ax + b)/(cx + d) = p/q reduced to linear form | Solve: (3x − 1)/(2x + 5) = 1/3. | surprising-number |
+| 228 | Every Polygon's Angle Sum Secret | Understanding Quadrilaterals | Geometry | Interior angle sum property of polygons: (n − 2) × 180° | Find the fourth angle of a quadrilateral if the other three are 60°, 90°, and 110°. | paradox |
+| 229 | Walk Around Any Polygon: Always 360° | Understanding Quadrilaterals | Geometry | Exterior angle sum property of convex polygons | Four exterior angles of a pentagon are 70°, 60°, 90°, and 80°. Find the fifth exterior angle. | surprising-number |
+| 230 | The Hidden Symmetry of Parallelograms | Understanding Quadrilaterals | Geometry | Properties of parallelograms: opposite sides, opposite angles, and bisecting diagonals | In parallelogram ABCD, ∠A = 70°. Find ∠B, ∠C, and ∠D without measuring. | real-world-scenario |
+| 231 | Rhombus, Rectangle, Square: One Family | Understanding Quadrilaterals | Geometry | Properties of rectangle, rhombus, square, kite, and trapezium | In a rhombus whose diagonals measure 6 cm and 8 cm, find the length of each side. | you-already-do-this |
+| 232 | Drawing Exact Shapes With Five Measurements | Practical Geometry | Geometry | Constructing quadrilaterals given four sides and one diagonal | Construct quadrilateral ABCD with AB = 4.5 cm, BC = 3.5 cm, CD = 4 cm, DA = 5 cm, and AC = 6 cm. | real-world-scenario |
+| 233 | Quadrilateral Construction: Special Cases | Practical Geometry | Geometry | Constructing quadrilaterals given three sides and both diagonals | Construct quadrilateral PQRS: PQ = 5 cm, QR = 4 cm, RS = 3.5 cm, PR = 6 cm, QS = 5.5 cm. | you-already-do-this |
+| 234 | Making Sense of Messy Data | Data Handling | Data Handling | Grouped data: class intervals, class boundaries, class mark, and frequency tables | Organise 20 exam scores ranging from 58 to 95 into a grouped frequency table with class width 10. | real-world-scenario |
+| 235 | Bar Graphs Without the Gaps | Data Handling | Data Handling | Histograms: constructing and interpreting for grouped continuous data | Draw a histogram for the heights of 30 students grouped in intervals 140–145, 145–150, 150–155, 155–160, 160–165 cm. | real-world-scenario |
+| 236 | Turning Data Into Slices of a Circle | Data Handling | Data Handling | Pie charts: calculating central angles and constructing | Draw a pie chart for a family's monthly expenses: rent 30%, food 25%, education 20%, savings 15%, other 10%. | real-world-scenario |
+| 237 | Predicting the Unpredictable With Fractions | Data Handling | Data Handling | Probability: experiments, outcomes, and P(E) = favourable outcomes / total outcomes | A bag contains 3 red, 5 blue, and 2 green balls. Find P(blue) and P(not red). | paradox |
+| 238 | The Patterns Hidden in Square Numbers | Squares and Square Roots | Number System | Properties and patterns of perfect squares (ending digits, odd-square patterns, Pythagorean triples) | Without computing √2916, determine whether 2916 could be a perfect square; then confirm by finding its square root. | surprising-number |
+| 239 | Unlocking Square Roots With Prime Trees | Squares and Square Roots | Number System | Finding square roots of perfect squares by prime factorisation | Find √1764 by prime factorisation (1764 = 2² × 3² × 7²). | you-already-do-this |
+| 240 | Long Division, Square Root Style | Squares and Square Roots | Number System | Finding square roots by the long division method | Find √15129 using the long division method, showing each step of digit-grouping and subtraction. | real-world-scenario |

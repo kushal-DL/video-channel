@@ -1,0 +1,39 @@
+{
+  "episode_slug": "test-episode-x",
+  "total_duration_seconds": 16.68,
+  "beat_count": 4,
+  "beats": [
+    {
+      "beat_number": 1,
+      "audio_file": "beat_01.mp3",
+      "duration_seconds": 4.632,
+      "start_time_seconds": 0.0,
+      "end_time_seconds": 4.632,
+      "text": "Every time you throw a ball, you're solving a differential equation."
+    },
+    {
+      "beat_number": 2,
+      "audio_file": "beat_02.mp3",
+      "duration_seconds": 3.744,
+      "start_time_seconds": 4.632,
+      "end_time_seconds": 8.376,
+      "text": "Let p of t be the ball's position at time t."
+    },
+    {
+      "beat_number": 3,
+      "audio_file": "beat_03.mp3",
+      "duration_seconds": 4.824,
+      "start_time_seconds": 8.376,
+      "end_time_seconds": 13.2,
+      "text": "The derivative d p over d t gives you velocity at any instant."
+    },
+    {
+      "beat_number": 4,
+      "audio_file": "beat_04.mp3",
+      "duration_seconds": 3.48,
+      "start_time_seconds": 13.2,
+      "end_time_seconds": 16.68,
+      "text": "And that is the core idea behind calculus."
+    }
+  ]
+}

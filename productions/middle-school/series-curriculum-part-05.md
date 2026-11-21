@@ -1,0 +1,27 @@
+# Proof & Power — Master the method.
+
+**Series slug:** `middle-school`
+**Episodes 81–100** | Part 5 of 9
+
+| # | Title | Chapter | Strand | Concept | Worked Example | Hook |
+|---|-------|---------|--------|---------|----------------|------|
+| 1 | Every Division Has a Hidden Pattern | Real Numbers | Number System | Euclid's Division Lemma: expressing integers as a = bq + r | Show that any positive odd integer is of the form 6q + 1, 6q + 3, or 6q + 5 for some integer q | you-already-do-this |
+| 2 | The 2300-Year-Old HCF Shortcut | Real Numbers | Number System | Euclid's Division Algorithm for finding HCF | Find HCF(867, 255) step by step using Euclid's Division Algorithm | surprising-number |
+| 3 | Every Number Has a Unique Prime DNA | Real Numbers | Number System | Fundamental Theorem of Arithmetic — unique prime factorisation | Find the prime factorisation of 3825 and use it to explain why any two distinct factorisations are impossible | paradox |
+| 4 | HCF and LCM via Prime Factorisation | Real Numbers | Number System | Computing HCF and LCM using prime factorisation and verifying HCF × LCM = product | Find HCF and LCM of 12, 15, and 21; then verify HCF × LCM = product for the pair 12 and 15 | you-already-do-this |
+| 5 | Why √2 Can Never Be a Fraction | Real Numbers | Number System | Proof by contradiction that √2, √3, √5 are irrational | Prove that √3 is irrational; then prove that 2 + √3 is irrational | paradox |
+| 6 | When Decimals Stop vs Go Forever | Real Numbers | Number System | Terminating and non-terminating repeating decimal expansions of rationals | Without long division determine if 17/8, 29/343, and 77/210 have terminating or non-terminating decimal expansions | surprising-number |
+| 7 | Where Does a Curve Cross Zero? | Polynomials | Algebra | Geometric meaning of zeros of a polynomial — connection between graph and roots | Find zeros of p(x) = x² – 3x – 4 by sketching its graph, then verify algebraically by factorisation | real-world-scenario |
+| 8 | Sum and Product Hidden in the Equation | Polynomials | Algebra | Relationship between zeros and coefficients of a quadratic polynomial | If α and β are zeros of 2x² – 7x + 3, find α + β and αβ, then form a polynomial with zeros 3α and 3β | you-already-do-this |
+| 9 | Three Roots, Three Hidden Relationships | Polynomials | Algebra | Relationship between zeros and coefficients of a cubic polynomial | If two zeros of x³ – 4x² + 5x – 2 are both 1, find the third zero using the coefficient relationships | surprising-number |
+| 10 | Dividing Polynomials Like Long Division | Polynomials | Algebra | Division algorithm for polynomials and finding remaining zeros | Given that √2 and –√2 are two zeros of 2x⁴ – 3x³ – 3x² + 6x – 2, find all four zeros using the division algorithm | you-already-do-this |
+| 11 | Two Lines That Meet, Miss, or Merge | Pair of Linear Equations in Two Variables | Algebra | Graphical method and types of solutions — consistent, inconsistent, dependent | Solve x + y = 7 and 2x – y = 2 graphically; find the intersection point and check consistency conditions | real-world-scenario |
+| 12 | Swap, Substitute, Solve in Two Steps | Pair of Linear Equations in Two Variables | Algebra | Substitution method for solving a pair of linear equations | Solve 3x + 4y = 10 and 2x – y = 1 using substitution; verify the solution | you-already-do-this |
+| 13 | Add or Subtract to Wipe Out a Variable | Pair of Linear Equations in Two Variables | Algebra | Elimination method for solving a pair of linear equations | Solve 3x + 2y = 11 and 2x + 3y = 4 using the elimination method | you-already-do-this |
+| 14 | One Formula That Solves Any Pair | Pair of Linear Equations in Two Variables | Algebra | Cross-multiplication method for solving linear equations | Solve 2x + 3y = 46 and 3x + 5y = 74 using cross-multiplication and state when the method fails | surprising-number |
+| 15 | Real Problems, Two Unknowns, One System | Pair of Linear Equations in Two Variables | Algebra | Framing and solving word problems as a pair of linear equations | A boat goes 30 km upstream in 6 h and 30 km downstream in 2 h. Find the speed of the boat in still water and the speed of the current | real-world-scenario |
+| 16 | What Makes an Equation Quadratic? | Quadratic Equations | Algebra | Definition of quadratic equation, standard form ax² + bx + c = 0, identifying a, b, c | Determine if (x+1)² = 2(x–3) is a quadratic equation; rewrite in standard form and identify a, b, c | real-world-scenario |
+| 17 | Split the Middle Term, Find the Roots | Quadratic Equations | Algebra | Solving quadratic equations by splitting the middle term and factorisation | Solve 2x² + x – 6 = 0 by splitting the middle term; verify both roots by substitution | you-already-do-this |
+| 18 | Build a Perfect Square, Reveal the Root | Quadratic Equations | Algebra | Completing the square method for solving quadratic equations | Solve 2x² – 7x + 3 = 0 by completing the square | paradox |
+| 19 | The Formula That Solves Any Quadratic | Quadratic Equations | Algebra | Deriving and applying the quadratic formula (Sridharacharya's formula) | Solve 3x² – 5x + 2 = 0 using the quadratic formula; verify by factorisation | surprising-number |
+| 20 | One Number That Predicts Two Roots | Quadratic Equations | Algebra | Discriminant b² – 4ac and the three cases for nature of roots | Find the value of k for which kx² – 2x + 1 = 0 has equal roots | paradox |

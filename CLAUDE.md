@@ -13,11 +13,24 @@ All agents and automation scripts **must** follow the canonical directory layout
 
 Before creating any new files or directories, consult REPO_STRUCTURE.md to ensure compliance. Do not invent alternative layouts or ad-hoc file locations.
 
+## Workspace & session continuity (mandatory)
+
+Claude maintains a `_workspace/` folder for its own planning and context:
+
+- **`_workspace/session.md`** — rolling context file. **Read it first** at the start of a session to recover prior state. **Update it** at the end of meaningful work with: what changed, what's done, what's next.
+- **`_workspace/claude_plans/latest/`** — the current active plan(s). Only the plan(s) in flight live here.
+- **`_workspace/claude_plans/archive/`** — superseded plans. When a plan is completed or replaced, **move it** from `latest/` to `archive/` (do not delete).
+
+Rules:
+1. Every non-trivial plan Claude writes goes in `_workspace/claude_plans/latest/`, not scattered elsewhere.
+2. Before starting a new plan, move any stale plan from `latest/` to `archive/`.
+3. These are distinct from `plans/` (athena build plans) — `_workspace/` is Claude's own session-level planning, `plans/` is the formal build-protocol output.
+
 ## Environment
 
 - Claude Code runs against a **local LM Studio proxy**. Two models are available:
-  - **Qwen 3.8 27B** — `qwen3.8-27b-fable-5-coding-distilled` (the default model)
-  - **9B model** ("Qwen 3.8 9B") — registered as `qwen3.5-9b-the-defiant-fable-uncensored-heretic-neo-imatrix-max-mtp`
+  - **Qwen 3.8 27B** — `anthropic--claude-sonnet-latest` (the default model; proxy alias — the old ID `qwen3.8-27b-fable-5-coding-distilled` is no longer valid)
+  - **9B model** ("Qwen 3.8 9B") — use model alias `anthropic--claude-haiku-latest` in agent frontmatter (the old ID `qwen3.5-9b-the-defiant-fable-uncensored-heretic-neo-imatrix-max-mtp` is no longer valid)
 - Web tools (WebSearch/WebFetch) are unavailable through the local proxy — do not use them; work from the codebase and local files only.
 
 ## Tool execution & anti-loop rules (mandatory)
