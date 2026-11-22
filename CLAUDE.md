@@ -29,8 +29,8 @@ Rules:
 ## Environment
 
 - Claude Code runs against a **local LM Studio proxy**. Two models are available:
-  - **Qwen 3.8 27B** — `anthropic--claude-sonnet-latest` (the default model; proxy alias — the old ID `qwen3.8-27b-fable-5-coding-distilled` is no longer valid)
-  - **9B model** ("Qwen 3.8 9B") — use model alias `anthropic--claude-haiku-latest` in agent frontmatter (the old ID `qwen3.5-9b-the-defiant-fable-uncensored-heretic-neo-imatrix-max-mtp` is no longer valid)
+  - **Qwen 3.8 27B** — `anthropic--claude-sonnet-latest` on GPU 0 (default model for planning, building, verification, math review, and animation code: Athena, Gaia, Nemesis, Animator, Math-Reviewer, Editor)
+  - **Gemma The Writer 9B** — `anthropic--claude-haiku-latest` on GPU 1 (dedicated creative writer and performance voice director: Screenwriter, Voice-Director)
 - Web tools (WebSearch/WebFetch) are unavailable through the local proxy — do not use them; work from the codebase and local files only.
 
 ## Tool execution & anti-loop rules (mandatory)

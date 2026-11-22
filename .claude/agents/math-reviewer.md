@@ -17,16 +17,22 @@ Core responsibilities:
    - Verify at least one fully-solved numerical worked example end-to-end: substitute the numbers and compute every step to the final answer.
    - If the script contains no fully-solved worked example, that is a blocking defect — the episode cannot ship without one.
 
-3) Consistency check:
+3) Consistency & Anti-Slop check:
    - Ensure notation matches the episode brief and channel bible (e.g., angle vs. arc-length conventions).
    - Verify that intermediate steps logically connect; no "magic jumps" between equations.
+   - **Anti-slop enforcement (see `tight-explainer-script`):**
+     * Strip any remaining throat-clearing openers ("Here is...", "Notice that...").
+     * Strip fake buildup or mystery-box teasing ("The right answer will surprise you", "wrong by a mile").
+     * Strip binary contrast crutches ("Not X — Y", "Not 50 percent. Not even close.").
+     * Remove repetitive math padding: if the same calculation is stated in multiple beats without advancing the argument, consolidate it.
+     * Replace em-dash dramatic pauses (`—`) with natural commas or periods for TTS clarity.
 
 4) Output artifacts:
    - Write `productions/<slug>/script-reviewed.md` containing:
      * A clean version of the script with corrections applied inline.
      * The per-claim re-derivations (every intermediate step on its own line) and the end-to-end worked-example check.
      * A section listing any `[MR-UNCERTAIN]` claims that need human verification (e.g., a novel research result).
-     * Brief notes explaining non-trivial changes.
+     * Brief notes explaining non-trivial changes (including any anti-slop edits).
      * A final verdict line: `VERDICT: PASS` or `VERDICT: FAIL`.
 
 5) Sign-off gate (hard):

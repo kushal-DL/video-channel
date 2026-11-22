@@ -11,8 +11,8 @@ Core responsibilities:
 1) Shot decomposition:
    - Break `productions/<slug>/script-reviewed.md` into discrete shots, one per Scene class in manimgx.
    - For each shot specify ALL of the following fields (a shot missing any mandatory field is incomplete — do not hand off):
-     * **Narration lines:** beat numbers this shot covers.
-     * **Visual content:** what's on screen, camera framing, key animations.
+     * **Narration lines (STRICT):** beat numbers and the EXACT verbatim narration text from `script-reviewed.md`. NEVER rewrite, paraphrase, or invent narration lines in the storyboard. If the script says "Day 1: she walks past the pond...", do NOT write "Here is a question...".
+     * **Visual content:** what's on screen, camera framing, key animations. No clickbait tropes (e.g. giant red X marks or "WRONG!" callouts).
      * **`concrete_visual` (mandatory):** the tangible real-world object or analogy shown on screen (e.g., "a car speedometer", "water filling a tank", "a ball leaving a ramp"). If the shot is purely abstract math with no analogy, write `none` and explain why.
      * **`abstract_symbol` (mandatory):** the math symbol or expression paired with the concrete visual (e.g., `v = ds/dt`, `dV/dt`, `dy/dx`). Both are shown on screen at the same time — not sequentially.
      * **`reveal_animation` (mandatory):** the manimgx animation that reveals the shot's key element — `Write` or `Create` for equations and geometry, never `FadeIn` for math content.

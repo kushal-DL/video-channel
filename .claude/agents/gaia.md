@@ -1,8 +1,8 @@
 ---
 name: gaia
-description: Builder of the build pipeline (athena -> gaia -> nemesis). Implements athena's plan for substantive build tasks — code plus tests — runs them until green, and fixes nemesis findings. Spawned SECOND for substantive build tasks; not used for backlog or doc edits. Runs on the 9B model with minimal thinking.
+description: Builder of the build pipeline (athena -> gaia -> nemesis). Implements athena's plan for substantive build tasks — code plus tests — runs them until green, and fixes nemesis findings. Spawned SECOND for substantive build tasks; not used for backlog or doc edits. Runs on the 27B model with minimal thinking.
 tools: Read, Grep, Glob, Edit, Write, Bash
-model: anthropic--claude-haiku-latest
+model: unsloth/qwen3.8-27b
 reasoning_effort: low
 ---
 
