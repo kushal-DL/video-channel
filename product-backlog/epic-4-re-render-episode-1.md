@@ -4,7 +4,7 @@
 
 **Why this matters:** A bad pilot already exists — `productions/episode-001-introduction-to-calculus/final.mp4` is silent, black-background, and 66 seconds (see Epic 2 post-mortem). This epic is **not** "make a new pilot"; it is the end-to-end proof that the fixes actually produce a shippable video. It is the first real test of everything in Epics 1–3.
 
-> **Status note:** The original "Pilot Episode End-to-End" work was already attempted and produced an unshippable render. This epic supersedes it: re-run the pipeline on episode-001 with scope.md, a worked example, write-style animation, correct background, real narration + music, and a 4–11 min runtime.
+> **Status note:** The original "Pilot Episode End-to-End" work was already attempted and produced an unshippable render. This epic supersedes it: re-run the pipeline on episode-001 with scope.md, a worked example, write-style animation, correct background, real narration + music, and a 2.5–11 min runtime.
 
 **Execution order:** #4 in the backlog sequence (after Epic 3 TTS; before Epic 5 Automation). This is where the re-render of Episode 1 actually lives.
 
@@ -16,7 +16,7 @@
 |------|-------|--------|
 | E4-I1 | Write episode scope + script with worked example | Not started |
 | E4-I2 | Math review and storyboard (per-shot reveal animation) | Not started |
-| E4-I3 | Full re-render pipeline test (narration + music, 4–11 min) | Not started |
+| E4-I3 | Full re-render pipeline test (narration + music, 2.5–11 min) | Not started |
 
 Status values: **Not started** (no work begun) · **In progress** (build loop running) · **Built** (implemented, awaiting nemesis verification) · **Done** (built and tested, nemesis verdict CLEAN).
 
@@ -28,7 +28,7 @@ Status values: **Not started** (no work begun) · **In progress** (build loop ru
 - **Implementation notes:**
   - Topic: Derivatives as instantaneous rate of change
   - Target audience: High school AP Calculus students or self-learners
-  - Duration goal: land in the 4–11 min window (240s–660s), measured from the final render — not estimated
+  - Duration goal: land in the 2.5–11 min window (150s–660s), measured from the final render — not estimated
   - `scope.md` must contain learning objectives, analogy→concept mapping, 2–3 worked examples with full solutions, out-of-scope list, and target duration
 - **Acceptance criteria:**
   - `productions/episode-001-introduction-to-calculus/scope.md` exists with all five required sections
@@ -49,18 +49,18 @@ Status values: **Not started** (no work begun) · **In progress** (build loop ru
   - `productions/episode-001-introduction-to-calculus/storyboard.md` lists every shot with visual description, transition type, **and** reveal animation
   - Continuity register (`continuity.md`) documents recurring motifs and notation choices
 
-## E4-I3: Full Re-render Pipeline Test (Narration + Music, 4–11 min)
+## E4-I3: Full Re-render Pipeline Test (Narration + Music, 2.5–11 min)
 
-- **Description:** Execute the complete production pipeline from script to final.mp4 with real narration, a music bed, correct background, and a measured runtime in the 4–11 min window.
+- **Description:** Execute the complete production pipeline from script to final.mp4 with real narration, a music bed, correct background, and a measured runtime in the 2.5–11 min window.
 - **Depends on:** E4-I2 (and Epic 3 TTS for real audio)
 - **Rationale:** This is the ultimate integration test — proving all agents work together *and* that the Episode 1 defects are actually fixed: non-silent, on-palette (`#0F172A`), in-duration-range, with a worked example.
 - **Implementation notes:**
   - Animator renders scenes (write-style reveals, module-level background config) → Narration Engineer produces per-beat audio + measured timing.json → Editor muxes narration + music bed → QC reviewer validates output
   - Must use actual TTS audio (Epic 3), not placeholder voiceover
-  - Final video must pass loudness normalization and frame extraction checks; ffprobe duration ∈ [240s, 660s]
+  - Final video must pass loudness normalization and frame extraction checks; ffprobe duration ∈ [150s, 660s]
 - **Acceptance criteria:**
   - `productions/episode-001-introduction-to-calculus/final.mp4` exists, plays correctly, has an audio stream (narration + music), and is on-palette
-  - `ffprobe` duration of final.mp4 ∈ [240s, 660s], recorded in export-notes.md and qc-report.md
+  - `ffprobe` duration of final.mp4 ∈ [150s, 660s], recorded in export-notes.md and qc-report.md
   - QC report (`qc-report.md`) shows zero critical issues with concrete evidence; nemesis returns VERDICT: CLEAN
 
 ## Risks and Mitigations

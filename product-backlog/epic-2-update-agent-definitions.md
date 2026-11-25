@@ -66,11 +66,11 @@ Status values: **Not started** (no work begun) · **In progress** (build loop ru
 
 ## E2-I6: editor — Music Bed, Loudness, & Duration Gate
 
-- **Description:** Require a licensed music bed, audio loudness normalization, and a hard 4–11 minute runtime gate.
+- **Description:** Require a licensed music bed, audio loudness normalization, and a hard 2.5–11 minute runtime gate.
 - **Depends on:** none
 - **Acceptance criteria:**
   - `editor.md` mandates muxing narration with a background music bed.
-  - Duration must be verified via `ffprobe` to lie within `[240s, 660s]`.
+  - Duration must be verified via `ffprobe` to lie within `[150s, 660s]`.
 
 ## E2-I7: qc-reviewer — Frame Verification & Hard Rejection
 

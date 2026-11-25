@@ -5,7 +5,7 @@
 **Episode:** 1 of 455
 **Class Level:** 8–9
 **Subject:** Mathematics
-**Target Duration:** 5–7 minutes
+**Target Duration:** 3–3.5 minutes (channel gate: [120s, 660s])
 
 ---
 
@@ -55,22 +55,19 @@ By the end of this episode, viewers must be able to:
 
 ---
 
-### Example 2 — Generalization
+### Example 2 — Transfer to a Different Domain (bacteria in a petri dish)
 
-**Setup A:** A different pond is fully covered in 20 days (same doubling rule). When was it half-covered?
+**Setup:** The same scientist, back in her lab, is culturing bacteria on a glass petri dish. The bacteria double in number every hour. At noon the dish is completely full. When was it exactly half full?
 
-**Solution:**
-- By the same logic: fraction(n) = 2^n / 2^20
-- 2^(D−1) / 2^D = 1/2 for any D
-- D = 20 → half-covered on **Day 19**
+**Solution (step by step):**
 
-**Setup B (extension):** When was the original 30-day pond one-quarter covered?
+1. Her instinct says 6 am: if growth started at midnight and the dish is full at noon, "halfway through the morning" feels like halfway full.
+2. That is the same linear mistake as guessing Day 15 for the pond. It divides the time, not the amount.
+3. The bacteria doubled in the last hour before noon: from 11 am to noon.
+4. If noon (the end state) is 100% full, then one doubling step earlier — 11 am — must be exactly half: 50%. [MR]
+5. **Answer: 11 am.** One step back from the end.
 
-**Solution:**
-- 2^n / 2^30 = 1/4 = 2^28 / 2^30
-- n = 28 → **Day 28** (two steps before full coverage)
-
-**General rule:** A pond covered in D days was half-covered on Day D−1, one-quarter covered on Day D−2, and one-eighth covered on Day D−3.
+**Why this example works:** It is a different physical domain (microbiology, not botany), a different time unit (hours, not days), and a different container (petri dish, not pond). The method transfers unchanged: whenever something doubles each step, the state one step before the end is always exactly half. This is the "so now she sees it everywhere" payoff moment of the episode.
 
 ---
 
@@ -86,4 +83,4 @@ By the end of this episode, viewers must be able to:
 
 ## Target Duration
 
-**5–7 minutes** (hard gate: rendered final.mp4 must be in [300s, 420s]; overall channel gate is [240s, 660s]).
+**3–3.5 minutes** (target runtime ~210s; hard channel gate is [120s, 660s]).

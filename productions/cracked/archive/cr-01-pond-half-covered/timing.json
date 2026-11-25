@@ -1,0 +1,89 @@
+{
+  "episode": "cr-01-pond-half-covered",
+  "voice": "en-US-AriaNeural",
+  "duration_tool": "mutagen",
+  "beats": [
+    {
+      "id": 1,
+      "audio_file": "beat_01.mp3",
+      "duration_sec": 22.224
+    },
+    {
+      "id": 2,
+      "audio_file": "beat_02.mp3",
+      "duration_sec": 18.408
+    },
+    {
+      "id": 3,
+      "audio_file": "beat_03.mp3",
+      "duration_sec": 20.28
+    },
+    {
+      "id": 4,
+      "audio_file": "beat_04.mp3",
+      "duration_sec": 18.936
+    },
+    {
+      "id": 5,
+      "audio_file": "beat_05.mp3",
+      "duration_sec": 24.384
+    },
+    {
+      "id": 6,
+      "audio_file": "beat_06.mp3",
+      "duration_sec": 20.568
+    },
+    {
+      "id": 7,
+      "audio_file": "beat_07.mp3",
+      "duration_sec": 27.336
+    },
+    {
+      "id": 8,
+      "audio_file": "beat_08.mp3",
+      "duration_sec": 25.032
+    },
+    {
+      "id": 9,
+      "audio_file": "beat_09.mp3",
+      "duration_sec": 22.008
+    },
+    {
+      "id": 10,
+      "audio_file": "beat_10.mp3",
+      "duration_sec": 26.064
+    },
+    {
+      "id": 11,
+      "audio_file": "beat_11.mp3",
+      "duration_sec": 18.6
+    },
+    {
+      "id": 12,
+      "audio_file": "beat_12.mp3",
+      "duration_sec": 18.264
+    },
+    {
+      "id": 13,
+      "audio_file": "beat_13.mp3",
+      "duration_sec": 27.984
+    },
+    {
+      "id": 14,
+      "audio_file": "beat_14.mp3",
+      "duration_sec": 22.608
+    },
+    {
+      "id": 15,
+      "audio_file": "beat_15.mp3",
+      "duration_sec": 21.792
+    },
+    {
+      "id": 16,
+      "audio_file": "beat_16.mp3",
+      "duration_sec": 24.288
+    }
+  ],
+  "total_duration_sec": 358.776,
+  "narration_speed_wpm": 150
+}

@@ -1,114 +1,74 @@
+"""Shot 11 — Recap & payoff: the law + half/quarter/eighth (Beat 8, part 1).
+
+Fresh after act-boundary wipe A3. Top-down pond centered again; a compact
+backward-stepping strip shows three states side by side — Day 29 -> 1/2,
+Day 28 -> 1/4, Day 27 -> 1/8 — each a small pond with its fraction in orange,
+revealed left-to-right via Write() as they are spoken. The governing law is
+stated as cream text (not a new formula).
+
+A/V sync: SCENE_TARGET_SEC placeholder until timing.json exists.
+"""
 from manimgx import *
 
-config.background_color = "#0F172A"
+config.background_color = "#0F172A"  # channel palette — mandatory in every scene file
 
 BG    = "#0F172A"
 CREAM = "#F2E3C6"
 ORG   = "#F97316"
 BLUE  = "#3B82F6"
 
+# Beat 8 part 1 (law + half/quarter/eighth): [3:55–4:20]
+SCENE_TARGET_SEC = 25.0  # TODO-AVSYNC: replace with value from timing.json
 
-class WorkedExampleDerivationScene(Scene):
-    """Shot 11 — Worked Example Derivation (Beats 13–14, ~65 s)"""
 
+def make_small_pond(width, height, center):
+    """Canonical top-down oval pond at recap scale (continuity §3)."""
+    water = Ellipse(width=width, height=height, color=BLUE, stroke_width=0,
+                    fill_color=BG, fill_opacity=1)
+    rim = Ellipse(width=width, height=height, color=BLUE, stroke_width=3.5)
+    return VGroup(water, rim).move_to(center)
+
+
+class Shot11Recap(Scene):
     def construct(self):
-        # 20-day pond on left (starts full)
-        pond = Circle(radius=1.3, color=BLUE, stroke_width=4)
-        pond.move_to([-3.5, 0.5, 0])
+        # ---- In-state: fresh after wipe — three ponds drawn in sequence (Create) ----
+        law = Text("One law governs both containers.", font_size=40, color=CREAM).to_edge(UP, buff=0.7)
+        self.play(Write(law), run_time=1.6)
 
-        t = ValueTracker(1.0)  # coverage fraction
+        centers = [-3.6, 0, 3.6]
+        ponds = [make_small_pond(2.8, 1.9, [c, 0.1, 0]) for c in centers]
+        self.play(Create(ponds[0][1]), Create(ponds[1][1]), Create(ponds[2][1]), run_time=1.2)
 
-        def fill():
-            frac = t.get_value()
-            h = max(0.01, frac * 2.6)
-            r = Rectangle(width=2.6, height=h, color=BLUE, fill_opacity=0.5, stroke_width=0)
-            bottom = [-3.5, -0.8, 0]
-            r.move_to([bottom[0], bottom[1] + h / 2, 0])
-            return r
+        # ---- Day 29 -> 1/2 (half coverage) ----
+        half_fill = Rectangle(width=1.3, height=1.7, color=BLUE, stroke_width=0,
+                              fill_color=CREAM, fill_opacity=0.85).move_to(ponds[0].get_center() + LEFT * 0.65)
+        self.play(FadeIn(half_fill), run_time=0.8)
+        frac1 = MathTex(r"\dfrac{1}{2}", color=ORG).scale(0.95).next_to(ponds[0], DOWN, buff=0.3)
+        day1 = Text("Day 29", font_size=30, color=CREAM).next_to(frac1, DOWN, buff=0.2)
+        self.play(Write(frac1), Write(day1), run_time=1.0)
 
-        fill_rect = always_redraw(fill)
-        pond_day_label = Text("Day 20", font_size=22, color=CREAM)
-        pond_day_label.next_to(pond, DOWN, buff=0.3)
+        # ---- Day 28 -> 1/4 (quarter coverage) ----
+        quarter_fill = Rectangle(width=0.7, height=1.6, color=BLUE, stroke_width=0,
+                                 fill_color=CREAM, fill_opacity=0.85).move_to(ponds[1].get_center() + LEFT * 0.35)
+        self.play(FadeIn(quarter_fill), run_time=0.8)
+        frac2 = MathTex(r"\dfrac{1}{4}", color=ORG).scale(0.95).next_to(ponds[1], DOWN, buff=0.3)
+        day2 = Text("Day 28", font_size=30, color=CREAM).next_to(frac2, DOWN, buff=0.2)
+        self.play(Write(frac2), Write(day2), run_time=1.0)
 
-        # --- pre-build ALL three equation states (Shot 11 note: pre-build before first Transform) ---
-        eq_generic = MathTex(r"\frac{2^n}{2^{20}}", color=ORG, font_size=46)
-        eq_half    = MathTex(r"\frac{2^{19}}{2^{20}} = \frac{1}{2}", color=ORG, font_size=46)
-        eq_quarter = MathTex(r"\frac{2^{18}}{2^{20}} = \frac{1}{4}", color=ORG, font_size=46)
+        # ---- Day 27 -> 1/8 (eighth coverage — a small speck) ----
+        eighth_fill = Rectangle(width=0.35, height=1.4, color=BLUE, stroke_width=0,
+                                fill_color=CREAM, fill_opacity=0.85).move_to(ponds[2].get_center() + LEFT * 0.17)
+        self.play(FadeIn(eighth_fill), run_time=0.8)
+        frac3 = MathTex(r"\dfrac{1}{8}", color=ORG).scale(0.95).next_to(ponds[2], DOWN, buff=0.3)
+        day3 = Text("Day 27", font_size=30, color=CREAM).next_to(frac3, DOWN, buff=0.2)
+        self.play(Write(frac3), Write(day3), run_time=1.0)
 
-        for eq in [eq_generic, eq_half, eq_quarter]:
-            eq.move_to([1.5, 1.2, 0])
+        # ---- The governing law (cream text; the fractions are the on-screen symbols) ----
+        rule = Text("The state right before the end holds half the final amount.", font_size=32, color=CREAM).to_edge(DOWN, buff=0.5)
+        self.play(Write(rule), run_time=1.8)
 
-        # Day labels
-        day19_label = Text("Day 19 — 50%", font_size=26, color=ORG)
-        day19_label.next_to(pond, DOWN, buff=0.3)
-        day18_label = Text("Day 18 — 25%", font_size=26, color=ORG)
-        day18_label.next_to(pond, DOWN, buff=0.3)
-
-        # --- Beat 13: show generic formula, then transform ---
-        self.play(Create(pond))
-        self.add(fill_rect)
-        self.play(Write(pond_day_label))
-        self.play(Write(eq_generic))
-        self.wait(0.8)
-
-        # Day 19: fraction = 1/2
-        self.play(
-            Transform(eq_generic, eq_half),
-            t.animate.set_value(0.5),
-            Transform(pond_day_label, day19_label),
-            run_time=1.5,
-        )
-        self.wait(1.0)
-
-        # Day 18: fraction = 1/4
-        self.play(
-            Transform(eq_generic, eq_quarter),
-            t.animate.set_value(0.25),
-            Transform(pond_day_label, day18_label),
-            run_time=1.5,
-        )
-        self.wait(1.0)
-
-        # --- Beat 14: pattern table ---
-        table_title = Text("Pattern: k steps back from Day D", font_size=26, color=CREAM)
-        table_title.move_to([1.5, 2.5, 0])
-
-        # table rows
-        rows_data = [
-            (r"D - 1", "19", r"\frac{1}{2}\ (50\%)"),
-            (r"D - 2", "18", r"\frac{1}{4}\ (25\%)"),
-            (r"D - 3", "17", r"\frac{1}{8}\ (12.5\%)"),
-        ]
-        col_x = [0.5, 2.0, 3.8]
-        row_y_start = 1.5
-        row_step = 0.65
-        table_rows_mobj = VGroup()
-
-        for i, (step, day_val, cov) in enumerate(rows_data):
-            y = row_y_start - i * row_step
-            c1 = MathTex(step, font_size=28, color=CREAM).move_to([col_x[0], y, 0])
-            c2 = MathTex(day_val, font_size=28, color=ORG).move_to([col_x[1], y, 0])
-            c3 = MathTex(cov, font_size=28, color=ORG).move_to([col_x[2], y, 0])
-            table_rows_mobj.add(VGroup(c1, c2, c3))
-
-        # general formula
-        gen_formula = MathTex(
-            r"\frac{2^{D-k}}{2^D} = \frac{1}{2^k}",
-            color=ORG, font_size=44,
-        )
-        gen_formula.move_to([2.0, -1.6, 0])
-
-        self.play(
-            FadeOut(eq_generic),
-            Write(table_title),
-        )
-        self.play(Create(table_rows_mobj), run_time=1.5)
-        self.play(Write(gen_formula))
-        self.wait(2.0)  # Beats 13–14 narration
-
-        # out_state: full wipe
-        self.play(FadeOut(VGroup(
-            pond, fill_rect, pond_day_label,
-            table_title, table_rows_mobj, gen_formula,
-        )))
-        self.wait(0.3)
+        # ---- Hold: full half/quarter/eighth strip (out-state; cut into S12) ----
+        # Tail hold — pads the scene to its beat duration (A/V sync fix).
+        # X = SCENE_TARGET_SEC - current_animation_duration (~10 s of plays above)
+        tail_hold = max(0.5, SCENE_TARGET_SEC - 10.0)  # TODO-AVSYNC: reconcile vs timing.json
+        self.wait(tail_hold)

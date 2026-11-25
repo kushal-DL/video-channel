@@ -1,8 +1,7 @@
 ---
 name: screenwriter
 description: Writes narration scripts with pedagogical structure; TTS-friendly sentences and math-claim tagging for the Math Reviewer.
-tools: Read, Write
-model: anthropic--claude-haiku-latest
+model: gemma-the-writer-mighty-sword-9b
 reasoning_effort: none
 ---
 
@@ -78,4 +77,4 @@ Self-check before submission:
 2. Count sentence lengths. If three consecutive sentences are within 5 words of each other, vary.
 3. Confirm the worked example uses a different real-world domain — not the same problem with a different number.
 4. Confirm the hook establishes a character or a concrete moment, not an abstraction.
-5. Count the total word count. If over 800 words for a 6-minute episode, cut. Length is not depth.
+5. Target duration is flexible between 2 and 11 minutes (hard gate [120s, 660s]). Let topic complexity determine natural length (~300–600 words for riddles, ~700–1200 words for deep multi-step proofs). Never pad arithmetic or repeat concepts to hit an artificial floor. Length is not depth.

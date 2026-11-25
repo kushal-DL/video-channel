@@ -1,81 +1,59 @@
+"""Shot 5 — The formula, paired with the lily pad (Beat 4, part 1). Brief §5d.
+
+Concrete <-> abstract pairing at first formula introduction: left = animated
+lily pad doubling on a water surface; right = fraction(n) = 2^n / 2^30 in
+orange, Written at exactly the moment the pad grows. Anchor note "Day 30 ->
+full" appears with the exponent briefly highlighted (term-under-discussion).
+
+Out-state: formula persists unchanged into Shot 6 (equation persistence; cut).
+
+A/V sync: SCENE_TARGET_SEC placeholder until timing.json exists.
+"""
 from manimgx import *
 
-config.background_color = "#0F172A"
+config.background_color = "#0F172A"  # channel palette — mandatory in every scene file
 
 BG    = "#0F172A"
 CREAM = "#F2E3C6"
 ORG   = "#F97316"
 BLUE  = "#3B82F6"
 
-
-TABLE_ROWS = [
-    (25, r"\frac{1}{32}", "3\\%"),
-    (26, r"\frac{1}{16}", "6\\%"),
-    (27, r"\frac{1}{8}",  "13\\%"),
-    (28, r"\frac{1}{4}",  "25\\%"),
-    (29, r"\frac{1}{2}",  "50\\%"),
-    (30, r"1",            "100\\%"),
-]
+# Beat 4 part 1 (formula intro): [1:40–~2:00]
+SCENE_TARGET_SEC = 20.0  # TODO-AVSYNC: replace with value from timing.json
 
 
-class LastFiveDaysTableScene(Scene):
-    """Shot 5 — Last-Five-Days Table (Beat 7, ~30 s)"""
-
+class Shot05Formula(Scene):
     def construct(self):
-        # formula in top-right corner (carried from Shot 4)
-        corner_formula = MathTex(
-            r"\text{fraction}(n) = \frac{2^n}{2^{30}}",
-            color=ORG, font_size=26,
-        ).to_corner(UR, buff=0.3)
-        self.add(corner_formula)
+        # ---- In-state: water surface on the left (arrives from S4 zoom-out) ----
+        water = Ellipse(width=4.6, height=3.2, color=BLUE, stroke_width=4).move_to([-3.0, -0.3, 0])
+        self.play(Create(water), run_time=1.0)
 
-        # --- table header ---
-        header_day  = Text("Day", font_size=28, color=CREAM)
-        header_frac = Text("Fraction", font_size=28, color=CREAM)
-        header_pct  = Text("%", font_size=28, color=CREAM)
+        # Lily pad polygon growing on the surface (blue outline + cream center)
+        pad = RegularPolygon(n=6, radius=0.5, color=BLUE, stroke_width=4,
+                             fill_color=CREAM, fill_opacity=0.85).move_to([-3.0, -0.3, 0])
+        self.play(GrowFromCenter(pad), run_time=1.0)
 
-        col_x = [-3.5, 0.0, 3.0]
-        header_day.move_to([col_x[0], 2.8, 0])
-        header_frac.move_to([col_x[1], 2.8, 0])
-        header_pct.move_to([col_x[2], 2.8, 0])
+        # ---- Right: the formula in orange, written as the pad grows (same frame) ----
+        eq = MathTex(r"\mathrm{fraction}(n)", "=", r"\dfrac{2^{n}}{2^{30}}", color=ORG).move_to([2.6, 0.4, 0])
+        self.play(Write(eq), run_time=1.8)
 
-        header_line = Line([-4.5, 2.5, 0], [4.5, 2.5, 0], color=BLUE, stroke_width=2)
+        # Pad doubles once more while the formula is on screen (concrete echo)
+        pad2 = RegularPolygon(n=6, radius=1.0, color=BLUE, stroke_width=4,
+                              fill_color=CREAM, fill_opacity=0.85).move_to([-3.0, -0.3, 0])
+        self.play(Transform(pad, pad2), run_time=1.2)
 
-        self.play(Write(header_day), Write(header_frac), Write(header_pct))
-        self.play(Create(header_line))
+        # ---- "Full coverage happens on Day 30" — anchor note + exponent highlight ----
+        anchor = Text("Day 30 -> full", font_size=34, color=CREAM).next_to(eq, DOWN, buff=0.6)
+        self.play(Write(anchor), run_time=1.2)
 
-        # --- build rows one by one ---
-        row_y_start = 2.0
-        row_step = 0.75
-        highlight_box = None
+        # term-under-discussion: thicken the orange stroke on 2^30 (zoom-to-highlight)
+        eq_big = eq.copy().scale(1.15).set_color_by_tex("2^{30}", ORG)
+        self.play(eq.animate.scale(1.15), run_time=0.6)
+        self.play(Indicate(eq[2]), run_time=1.0)   # the 2^n / 2^30 term
+        self.play(eq.animate.scale(1 / 1.15), run_time=0.6)
 
-        for i, (day, frac_str, pct_str) in enumerate(TABLE_ROWS):
-            y = row_y_start - i * row_step
-            is_day29 = (day == 29)
-
-            cell_day  = Text(str(day),  font_size=28, color=ORG if is_day29 else CREAM)
-            cell_frac = MathTex(frac_str, font_size=30, color=ORG)
-            cell_pct  = MathTex(pct_str,  font_size=30, color=ORG)
-
-            cell_day.move_to([col_x[0], y, 0])
-            cell_frac.move_to([col_x[1], y, 0])
-            cell_pct.move_to([col_x[2], y, 0])
-
-            row_group = VGroup(cell_day, cell_frac, cell_pct)
-
-            if is_day29:
-                # orange highlight box behind Day 29 row
-                box = Rectangle(width=9.0, height=0.65, color=ORG, fill_opacity=0.25, stroke_width=0)
-                box.move_to([0, y, 0])
-                self.play(FadeIn(box), Write(row_group), run_time=0.5)
-                self.play(Indicate(cell_pct, color=ORG, scale_factor=1.3), run_time=0.4)
-                highlight_box = box
-            else:
-                self.play(Write(row_group), run_time=0.4)
-
-            self.wait(0.25)
-
-        self.wait(1.5)
-
-        # out_state: table persists into Shot 6
-        self.wait(0.3)
+        # ---- Hold: formula + growing pad + anchor note persist (out-state for S6) ----
+        # Tail hold — pads the scene to its beat duration (A/V sync fix).
+        # X = SCENE_TARGET_SEC - current_animation_duration (~8 s of plays above)
+        tail_hold = max(0.5, SCENE_TARGET_SEC - 8.0)  # TODO-AVSYNC: reconcile vs timing.json
+        self.wait(tail_hold)

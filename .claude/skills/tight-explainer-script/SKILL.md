@@ -58,6 +58,9 @@ General anti-slop skills target written essays and blog posts. Spoken narration 
   - Alternate rhythm: follow a long explanatory sentence (18–24 words) with a short punchy sentence (3–8 words).
   - Punctuate for breath and speech flow: use periods and commas, avoid em-dashes.
 
+### 6. Natural Length (2–11 Minutes, No Floor Padding)
+- **Rule:** Episode duration is flexible between 2 and 11 minutes (hard gate [120s, 660s]), determined by the natural complexity of the topic. Short riddles naturally run 2.5–4 minutes (~350–550 words). Never artificially expand a script or repeat calculations just to hit an arbitrary duration floor. Brevity and viewer retention always beat padded length.
+
 ---
 
 ## 2. Two-Pass Script Workflow

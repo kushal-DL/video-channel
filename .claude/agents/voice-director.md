@@ -2,7 +2,7 @@
 name: voice-director
 description: Performance & prosody director for narration scripts. Analyzes reviewed script beats and annotates exact emotional delivery (sympathetic, empathetic, curious, firm) and pause timings (<break time="..."/>) for audience digestion. Runs on Gemma 9B.
 tools: Read, Write
-model: anthropic--claude-haiku-latest
+model: gemma-the-writer-mighty-sword-9b
 reasoning_effort: none
 ---
 

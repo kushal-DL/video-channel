@@ -1,439 +1,337 @@
 # Storyboard — cr-01-pond-half-covered
-**Title:** When Was the Pond Half-Covered?
-**Series:** Cracked | **Episode:** 1 | **Total shots:** 12 | **Estimated duration:** ~6.3 min
+
+**Episode:** When Was the Pond Half-Covered? (Cracked, ep. 1)
+**Source of truth for narration:** `script-reviewed.md` (VERDICT: PASS). All narration lines below are **verbatim** from Part A beats; no paraphrase or invention. Beat numbers and timing labels preserved.
+**Style contract:** `channel-bible.md` — palette, reveal rules, concrete→abstract pairing, equation persistence, pacing norms.
+**Brief requirements covered:** Section 5a (split-screen in hook), 5b (coverage table in build-up), 5c (one-step-back reversal + generalization), 5d (concrete↔abstract at first formula).
 
 ---
 
-## Act structure
+## Global conventions (apply to every shot)
 
-| Act | Beats | Shots | Transition out |
-|-----|-------|-------|----------------|
-| Hook | 1–2 | 1 | Full wipe |
-| Motivation | 3–4 | 2 | Fade |
-| Build-up | 5–10 | 3–8 | — |
-| Result | 11 | 9 | Full wipe |
-| Worked example | 12–14 | 10–11 | Full wipe |
-| Recap | 15–16 | 12 | Fade to end |
+- **Background** `#0F172A` set via module-level `config.background_color = "#0F172A"` in every scene file.
+- **Palette (exactly 4 roles, no ad-hoc colors):**
+  - bg dark slate `#0F172A`
+  - text/captions cream `#F2E3C6`
+  - math orange `#F97316` (equations, symbols, highlighted terms)
+  - geometry blue `#3B82F6` (pond outlines, water surfaces, axes, curves, points)
+- **Reveals:** equations/math via `Write()` or `Create()`, never `FadeIn()`; geometry via `Create()`; equation morphs via `Transform()` (never fade-out/fade-in); full wipes only at the three act boundaries marked below.
+- **Fades** ≤ 0.8 s; holds at full opacity ≥ 60% of each beat.
+- **Fonts:** titles 56 px, body ≥ 30 px, math 60–72 px (per channel bible).
+- **No clickbait tropes:** no giant red X marks, no "WRONG!" callouts, no fake suspense text.
+- **No 3D.** No character/illustration art beyond simple geometric shapes; the scientist is a minimal stylized figure (see `continuity.md` §1).
 
----
+### Act boundaries (full wipes allowed ONLY here)
 
-## Shot 1: The Day 15 Trap
+| Boundary | After beat | Transition |
+|---|---|---|
+| Hook → Body | Beat 1 | full wipe (fade through bg, ≤0.8 s) |
+| Build-up → Worked example | Beat 6 | full wipe (fade through bg, ≤0.8 s) — new scene: lab + petri dish |
+| Worked example → Recap | Beat 7 | full wipe (fade through bg, ≤0.8 s) |
 
-**Beats covered:** 1–2
-**Estimated duration:** ~40 s
+All other shot-to-shot transitions are fade / slide / zoom / cut / morph as specified per shot below; no wipes mid-act.
 
-**Narration lines:**
-> Beat 1: Here is a question. A lily pad floats on a pond. Every day, it doubles in size — covering twice as much water as the day before. After 30 days, it covers the pond completely. On which day did it cover exactly half the pond? Take a moment. Most people say Day 15.
->
-> Beat 2: They are wrong. Not a little wrong — wrong by a mile. Day 15 is not 50 percent. Not even close. The right answer will surprise you. And once you see why, you will never look at slow-growing things the same way again.
+### Scene class naming
 
-**Visual content:** Dark-slate background (`#0F172A`). A circular pond (blue `#3B82F6` outline, no fill) appears centered. A small green hexagon (lily pad, cream `#F2E3C6`) sits at the center. The question text — "On which day was it exactly half-covered?" — appears in cream below the pond. A "Day 15?" label appears briefly as a callout (orange `#F97316`), then a large `✗` strikes through it.
-
-**concrete_visual:** A circular pond with a tiny lily pad at center — the riddle's real object.
-
-**abstract_symbol:** None in this shot — the hook poses the question without naming the concept.
-
-**reveal_animation:**
-- `Create` for the pond circle (geometry — blue)
-- `FadeIn` for the lily pad polygon (background element, not math)
-- `Write` for the question text overlay (text — cream)
-- `Write` for "Day 15?" callout (orange), then `FadeOut` with `✗`
-
-**hold_content:** Pond with tiny lily pad; question text "On which day was it exactly half-covered?" visible throughout Beat 1. "Day 15?" callout and strike-through visible through Beat 2.
-
-**in_state:** Series title card "Cracked — Every riddle hides a law. Break it open." fades in then out before pond appears.
-
-**out_state:** Pond + strike-through visible. `FadeOut` everything → **full wipe** (act boundary: hook → body).
-
-**transition:** Full wipe
+One manimgx `Scene` subclass per shot: `scene_01.py … scene_12.py`, classes `Shot01HookWalk` … (names in the mapping table at the end).
 
 ---
 
-## Shot 2: Exponential Growth Is Deceptive
+## Shot 1 — Hook walk, Days 1–15 (Beat 1, part 1)
 
-**Beats covered:** 3–4
-**Estimated duration:** ~40 s
+- **Scene class:** `Shot01HookWalk` (`scenes/scene_01.py`)
+- **Narration lines (verbatim):**
+  - Beat 1 [0:00–~0:20]: "A scientist walks past the same pond every morning on her way to the lab. Day 1, one lily pad, barely the size of her hand. She does not stop. By Day 7, a small cluster drifts near the bank. On Day 15, open water still dominates the surface, and she keeps walking."
+- **Visual content:** Top-down view of an oval pond (blue `#3B82F6` outline, dark water fill) centered with ≥0.5 buff margin. The scientist figure (minimal geometric design per continuity.md §1) walks along a straight path at the top edge from left to right; she does not stop. A day counter chip in the upper-left ticks: `Day 1`, then `Day 7`, then `Day 15` (cream text, orange numerals). Lily pads are small blue-outlined circles with cream centers: Day 1 = one tiny pad near the left bank; Day 7 = a cluster of ~4 small pads near that bank; Day 15 = a few scattered small patches, open water still dominant. Pads grow via `Create()`/`GrowFromCenter`; counter ticks are `Write()`.
+- **concrete_visual:** a scientist walking past an oval pond each morning while lily pads slowly multiply on the water surface (Day 1 → Day 7 → Day 15 time-lapse).
+- **abstract_symbol:** none — no formula yet; this is the character-grounded hook (brief §6: the riddle emerges from her observation, nothing defined in the hook). Justified: concrete-only by design.
+- **reveal_animation:** `Create()` for pond outline and each lily pad; `Write()` for day counter ticks.
+- **Hold content:** pond + walking scientist + day counter chip remain on screen throughout; at hold, Day 15 state is visible (scattered small pads, mostly open water) with the counter reading `Day 15`.
+- **In-state:** cold open — empty bg, then pond outline drawn in (`Create`), scientist enters from left.
+- **Out-state:** scientist exits right at the top edge; Day 15 pond state (scattered small pads + counter chip) persists as the base for Shot 2.
 
-**Narration lines:**
-> Beat 3: Exponential growth is deceptive. For most of its run, it looks like nothing is happening. The lily pad is tiny on Day 1, tiny on Day 5, still tiny on Day 10. But the numbers are accumulating quietly — doubling, then doubling again, building toward something enormous.
->
-> Beat 4: Your brain is wired for linear thinking. If something takes 30 days total, your instinct says halfway through the time means halfway through the work. That works for filling a glass of water at a steady rate. It fails completely here. Time and coverage are not the same axis.
-
-**Visual content:** Left side: a tall vertical rectangle (blue outline) representing a glass of water. A cream fill bar rises linearly — steady, equal increments, labeled "linear." Right side: same-shaped rectangle stays nearly empty until the last few increments, then fills explosively — labeled "exponential." Both rectangles share a horizontal "Day" axis ticking 1–10 underneath. Labels "linear" and "exponential" in cream at top of each.
-
-**concrete_visual:** Two side-by-side fill bars — a glass of water filling at a steady rate (left) vs. a nearly-empty glass that fills explosively (right).
-
-**abstract_symbol:** "linear" and "exponential" text labels in cream — no formula yet.
-
-**reveal_animation:**
-- `Create` for both rectangle outlines (geometry — blue)
-- `Create` for the day-axis ticks
-- Fill bars animate simultaneously via `ValueTracker` (linear on left, 2^n proportional on right)
-
-**hold_content:** Both rectangles with their fill bars and labels visible throughout both beats.
-
-**in_state:** Clean (after full wipe from Shot 1).
-
-**out_state:** Both bars filled to Day 10. Labels "linear" and "exponential" persist. Camera zooms into the right (exponential) bar.
-
-**transition:** Zoom into the exponential bar → zoom out to Shot 3
+**Transition S1→S2: cut.** Same scene continues into the next shot's content — no wipe, no fade; the Day-15 pond and counter carry forward unchanged.
 
 ---
 
-## Shot 3: Counting the Doublings
+## Shot 2 — Hook climax, Day 30 + riddle (Beat 1, part 2)
 
-**Beats covered:** 5
-**Estimated duration:** ~25 s
+- **Scene class:** `Shot02HookClimax` (`scenes/scene_02.py`)
+- **Narration lines (verbatim):**
+  - Beat 1 [~0:20–0:35]: "Then Day 30 arrives. The entire pond is gone under green pads, bank to bank. She stops at the water's edge and stares. On which day was the pond half-covered?"
+- **Visual content:** Same top-down pond as Shot 1 (continuity). Pads rapidly multiply across the surface until the whole oval is covered — rendered as a full blue-outlined pad field filling the pond shape (`GrowFromCenter` cascade, then a single filled overlay so "bank to bank" reads clearly). Day counter ticks `Day 30`. The scientist figure stops at the water's edge (right side) and stands still. As the final question is spoken, the riddle appears as cream text centered below the pond: **"On which day was the pond half-covered?"** via `Write()` — no exclamation styling, no clickbait treatment.
+- **concrete_visual:** the same pond going from scattered pads to completely covered bank-to-bank; scientist stopping at the water's edge and staring.
+- **abstract_symbol:** none — the riddle is posed in words only (brief §6: do not spoil Day 29, do not define exponential growth in the hook). Justified: question text is narration content, not a math symbol.
+- **reveal_animation:** `GrowFromCenter` for pad cascade; `Write()` for counter tick and riddle text.
+- **Hold content:** fully covered pond + stopped scientist + day counter `Day 30` + the riddle line in cream below the pond. Nothing empty — this is the hook's landing frame.
+- **In-state:** inherits Shot 1 out-state: Day-15 pond, counter chip, same framing; scientist re-enters from left and walks to the right bank.
+- **Out-state:** fully covered pond + riddle text hold as the final hook frame; then **full wipe** (act boundary Hook → Body).
 
-**Narration lines:**
-> Beat 5: Let us count the first few days. On Day 1 the lily pad covers one unit of area. Day 2: two units. Day 3: four. Day 4: eight. Each day, multiply by two. After 10 days: five hundred and twelve units. After 20 days: more than five hundred thousand units.
-
-**Visual content:** A horizontal sequence of lily pad icons (cream hexagons, increasing in size) labeled Day 1, Day 2, Day 3, Day 4. Each icon appears one beat after the previous. Below each icon: its area in orange (`1`, `2`, `4`, `8`). A "×2" arrow (blue) connects each pair. After Day 4, an ellipsis (`…`) with "Day 10: 512" and "Day 20: 524,288" appearing in orange to the right.
-
-**concrete_visual:** A row of growing lily pad icons with area labels — the doubling made visible as physical growth.
-
-**abstract_symbol:** `a_n = 2^{n-1}` written in orange below the sequence, appearing after the Day 4 icon lands.
-
-**reveal_animation:**
-- `FadeIn` for each lily pad icon (background element)
-- `Write` for each area label (math — orange)
-- `Create` for each `×2` arrow (geometry — blue)
-- `Write` for `a_n = 2^{n-1}` formula
-- `Write` for "Day 10: 512" and "Day 20: 524,288"
-
-**hold_content:** Full row of icons with area labels and arrows; formula `a_n = 2^{n-1}` visible throughout.
-
-**in_state:** Clean (zoomed out from exponential bar in Shot 2).
-
-**out_state:** Icon sequence + formula `a_n = 2^{n-1}` on screen. Camera slides right to introduce the fraction formula.
-
-**transition:** Slide (right)
+**Transition S2→S3: full wipe (fade through bg, ≤0.8 s)** — act boundary after Beat 1 per script metadata / channel bible.
 
 ---
 
-## Shot 4: The Coverage Formula
+## Shot 3 — Motivation: linear intuition vs exponential reality (Beat 2)
 
-**Beats covered:** 6
-**Estimated duration:** ~25 s
+- **Scene class:** `Shot03Motivation` (`scenes/scene_03.py`)
+- **Narration lines (verbatim):**
+  - Beat 2 [0:35–1:05]: "Your first instinct is probably Day 15. Thirty days total, so splitting the time in half feels like it should split the coverage in half. That intuition works for a dripping tap that adds an equal cup of water every hour. It fails completely here. Adding the same amount each day is linear growth. Doubling each day is exponential growth. The lily pad was multiplying quietly from the very first morning."
+- **Visual content:** Two-part layout, both parts on screen simultaneously (concrete↔abstract pairing):
+  - **Left (concrete):** a dripping tap above a cup — water drips at equal intervals and the cup fills by equal increments (a small vertical fill bar beside the cup rises in even steps). This is the "dripping tap" analogy from the narration.
+  - **Right (paired symbol + mini-pond):** below/beside it, two short labeled lines appear via `Write()` as they are spoken: `linear growth` and `exponential growth` (cream labels), with a small equal-step bar under "linear" and a small doubling bar (1→2→4) under "exponential". A tiny lily pad on the right side quietly doubles in size each tick, reinforcing "multiplying quietly from the very first morning."
+  - The Day-15 guess is acknowledged visually: a cream caption `Day 15?` appears near the top as the first sentence plays (no X mark, no red — just the question restated).
+- **concrete_visual:** a dripping tap adding an equal cup of water every hour (equal-step fill), paired with a lily pad quietly doubling in size.
+- **abstract_symbol:** `linear growth` / `exponential growth` labels with their step patterns (equal steps vs ×2 steps) — the two named concepts, shown at the same moment as the tap and pad. (No full formula yet; the formula is Shot 5.)
+- **reveal_animation:** `Create()` for tap/cup/pond geometry; `Write()` for both labels and the step bars; `GrowFromCenter` for the doubling lily pad.
+- **Hold content:** tap + cup fill on left, labeled linear/exponential comparison with step bars on right, tiny doubling lily pad — all persist while narration plays; final hold frame = full two-panel comparison.
+- **In-state:** fresh after act-boundary wipe: empty bg, then tap and cup drawn in (`Create`).
+- **Out-state:** the linear-vs-exponential comparison panel holds; it slides left and shrinks to become the conceptual seed of Shot 4's split-screen (the "two ponds side by side" is this same idea at pond scale).
 
-**Narration lines:**
-> Beat 6: Here is how to track coverage precisely. The pond is completely full on Day 30. On Day 30, the fraction covered is two-to-the-30 divided by two-to-the-30 — that is one, full coverage. On any earlier Day n, the fraction covered is two-to-the-n divided by two-to-the-30.
-
-**Visual content:** Left side: a circular pond (blue outline, cream fill growing from center) with a "Day n" label. Right side, appearing **simultaneously** with the pond: the formula `\text{fraction}(n) = \frac{2^n}{2^{30}}` in orange. Below the formula: "Day 30: `\frac{2^{30}}{2^{30}} = 1` (full)" in cream with orange fractions. The pond animates to full coverage as "Day 30" is stated, then animates back to partial as "Day n" is highlighted.
-
-**concrete_visual:** Circular pond with animated fill level (lily pad coverage) keyed to Day n.
-
-**abstract_symbol:** `\text{fraction}(n) = \dfrac{2^n}{2^{30}}` in orange — shown on screen simultaneously with the pond animation, not after.
-
-**reveal_animation:**
-- `Create` for the pond circle
-- `Write` for the fraction formula (simultaneously with pond creation)
-- `Transform` to animate Day 30 fully filled → partial (using `ValueTracker` on fill fraction)
-
-**hold_content:** Pond with current coverage level + fraction formula visible throughout the beat.
-
-**in_state:** Icon sequence from Shot 3 slides off left; pond + formula slide in from right.
-
-**out_state:** Pond at partial coverage; formula `fraction(n) = 2^n / 2^{30}` persistent. Formula stays in top-right corner for Shot 5.
-
-**transition:** Zoom (into the table area, formula shrinks to corner)
+**Transition S3→S4: slide + zoom.** The two-panel comparison slides toward center-left while a top-down view zooms in on the right panel's lily pad, landing on the split-screen layout of Shot 4. No wipe (mid-act).
 
 ---
 
-## Shot 5: Last-Five-Days Table
+## Shot 4 — Split-screen linear vs exponential fill (Beat 3) — brief §5a
 
-**Beats covered:** 7
-**Estimated duration:** ~30 s
+- **Scene class:** `Shot04SplitScreen` (`scenes/scene_04.py`)
+- **Narration lines (verbatim):**
+  - Beat 3 [1:05–1:40]: "Picture two ponds filling side by side over the same thirty days. The left pond gains an identical slice of water every morning, like a steady progress bar. The right pond stays almost empty for three weeks, then engulfs the surface in five days. On Day 10, both ponds look nearly bare. By Day 30, one fills smoothly while the other explodes. That visual illusion is why the scientist walked past without noticing."
+- **Visual content:** Split-screen, two oval ponds side by side (same pond shape as Shots 1–2 for continuity), each with its own small label area above:
+  - **Left panel (linear):** fills by an identical slice every morning — a progress-bar feel; water level rises in equal steps day by day.
+  - **Right panel (exponential):** nearly empty until ~Day 25, then explodes to full over the final days (pads/water surge in the last five days).
+  - **Shared day counter:** one counter chip at top center ticks `Day 1 → … → Day 30` simultaneously for both panels (the brief's "shared day counter ticking simultaneously").
+  - Key scripted moments get a beat of emphasis: at "On Day 10, both ponds look nearly bare" the counter pauses on `Day 10` with both ponds visibly near-bare; at "By Day 30" the left is smoothly full and the right has just exploded to full.
+  - **Panels are shown BEFORE any naming:** no words "linear"/"exponential" appear during this shot (brief §5a: show panels before naming the concept). The names were already introduced verbally in Shot 3; here they stay unnamed on screen.
+- **concrete_visual:** two ponds filling side by side over thirty days — left as a steady progress bar, right nearly empty then exploding — with one shared day counter ticking for both.
+- **abstract_symbol:** none on screen (by design: brief §5a says show the panels before naming the concept; the linear/exponential labels were already shown in Shot 3). Justified: this shot is the pure visual demonstration that motivates the names.
+- **reveal_animation:** `Create()` for both pond outlines and water/pad fills; `Write()` for counter ticks; fills animate as level rises / pad cascade (geometry, not math — no FadeIn of symbols involved).
+- **Hold content:** both ponds + shared day counter on screen throughout; final hold = Day 30 state: left smoothly full, right exploded to full, counter reading `Day 30`.
+- **In-state:** arrives from Shot 3's slide+zoom: the zoomed lily pad resolves into the right panel pond; left panel pond drawn in beside it.
+- **Out-state:** Day-30 split-screen holds; then a gentle zoom out + fade as we move to "track the coverage with numbers" (Shot 5). The right panel's exponential pond is the one that carries forward conceptually into the formula shot.
 
-**Narration lines:**
-> Beat 7: Now look at the last five days. On Day 25, the pond is about three percent covered. Day 26: six percent. Day 27: thirteen. Day 28: twenty-five. Day 29: fifty. Day 30: one hundred. Half the total coverage happens in a single step — from Day 29 to Day 30.
-
-**Visual content:** A table with three columns — **Day | Fraction | %** — appears centered. Rows build one by one, each row appearing as the narration reaches that day. All fraction and % values in orange. The Day 29 row (`2^29/2^30` | `1/2` | `50%`) is highlighted with orange background and cream text — it arrives with slightly more pause before it appears. Final row (Day 30: 100%) appears last. Formula `fraction(n) = 2^n / 2^{30}` persists in top-right corner (from Shot 4).
-
-| Day | Fraction | % |
-|-----|----------|---|
-| 25 | `2^25/2^30` = 1/32 | 3% |
-| 26 | `2^26/2^30` = 1/16 | 6% |
-| 27 | `2^27/2^30` = 1/8 | 13% |
-| 28 | `2^28/2^30` = 1/4 | 25% |
-| **29** | **`2^29/2^30` = 1/2** | **50%** |
-| 30 | `2^30/2^30` = 1 | 100% |
-
-**concrete_visual:** The table itself — numerical evidence made visible, with Day 29 highlighted as the halfway row.
-
-**abstract_symbol:** `\frac{2^n}{2^{30}}` in the Fraction column header; each row shows a specific instance.
-
-**reveal_animation:**
-- `Create` for the table outline (geometry — blue)
-- `Write` for each row (math — orange) as narration reaches that day
-- Day 29 row: `Write` then `Indicate` (scale pulse) on the 50% cell
-
-**hold_content:** Table building progressively; formula in top-right corner; completed rows remain visible.
-
-**in_state:** Fraction formula in corner (from Shot 4). Table slides in from bottom.
-
-**out_state:** Full table visible, Day 29 row highlighted orange. Table persists into Shot 6.
-
-**transition:** Zoom (into Day 15 inset area, table stays)
+**Transition S4→S5: zoom out + fade (≤0.8 s).** Mid-act, no wipe; the right (exponential) pond remains faintly visible at frame edge during the fade as a visual anchor for "the math of this pond."
 
 ---
 
-## Shot 6: Day 15 Punchline
+## Shot 5 — The formula, paired with the lily pad (Beat 4, part 1) — brief §5d
 
-**Beats covered:** 8
-**Estimated duration:** ~25 s
+- **Scene class:** `Shot05Formula` (`scenes/scene_05.py`)
+- **Narration lines (verbatim):**
+  - Beat 4 [1:40–~2:00]: "Track the coverage with numbers. Full coverage happens on Day 30. On Day n, the fraction covered is 2 to the power of n over 2 to the power of 30."
+- **Visual content:** Concrete↔abstract pairing at first formula introduction (brief §5d — never a formula on a blank background):
+  - **Left:** an animated lily pad on a water surface — a polygon growing on the pond's surface (blue `#3B82F6` water, pad outline in blue with cream center), visibly doubling in area as a small day tick advances.
+  - **Right, appearing simultaneously:** the formula in orange `#F97316`:
+    `fraction(n) = 2^n / 2^30`
+    revealed via `Write()` at exactly the moment the pad grows (same frame — not sequential).
+  - As "Full coverage happens on Day 30" is spoken, a small anchor note appears beside the formula: `Day 30 → full` in cream, with the exponent `2^30` briefly highlighted by thickening its orange stroke (term-under-discussion highlight per channel bible).
+- **concrete_visual:** an animated lily pad polygon growing on a water surface, doubling each morning.
+- **abstract_symbol:** `fraction(n) = 2^n / 2^30` in orange, shown at the same time as the growing pad; anchor note `Day 30 → full`.
+- **reveal_animation:** `Write()` for the formula (mandatory — never FadeIn for math); `Create()`/`GrowFromCenter` for the pad and water surface.
+- **Hold content:** growing lily pad on left + orange formula on right + `Day 30 → full` anchor note, all persisting while narration plays; final hold = formula fully written with the pad mid-growth beside it.
+- **In-state:** arrives from Shot 4's zoom-out: the exponential pond resolves into the water surface on the left; formula area is empty until spoken.
+- **Out-state:** formula `fraction(n) = 2^n / 2^30` stays on screen and carries forward into Shot 6, where Day 15 is plugged in (equation persistence rule — never clear and redraw).
 
-**Narration lines:**
-> Beat 8: Now check Day 15. The fraction covered on Day 15 is two-to-the-15 divided by two-to-the-30 — that is one divided by two-to-the-15. Work it out: approximately 0.003 percent. Not 50 percent. Not even one percent. On Day 15, the lily pad is effectively invisible on the pond.
-
-**Visual content:** The existing table from Shot 5 stays on screen. An inset row appears below the table, slightly separated with a dashed border (blue): Day 15 | `2^15/2^30 = 1/32768` | `0.003%`. The 0.003% value appears in orange and is `Indicate`-pulsed. A thought-bubble callout near the table: "Day 15?" with a large `✗` (referencing the hook). The tiny percentage value and the `✗` are the visual punchline.
-
-**concrete_visual:** The Day 15 inset row in the table — a direct comparison between the guess (Day 15) and the actual value (0.003%).
-
-**abstract_symbol:** `\dfrac{2^{15}}{2^{30}} = \dfrac{1}{32768} \approx 0.003\%` in orange.
-
-**reveal_animation:**
-- `Write` for the inset row content
-- `Indicate` (pulse) on "0.003%"
-- `Write` then `FadeOut` for the "Day 15? ✗" callout
-
-**hold_content:** Full table (Day 25–30) + Day 15 inset row; "0.003%" highlighted throughout.
-
-**in_state:** Table from Shot 5 visible; inset slides in.
-
-**out_state:** Table + Day 15 inset both visible. Everything except the pond outline fades for Shot 7.
-
-**transition:** Fade (table fades; pond expands)
+**Transition S5→S6: cut.** Same layout continues; the formula persists unchanged while new terms are added below it. No wipe (mid-act).
 
 ---
 
-## Shot 7: One Step Back
+## Shot 6 — Plug in Day 15 + coverage table punchline (Beat 4, part 2) — brief §5b
 
-**Beats covered:** 9
-**Estimated duration:** ~20 s
+- **Scene class:** `Shot06Day15Table` (`scenes/scene_06.py`)
+- **Narration lines (verbatim):**
+  - Beat 4 [~2:00–2:10]: "Plug in Day 15, and the fraction is 2 to the power of 15 over 2 to the power of 30. That equals barely three thousandths of a percent. The surface looked empty on Day 15 because it practically was empty. Nearly the entire month produces almost zero visible change."
+- **Visual content:** Two zones, formula persists from Shot 5 (equation persistence):
+  - **Top zone — substitution (concrete↔abstract):** below the persistent `fraction(n) = 2^n / 2^30`, a new line is written via `Write()` in orange:
+    `fraction(15) = 2^15 / 2^30`
+    with the `n → 15` substitution highlighted (the `15` term thickened). Beside it, the lily pad from Shot 5 shrinks to a tiny speck on an otherwise empty pond surface — "practically was empty."
+  - **Bottom zone — coverage table (brief §5b):** a table with columns **Day | Coverage fraction | % of pond**, rows for Days 15, 25–30:
 
-**Narration lines:**
-> Beat 9: Here is the key insight. The lily pad doubled from Day 29 to Day 30. That means Day 30 is exactly twice Day 29. If Day 30 is 100 percent, then Day 29 must be exactly 50 percent. You do not need to solve an equation. You just need one backward step from the end.
+    | Day | Coverage fraction | % of pond |
+    |-----|-------------------|-----------|
+    | 15  | 2^15 / 2^30       | **0.003%** (punchline callout) |
+    | 25  | 2^25 / 2^30       | 0.03%     |
+    | 26  | 2^26 / 2^30       | 0.06%     |
+    | 27  | 2^27 / 2^30       | 0.12%     |
+    | 28  | 2^28 / 2^30       | 0.24%     |
+    | 29  | 2^29 / 2^30       | **50.0%** (row highlighted orange `#F97316`) |
+    | 30  | 2^30 / 2^30       | **100%**  |
 
-**Visual content:** A large circular pond (blue outline, cream fill = 100%) centered, labeled "Day 30 — 100%". The fill animates **backward** — instantly halving — as a "rewind" effect. When the pond reaches 50% fill, "Day 29 — 50%" label appears in orange. Simultaneously, the equation `\frac{2^{29}}{2^{30}} = \frac{1}{2}` appears to the right of the pond in orange. A large backward arrow (blue) above the pond illustrates the "one step back" motion.
+    - The **Day 15 row** carries the punchline callout: `0.003%` in orange, visually set against the earlier Day-15 guess (the caption `Day 15?` from Shot 3 is echoed as a small cream tag next to this row — "this is why that guess fails").
+    - The **Day 29 row** is highlighted in orange `#F97316` with `50.0%`.
+    - The **Day 30 row** reads `100%`.
+    - Table drawn via `Create()` for grid lines; cell text via `Write()`. Rows appear top-to-bottom as the counter concept implies, but the Day-15 punchline row is written first (it answers "Plug in Day 15"), then rows 25–30 fill down to the highlighted Day-29 and Day-30 rows.
+- **concrete_visual:** a nearly empty pond surface with one tiny lily pad speck on it (the Day-15 reality), paired with the coverage table as the "ledger" of the pond's growth.
+- **abstract_symbol:** `fraction(15) = 2^15 / 2^30` in orange, plus the full coverage table (Day | Coverage fraction | % of pond) — shown simultaneously with the tiny-pad-on-empty-water visual.
+- **reveal_animation:** `Write()` for the substitution line and all numeric cells; `Create()` for table grid lines; `GrowFromCenter`/shrink for the pad speck. No FadeIn on any math element.
+- **Hold content:** persistent formula at top + substitution line + tiny pad on empty water (left) + full coverage table with Day-15 punchline and highlighted Day-29 row (right/bottom). Final hold = complete table with `0.003%` and `50.0%` both visible.
+- **In-state:** inherits Shot 5's formula at top of frame; lily pad present from Shot 5, now shrinking to a speck as Day 15 is plugged in.
+- **Out-state:** the table holds with Day-29 row highlighted orange — this highlight is the visual seed for Shot 7 (the one-step-back reversal lands on exactly that `50.0%`). Formula + table persist out of frame via a slide-down as the pond re-centers for the reversal.
 
-**concrete_visual:** Circular pond animating from fully covered (Day 30) backward to half-covered (Day 29) — the reversal made physical.
-
-**abstract_symbol:** `\dfrac{2^{29}}{2^{30}} = \dfrac{1}{2}` in orange, appearing simultaneously with the backward animation.
-
-**reveal_animation:**
-- `Create` for the pond circle
-- Backward fill animation via `ValueTracker` (1.0 → 0.5)
-- `Write` for `2^{29}/2^{30} = 1/2` equation
-- `Create` for the backward arrow (blue)
-
-**hold_content:** Pond at 50% coverage; `2^{29}/2^{30} = 1/2` equation; backward arrow; "Day 29 — 50%" label all persist.
-
-**in_state:** Table fades; pond expands from center.
-
-**out_state:** Pond at 50%, equation and "Day 29 — 50%" label visible. Camera slides back to show both fill bars.
-
-**transition:** Slide (back to split-screen)
-
----
-
-## Shot 8: Split-Screen — The Shape of Exponential Growth
-
-**Beats covered:** 10
-**Estimated duration:** ~30 s
-
-**Narration lines:**
-> Beat 10: Compare two panels side by side. On the left: the pond fills by equal slices every day — a straight, steady climb. On the right: the exponential pond is nearly empty until Day 25, then it fills explosively in the final days. Same 30-day axis. Completely different shapes. That gap is why Day 15 feels like the answer.
-
-**Visual content:** Screen split into two equal panels with a thin cream divider. **Left panel:** a vertical bar filling linearly — equal increments each day, labeled "Linear" in cream. **Right panel:** a vertical bar filling exponentially — using 2^n/2^30 proportions — nearly flat through Days 1–24, then explosive Days 25–30. Both panels share a horizontal "Day" counter (ticks 1 → 30 simultaneously, animated). At Day 15, a vertical marker line (orange dashed) drops across both panels — left is at 50%, right is visibly near zero. At Day 29, another orange dashed line drops — right panel reaches 50%.
-
-**concrete_visual:** Two side-by-side fill bars with a shared day counter — the difference between linear and exponential made directly visible.
-
-**abstract_symbol:** No formula — labels only ("Linear", "Exponential"). The visual IS the argument.
-
-**reveal_animation:**
-- `Create` for both bar outlines (geometry — blue)
-- Both fill bars animate simultaneously via `ValueTracker`
-- `Create` for Day 15 and Day 29 vertical marker lines (orange dashed)
-- `Write` for "Day 15" and "Day 29" callout labels
-
-**hold_content:** Both bars animating; day counter ticking; marker lines at Day 15 and Day 29 visible once placed.
-
-**in_state:** Pond from Shot 7 slides left; split-screen slides in from right.
-
-**out_state:** Both bars fully filled to Day 30. Day 29 orange marker prominent. Fade to result.
-
-**transition:** Fade
+**Transition S6→S7: slide.** The coverage table slides down and off; the top-down pond (from Shots 1–2) re-enters centered, already fully covered at Day 30. Mid-act, no wipe.
 
 ---
 
-## Shot 9: Result Statement
+## Shot 7 — One-step-back reversal + generalization (Beat 5) — brief §5c
 
-**Beats covered:** 11
-**Estimated duration:** ~25 s
+- **Scene class:** `Shot07OneStepBack` (`scenes/scene_07.py`)
+- **Narration lines (verbatim):**
+  - Beat 5 [2:10–2:40]: "The shortcut to the answer is looking backward from the finish line. On Day 30, the pond is one hundred percent covered. Because the coverage doubled every single morning, the day before full must hold exactly half. That lands you directly on Day 29. One step back from full is always fifty percent, no matter how long the journey took."
+- **Visual content:** The reversal animation (brief §5c):
+  - **Start:** top-down pond fully covered, labeled `Day 30` with a `100%` overlay (cream label, orange numeral).
+  - **Reverse one step:** animate backward — the coverage instantly halves: half the pads clear away, leaving exactly half the pond covered. The label morphs to `Day 29` and a `50%` overlay appears in orange over the remaining half. This is the core "one step back" reveal.
+  - **Generalization (brief §5c last bullet):** after the pond reversal lands, a second, smaller pond appears beside it — a **20-day pond** — doing the same thing: full at `Day 20`, reverse one step → half at `Day 19`. The narration says "no matter how long the journey took," which supports this generalization; it is shown visually-light (a compact side-by-side of the two ponds each halving in one backward step) rather than a full re-derivation.
+    - *Note:* the reviewed script's Beat 5 does not itself mention a 20-day pond — the generalization lives in brief §5c and is supported by the line "no matter how long the journey took." Kept visual-light per task instructions; flagged in `continuity.md` for Director confirmation.
+- **concrete_visual:** a fully covered pond reversing one step to half coverage (Day 30 → Day 29), then a second, shorter-journey pond (20 days) doing the same halving — two containers both showing "one step back = half."
+- **abstract_symbol:** `100%` → `50%` overlays on the ponds, with day labels `Day 30 → Day 29` and `Day 20 → Day 19`. (These are the numeric states of the one-step-back law; no new formula is introduced here — the formula from Shot 5 remains conceptually active but is not redrawn.)
+- **reveal_animation:** `Create()` for pond geometry; the halving is a geometric reveal (pads clearing via `FadeOut` of pad shapes only — this is removing concrete objects, not revealing math, so it does not violate the no-FadeIn-for-math rule); labels and `%` overlays via `Write()`.
+- **Hold content:** both ponds on screen throughout; final hold = Day-30/Day-29 pond pair with `50%` overlay + the 20-day pond showing its own half state. Nothing empty — the two halved ponds are the active content.
+- **In-state:** arrives from Shot 6's slide: centered top-down pond, fully covered at Day 30 (continuity of pond shape from Shots 1–2).
+- **Out-state:** the `Day 29 = 50%` state is the answer; it holds as the final build-up frame before the act-boundary wipe into the worked example. The "one step back" halved-pond motif carries forward conceptually to the petri dish (same container-halving idea, new domain).
 
-**Narration lines:**
-> Beat 11: The answer is Day 29. Not Day 15. The pond was exactly half-covered just one day before it was completely full. The lily pad achieved in a single day what it had been building toward for all 29 days before. That is what exponential growth does.
-
-**Visual content:** Clean shot. Large centered text: "**Day 29**" in orange at 72 px. Below it in cream: "= 50% coverage". Below that, in smaller cream: "one day before full coverage." The circular pond from Shot 7 reappears (smaller, bottom-right), showing 50% fill as a visual anchor. Everything is calm — this is the reveal beat.
-
-**concrete_visual:** Pond at 50% fill (Day 29 label) — callback to the hook's pond.
-
-**abstract_symbol:** "Day 29" and `= \frac{1}{2}` in orange.
-
-**reveal_animation:**
-- `Write` for "Day 29" (large, orange)
-- `Write` for "= 50% coverage"
-- `Create` for the small pond (bottom-right)
-
-**hold_content:** "Day 29" text, "= 50% coverage", pond at 50% — all persist through the full beat.
-
-**in_state:** Split-screen fades; result card appears.
-
-**out_state:** Result card visible. → **Full wipe** (act boundary: result → worked example).
-
-**transition:** Full wipe
+**Transition S7→S8: full wipe (fade through bg, ≤0.8 s)** — act boundary Build-up → Worked example after Beat 6 per script metadata / channel bible. New scene: lab + petri dish.
 
 ---
 
-## Shot 10: Worked Example Setup — The 20-Day Pond
+## Shot 8 — Worked example setup: bacteria in the lab (Beat 7, part 1)
 
-**Beats covered:** 12
-**Estimated duration:** ~20 s
+- **Scene class:** `Shot08LabSetup` (`scenes/scene_08.py`)
+- **Narration lines (verbatim):**
+  - Beat 7 [3:00–~3:20]: "Back in her lab, the scientist cultures bacteria in a glass petri dish. The colony doubles in size every hour, filling the dish completely at noon."
+- **Visual content:** New scene — the lab (brief §8 handoff; same container metaphor, new context):
+  - A simple lab bench line across the frame (blue `#3B82F6`); the scientist figure (same minimal design as Shots 1–2, per continuity.md §1) stands at the right side.
+  - **Center:** a glass petri dish — a circle with a blue outline and a thin rim (concrete container). Inside, a bacterial colony: small cream dots that double in count each hour tick.
+  - A clock chip in the upper area ticks by the hour; as "filling the dish completely at noon" is spoken, the colony fills the dish and the clock reads `noon` with a `100%` tag (orange numeral).
+- **concrete_visual:** a scientist in her lab culturing bacteria in a glass petri dish; the colony doubles every hour until it fills the dish at noon.
+- **abstract_symbol:** none yet — setup only; no formula or % claim is asserted beyond the `100%` full-dish state tag (a concrete fill level, not a new symbol). Justified: this is the worked-example setup beat; symbols arrive in Shot 9 with the question and rule.
+- **reveal_animation:** `Create()` for bench, dish outline, rim; `GrowFromCenter` for colony dots doubling; `Write()` for clock ticks and the `100%` tag.
+- **Hold content:** lab bench + scientist + petri dish full of colony at noon with `100%` tag — all persist while narration plays.
+- **In-state:** fresh after act-boundary wipe: empty bg, then bench and dish drawn in (`Create`).
+- **Out-state:** full dish at noon holds; the dish stays centered as the question is posed (Shot 9). The "container going from empty to full" motif matches the pond.
 
-**Narration lines:**
-> Beat 12: Let us try a different pond. Same doubling rule — but this time the lily pad covers it completely in 20 days, not 30. When was this pond exactly half-covered? Your instinct probably says Day 10. Apply the same reasoning we just used.
-
-**Visual content:** A fresh circular pond (blue outline, cream fill = 100%) centered, labeled "Full coverage: Day 20". Below it: "D = 20" in orange. A large question mark above "Day 10?" in cream — the wrong instinct surfaced again, mirroring the hook. No math revealed yet — this is setup only.
-
-**concrete_visual:** A new pond labeled "20 days" — recontextualizes the problem.
-
-**abstract_symbol:** `D = 20` in orange; `?` over "Day 10".
-
-**reveal_animation:**
-- `Create` for the pond circle
-- `Write` for "Full coverage: Day 20" label
-- `Write` for `D = 20`
-- `Write` for "Day 10?" question mark
-
-**hold_content:** Pond with "D = 20" label; "Day 10?" question mark visible.
-
-**in_state:** Clean (after full wipe from Shot 9).
-
-**out_state:** 20-day pond visible with question mark. Camera zooms in on the pond.
-
-**transition:** Zoom
+**Transition S8→S9: cut.** Same lab scene continues; dish persists, a clock/question element is added. No wipe (mid-act within worked example).
 
 ---
 
-## Shot 11: Worked Example Derivation
+## Shot 9 — Worked example question + one-step-back rule (Beat 7, part 2)
 
-**Beats covered:** 13–14
-**Estimated duration:** ~65 s
+- **Scene class:** `Shot09LabQuestion` (`scenes/scene_09.py`)
+- **Narration lines (verbatim):**
+  - Beat 7 [~3:20–3:35]: "When was the dish half full? Splitting the morning in half suggests nine am. The one-step-back rule gives the exact truth: one hour before noon is eleven am."
+- **Visual content:** Same lab + petri dish (continuity from Shot 8):
+  - The question appears as cream text: **"When was the dish half full?"** via `Write()`.
+  - A small timeline strip below the dish marks the morning hours with a clock; the naive guess is shown first: a marker at `9 am` with a faint half-fill hint (the "splitting the morning in half" intuition) — drawn, then visually set aside.
+  - **The rule applied:** the dish animates backward one hour from noon → the colony halves, and a marker lands on `11 am` with a `50%` overlay in orange over the half-filled dish (mirroring Shot 7's pond reversal — same container-halving motif, new domain).
+- **concrete_visual:** the petri dish reversing one hour from full at noon to half-full at 11 am; a morning timeline with markers at 9 am (naive guess) and 11 am (rule answer).
+- **abstract_symbol:** `50%` overlay on the half-filled dish + time labels `noon → 11 am` (one doubling step back); the naive `9 am` marker shown and set aside. These are the numeric states of the one-step-back rule applied hourly.
+- **reveal_animation:** `Write()` for question text, clock markers, `%` overlay; geometric halving of colony via object removal (not math FadeIn). No FadeIn on symbols.
+- **Hold content:** dish + timeline + question text throughout; final hold = half-filled dish at 11 am with `50%` overlay and the 9 am marker set aside beside it.
+- **In-state:** inherits Shot 8: full dish at noon, scientist at bench, clock chip present.
+- **Out-state:** half-full dish at 11 am holds; carries into Shot 10 where the 9 am fraction is quantified (the dish stays on screen, equation persistence for the worked example).
 
-**Narration lines:**
-> Beat 13: The fraction covered on Day n is two-to-the-n divided by two-to-the-20. Set that equal to one-half and solve. Two-to-the-19 divided by two-to-the-20 equals one-half. The answer is Day 19. One day before full coverage — not Day 10. Now: when was it one-quarter covered? Two-to-the-18 divided by two-to-the-20 equals one-quarter. Day 18.
->
-> Beat 14: The pattern is clean. A pond covered on Day D was half-covered on Day D minus one. One-quarter covered on Day D minus two. One-eighth covered on Day D minus three. Work backward from the last day. Each step back halves the coverage. It does not matter whether the total is 20 days or 30.
-
-**Visual content:**
-
-*Beat 13:*
-Fraction formula appears beside the 20-day pond: `\frac{2^n}{2^{20}}` in orange. Set equal to `\frac{1}{2}` → `\frac{2^{19}}{2^{20}} = \frac{1}{2}`. Equation morphs via `Transform` as n → 19. "Day 19" appears in orange beneath the equation. The pond animates backward (100% → 50%), labeled "Day 19 — 50%". Then: equation transforms to `\frac{2^{18}}{2^{20}} = \frac{1}{4}` → "Day 18 — 25%". Pond animates backward again to 25%.
-
-*Beat 14:*
-A 3-row pattern table appears (replacing the pond detail):
-
-| Step back | Day | Coverage |
-|-----------|-----|---------|
-| D−1 | 19 | 1/2 = 50% |
-| D−2 | 18 | 1/4 = 25% |
-| D−3 | 17 | 1/8 = 12.5% |
-
-General formula: `\frac{2^{D-k}}{2^D} = \frac{1}{2^k}` in orange at bottom. This unifies both the 30-day and 20-day cases.
-
-**concrete_visual:** 20-day pond animating backward through Day 19, Day 18 — the "one step back" technique applied to a new scenario.
-
-**abstract_symbol:** `\frac{2^n}{2^{20}} = \frac{1}{2}` → `\frac{2^{19}}{2^{20}} = \frac{1}{2}` → `\frac{2^{D-k}}{2^D} = \frac{1}{2^k}`
-
-**reveal_animation:**
-- `Write` for initial formula `2^n/2^{20}`
-- `Transform` from generic formula to `2^{19}/2^{20} = 1/2` (equation morphs)
-- Backward pond animation (1.0 → 0.5) simultaneously with equation
-- `Transform` again from `2^{19}/2^{20}` to `2^{18}/2^{20} = 1/4`
-- `Create` for the 3-row pattern table
-- `Write` for general formula `2^{D-k}/2^D = 1/2^k`
-
-**hold_content:** 20-day pond (at current coverage level); current equation; pattern table once built.
-
-**in_state:** 20-day pond from Shot 10 at 100%; formula appearing beside it.
-
-**out_state:** Pattern table + general formula visible. → **Full wipe** (act boundary: worked example → recap).
-
-**transition:** Full wipe
+**Transition S9→S10: cut.** Same lab scene continues; dish persists while the 9 am substitution is added. No wipe (mid-act within worked example).
 
 ---
 
-## Shot 12: Recap — The Law Behind the Riddle
+## Shot 10 — Worked example quantification: one eighth at 9 am (Beat 7, part 3)
 
-**Beats covered:** 15–16
-**Estimated duration:** ~40 s
+- **Scene class:** `Shot10LabEighth` (`scenes/scene_10.py`)
+- **Narration lines (verbatim):**
+  - Beat 7 [~3:35–3:55]: "At eleven am, the dish was half full. At nine am, it held barely one eighth of its final volume."
+  - *(Note: this is the math-corrected line — script-reviewed.md Part A Beat 7 now reads "one eighth," per correction C1/C9. The storyboard uses the corrected verbatim text.)*
+- **Visual content:** Same lab + dish (continuity):
+  - Confirm `11 am = half full`: a small recap tag `11 am → 50%` in orange beside the dish (persistent from Shot 9).
+  - **Quantify 9 am:** the dish animates backward two more hours from 11 am to 9 am; the colony shrinks to one eighth of the dish area. A fraction appears via `Write()` in orange: `1/8`, paired with the tiny colony speck in the mostly empty dish (concrete↔abstract at the same moment).
+  - The morning timeline from Shot 9 stays visible, now showing both markers resolved: `11 am → 50%` and `9 am → 1/8`.
+- **concrete_visual:** the petri dish shrinking to one eighth of its area by 9 am — a tiny colony in an almost empty glass dish.
+- **abstract_symbol:** `1/8` (the fraction at 9 am) in orange, shown simultaneously with the one-eighth-filled dish; recap tag `11 am → 50%`.
+- **reveal_animation:** `Write()` for the `1/8` fraction and timeline tags; geometric shrink of colony via object removal. No FadeIn on math.
+- **Hold content:** dish at one-eighth fill + `1/8` fraction + full morning timeline with both resolved markers — all persist while narration plays. This is the worked example's landing frame.
+- **In-state:** inherits Shot 9: half-full dish at 11 am, timeline present.
+- **Out-state:** one-eighth dish + `1/8` holds as final worked-example frame; then **full wipe** (act boundary Worked example → Recap).
 
-**Narration lines:**
-> Beat 15: Back to where we started. The lily pad doubles every day. Full coverage on Day 30. When was it half-covered? Day 29. The answer was always one step back from the end. The Day 15 guess is a linear answer to an exponential question. That is the trap.
->
-> Beat 16: The next time you hear "it is growing slowly now, so we have plenty of time," stop and ask: is this linear or exponential? With exponential growth, the last few steps account for most of the change. The pond looked nearly empty all the way to Day 25. Then it filled in five days. The riddle hid the law. Now you can see it.
-
-**Visual content:** Callback to Shot 1's pond — same circle, same tiny lily pad — fades in. The question text "On which day was it exactly half-covered?" reappears (cream). A `Write` animation reveals "**Day 29**" in large orange over the question text. The pond animates from full → half. Bottom of screen: series tagline in cream — *"Every riddle hides a law. Break it open."* Final hold: pond at 50%, "Day 29" in orange, tagline in cream.
-
-**concrete_visual:** Return to the original pond from the hook — visual closure.
-
-**abstract_symbol:** "Day D−1" in orange; `\frac{1}{2}` written beside the pond.
-
-**reveal_animation:**
-- `FadeIn` for the callback pond (background)
-- `Write` for the question text (callback from Beat 1)
-- `Write` for "Day 29" in large orange (the answer, landing emphatically)
-- Backward pond animation (full → half)
-- `Write` for tagline in cream
-
-**hold_content:** Pond at 50%, "Day 29" text, tagline — all persist through Beat 16.
-
-**in_state:** Clean (after full wipe from Shot 11).
-
-**out_state:** Hold for 2 s → `FadeOut` to end card.
-
-**transition:** Fade to end
+**Transition S10→S11: full wipe (fade through bg, ≤0.8 s)** — act boundary after Beat 7 per script metadata / channel bible.
 
 ---
 
-## Shot summary
+## Shot 11 — Recap & payoff: the law + half/quarter/eighth (Beat 8)
 
-| Shot | Title | Beats | Duration | Transition out |
-|------|-------|-------|----------|----------------|
-| 1 | The Day 15 Trap | 1–2 | ~40 s | Full wipe |
-| 2 | Exponential Growth Is Deceptive | 3–4 | ~40 s | Zoom |
-| 3 | Counting the Doublings | 5 | ~25 s | Slide |
-| 4 | The Coverage Formula | 6 | ~25 s | Zoom |
-| 5 | Last-Five-Days Table | 7 | ~30 s | Zoom |
-| 6 | Day 15 Punchline | 8 | ~25 s | Fade |
-| 7 | One Step Back | 9 | ~20 s | Slide |
-| 8 | Split-Screen Comparison | 10 | ~30 s | Fade |
-| 9 | Result Statement | 11 | ~25 s | Full wipe |
-| 10 | Worked Example Setup | 12 | ~20 s | Zoom |
-| 11 | Worked Example Derivation | 13–14 | ~65 s | Full wipe |
-| 12 | Recap | 15–16 | ~40 s | Fade to end |
+- **Scene class:** `Shot11Recap` (`scenes/scene_11.py`)
+- **Narration lines (verbatim):**
+  - Beat 8 [3:55–4:20]: "One law governs both containers. Whenever growth multiplies instead of adds, the state right before the end holds half the final amount. Day 29 was half, Day 28 a quarter, Day 27 an eighth."
+- **Visual content:** Recap ties back to the hook's pond (character-grounded payoff):
+  - Top-down pond centered again (continuity of shape from Shots 1–2). A compact backward-stepping strip shows three states side by side: `Day 29 → 1/2`, `Day 28 → 1/4`, `Day 27 → 1/8` — each a small pond with its fraction in orange, revealed left-to-right via `Write()` as they are spoken.
+  - The governing law is stated as cream text (not a new formula): the half/quarter/eighth fractions are the on-screen symbols paired with the three shrinking pond states.
+- **concrete_visual:** the same pond stepping backward through Day 29 → Day 28 → Day 27, each state visibly smaller coverage — "nearly nothing, then half, then everything" in reverse.
+- **abstract_symbol:** `1/2`, `1/4`, `1/8` fractions (orange) paired with the three pond states; day labels `Day 29 / Day 28 / Day 27`.
+- **reveal_animation:** `Create()` for the three small ponds; `Write()` for each fraction and day label. No FadeIn on math.
+- **Hold content:** three shrinking pond states with their fractions + day labels, all persisting while narration plays; final hold = full half/quarter/eighth strip.
+- **In-state:** fresh after act-boundary wipe: empty bg, then the three ponds drawn in sequence (`Create`).
+- **Out-state:** the half/quarter/eighth strip holds; it is the conceptual bridge to the closing walk (Shot 12).
 
-**Total estimated:** ~385 s ≈ 6.4 min ✓ (within 240–660 s gate)
+**Transition S11→S12: cut.** Same recap layout continues into the final line; no wipe (mid-recap, not an act boundary — the only allowed wipes are the three marked boundaries).
 
 ---
 
-## Flags
+## Shot 12 — Payoff close: Day 30 walk with new perspective (Beat 8, part 2)
 
-**[DIR-NODECIDE] none** — all shots have named concrete visuals and abstract symbols.
+- **Scene class:** `Shot12PayoffClose` (`scenes/scene_12.py`)
+- **Narration lines (verbatim):**
+  - Beat 8 [~4:20–4:40]: "She walks past the pond on Day 30 with a new perspective. Any doubling system hides the same pattern: nearly nothing, then half, then everything."
+- **Visual content:** Return to the character (bookend of the hook):
+  - The scientist figure walks past the fully covered pond again — this time she stops and looks, now "with a new perspective" (she pauses at the water's edge as in Shot 2, but the framing is calmer).
+  - A final caption line appears via `Write()` in cream: **"nearly nothing, then half, then everything."** with three small icons beside it — an empty pond speck → a half-covered pond → a full pond (blue geometry), tying the visual motif to the closing words.
+- **concrete_visual:** the scientist walking past the fully covered pond on Day 30 and stopping to look at it with new understanding; a three-icon strip of empty → half → full ponds.
+- **abstract_symbol:** none — the close is character + pattern statement, no new symbol introduced (the fractions were already shown in Shot 11). Justified: payoff/character beat, concrete-only by design.
+- **reveal_animation:** `Create()` for pond and icons; `Write()` for caption line. Scientist walks via position animation.
+- **Hold content:** scientist at the water's edge + fully covered pond + closing caption with three-icon strip — all persist to the final frame. No empty hold.
+- **In-state:** arrives from Shot 11: the half/quarter/eighth strip resolves into the single full pond; scientist enters from left along the top path (same path as Shots 1–2).
+- **Out-state:** final frame holds on scientist + full pond + caption; episode ends. No out-transition needed (end of video).
 
-**[ANIMATOR-NOTE] Shot 2 / Shot 8:** The fill-bar fill animation requires a `ValueTracker` or `updater` pattern on a `Rectangle`'s height. Standard manimgx approach; flag if the runtime version lacks `Rectangle.set_fill` updater support.
+**Transition S12→(end): none.** Hold final frame to black per editor's assembly notes (not a storyboard wipe — the three allowed wipes are already used at act boundaries).
 
-**[ANIMATOR-NOTE] Shot 7 / Shot 11:** The backward pond animation (100% → 50%) uses a reverse `ValueTracker` on a `Circle`'s fill opacity/proportion. If manimgx doesn't support partial circle fill natively, substitute a `Rectangle` fill bar or a `Sector` arc to represent coverage percentage.
+---
 
-**[ANIMATOR-NOTE] Shot 11, Beat 13–14:** Two `Transform` calls in sequence on the same equation object (generic → Day 19, Day 19 → Day 18). Ensure the `Transform` target objects are pre-built before each call to avoid VGroup mismatch.
+## Scene → Beat mapping table
+
+| Shot | Scene class | File | Beats covered | Beat timing label |
+|------|-------------|------|---------------|-------------------|
+| 1 | `Shot01HookWalk` | `scenes/scene_01.py` | Beat 1 (part 1: Days 1–15) | [0:00–~0:20] |
+| 2 | `Shot02HookClimax` | `scenes/scene_02.py` | Beat 1 (part 2: Day 30 + riddle) | [~0:20–0:35] |
+| 3 | `Shot03Motivation` | `scenes/scene_03.py` | Beat 2 (full) | [0:35–1:05] |
+| 4 | `Shot04SplitScreen` | `scenes/scene_04.py` | Beat 3 (full) | [1:05–1:40] |
+| 5 | `Shot05Formula` | `scenes/scene_05.py` | Beat 4 (part 1: formula intro) | [1:40–~2:00] |
+| 6 | `Shot06Day15Table` | `scenes/scene_06.py` | Beat 4 (part 2: Day-15 plug-in + table) | [~2:00–2:10] |
+| 7 | `Shot07OneStepBack` | `scenes/scene_07.py` | Beat 5 (full) | [2:10–2:40] |
+| 8 | `Shot08LabSetup` | `scenes/scene_08.py` | Beat 7 (part 1: lab setup) | [3:00–~3:20] |
+| 9 | `Shot09LabQuestion` | `scenes/scene_09.py` | Beat 7 (part 2: question + rule → 11 am) | [~3:20–3:35] |
+| 10 | `Shot10LabEighth` | `scenes/scene_10.py` | Beat 7 (part 3: one eighth at 9 am) | [~3:35–3:55] |
+| 11 | `Shot11Recap` | `scenes/scene_11.py` | Beat 8 (part 1: law + half/quarter/eighth) | [3:55–4:20] |
+| 12 | `Shot12PayoffClose` | `scenes/scene_12.py` | Beat 8 (part 2: Day-30 walk close) | [~4:20–4:40] |
+
+**Beat coverage check:** all 8 beats covered. Beat 6 (Result, "The pond was half-covered on Day 29…") is **carried inside Shot 7's hold/out-state** — the `Day 29 = 50%` reversal IS the result statement; its narration line ("The pond was half-covered on Day 29. Halfway in time was Day 15, but halfway in growth happened twenty-four hours before the end. When a process doubles, the final step accounts for half of everything ever produced.") is spoken over Shot 7's final hold and the S7→S8 wipe. *Note to Director:* Beat 6 has no dedicated shot; it is voiced during the transition out of Shot 7. If a dedicated result shot is preferred, split Shot 7 into reversal (Beat 5) + result statement (Beat 6). Flagged below as [DIR-NODECIDE].
+
+---
+
+## [DIR-NODECIDE] flags
+
+1. **Shot 7 / Beat 6 boundary:** The reviewed script's Beat 6 (Result) is a standalone beat, but its content ("The pond was half-covered on Day 29…") is the verbal landing of Shot 7's reversal animation. I have placed Beat 6's narration over Shot 7's out-state/wipe rather than giving it a dedicated shot. **Director to decide:** (a) keep as-is (Beat 6 voiced during S7→S8 wipe), or (b) add a dedicated `Shot07bResult` scene for Beat 6 with its own hold frame (e.g., the halved pond + a large `Day 29 = 50%` result card). Option (b) adds ~1 shot and is cleaner for narration timing.
+2. **Shot 7 generalization (20-day pond):** The reviewed script's Beat 5 does not mention a 20-day pond; the generalization comes from brief §5c last bullet and is supported by the line "no matter how long the journey took." I have shown it visually-light (compact side-by-side, no re-derivation). **Director to confirm** this visual-light treatment is acceptable, or direct that it be dropped/kept verbal-only.
+3. **Shot 4 naming:** Brief §5a says show panels BEFORE naming "linear"/"exponential." I have kept Shot 4 free of those on-screen words (names were introduced verbally + as labels in Shot 3). **Director to confirm** this satisfies the brief's intent, or whether Shot 3's labels should be delayed until after Shot 4.
+
+---
+
+## Continuity declarations (shot-to-shot)
+
+- **S1→S2:** Day-15 pond state + counter chip carry forward unchanged; scientist re-enters and walks to full coverage. Same top-down framing, same pond shape.
+- **S2→S3:** Full wipe (act boundary). New layout: tap/cup + linear-vs-exponential comparison. The "Day 15?" caption from S3 echoes the hook's unanswered riddle.
+- **S3→S4:** Slide+zoom; the right panel's lily pad resolves into the split-screen's exponential pond. Linear/exponential idea persists at pond scale (unnamed on screen in S4).
+- **S4→S5:** Zoom out + fade; the exponential pond becomes the water surface for the formula pairing. Formula introduced here and persists to S6.
+- **S5→S6:** Cut; formula `fraction(n) = 2^n / 2^30` persists at top (equation persistence). Day-15 substitution added below; pad shrinks to a speck. Table appears with Day-15 punchline + highlighted Day-29 row.
+- **S6→S7:** Slide; table exits down, pond re-centers fully covered at Day 30. The orange-highlighted Day-29 `50.0%` from the table is exactly what the reversal animation lands on.
+- **S7→S8:** Full wipe (act boundary). New scene: lab + petri dish. Container-halving motif transfers from pond to dish.
+- **S8→S9:** Cut; full dish at noon persists; question + timeline added; rule applied → half at 11 am.
+- **S9→S10:** Cut; half-full dish at 11 am persists; backward two more hours → one eighth at 9 am with `1/8` fraction.
+- **S10→S11:** Full wipe (act boundary). Recap: three shrinking pond states (half/quarter/eighth) — returns to the hook's pond shape.
+- **S11→S12:** Cut; half/quarter/eighth strip resolves into single full pond; scientist walks past with new perspective; closing caption + three-icon strip hold to end.
+
+**Recurring motifs (full register in `continuity.md`):** day counter chip, top-down oval pond shape, container-halving motif (pond → petri dish), orange-highlighted 50% state, "nearly nothing, then half, then everything" pattern strip.

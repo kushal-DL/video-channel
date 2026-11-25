@@ -83,16 +83,17 @@ The following visual concepts must appear in the storyboard. The Storyboardist m
 
 **Opening sequence (beats, not lines yet):**
 - Day 1: scientist walks past the pond on the way to the lab. One lily pad. Barely registers.
-- Day 7: a small cluster. Mildly interesting. Still looks like nothing.
-- Day 15: still a small fraction of the pond. She's not worried.
-- Day 25: maybe a quarter of the pond. She makes a mental note.
-- Day 29: she stops. Half the pond is gone. When did that happen?
-- Day 30: she can't see water.
+- Day 7: a small cluster near the bank. Still looks like nothing.
+- Day 15: water is still mostly clear. She keeps walking.
+- Day 25: scattered patches across the surface.
+- Day 30: she stops at the bank and stares. The entire pond is gone under green pads. Not a square foot of open water remains.
+- The riddle emerges from her observation: if the pond is completely full today, on which day was it half-covered?
 
-**The riddle emerges from her experience**, not from a voice announcing "here is a question." The question the viewer asks themselves — "when did that happen?" — IS the hook. The narrator names it only after the viewer has already felt it.
+**The riddle emerges from her experience**, not from a voice announcing "here is a question." The question the viewer asks themselves — "when was it half-covered?" — IS the hook. The narrator frames it naturally through her walk.
 
 **What the hook must NOT do:**
 - Do not open with "Here is a question" or any equivalent
+- Do not spoil Day 29 in the hook sequence
 - Do not define exponential growth in the hook
 - Do not use an abstract hypothetical ("imagine a lily pad") — the character IS the grounding
 
@@ -100,27 +101,27 @@ The following visual concepts must appear in the storyboard. The Storyboardist m
 
 ## 7. Target Length
 
-**5–7 minutes** (from `scope.md`). Pacing arc:
+**3–3.5 minutes** (from `scope.md`, within channel gate [120s, 660s]). Pacing arc:
 
 | Segment | Target |
 |---------|--------|
-| Hook | 35–45 s |
-| Motivation (why this matters) | 30–40 s |
-| Build-up (linear vs. exponential, formula) | 3–3.5 min |
+| Hook | 30–40 s |
+| Motivation (linear intuition vs exponential reality) | 30–35 s |
+| Build-up (linear vs. exponential, formula, one-step-back) | 60–80 s |
 | Result statement | 20–25 s |
-| Worked example (generalize to Day D−1 and 1/4 case) | 60–75 s |
-| Recap | 30–40 s |
+| Worked example (bacteria doubling in petri dish) | 40–50 s |
+| Recap & payoff | 20–30 s |
 
 ---
 
 ## 8. Handoff Notes
 
 - **Screenwriter:** 
-  - **Hook:** follow the scientist character through the pond over days — the riddle must emerge from her observation, not be announced by the narrator. See Section 6.
-  - **Worked example:** DO NOT use "a 20-day pond." Use a different real-world context in a different physical domain. **Suggested: bacteria in a petri dish.** The same scientist, back in her lab, is growing bacteria that double every hour. The dish is full at noon. When was it half full? Her instinct says 6am (halfway through the morning). The answer is 11am — one step back. Same law, different domain. This is the "so now she sees it everywhere" payoff moment.
+  - **Hook:** follow the scientist character past the pond — she sees a full pond on Day 30 and asks when it was half-covered. Never spoil Day 29 in the hook.
+  - **Worked example:** DO NOT use "a 20-day pond." Use a different real-world context in a different physical domain. **Suggested: bacteria in a petri dish.** Back in her lab, the scientist cultures bacteria that double every hour. At noon the dish is completely full. When was it half full? Applying the one-step-back rule, it was 11:00 AM.
   - Tag every math claim with [MR].
-  - **Target word count: 700–750 words maximum** (the previous version was 940 and 200 of those words were announce-then-do filler).
-  - Apply all anti-pattern rules from the channel bible (banned openers, sentence rhythm).
+  - **Target word count: ~450–550 words** (natural 3–3.5 min runtime; do not pad to hit an arbitrary floor).
+  - Apply all anti-pattern rules from the channel bible (banned openers, varied sentence rhythm, no em-dashes).
 
 - **Math Reviewer:** verify all five claims in Section 4 by re-derivation. For the worked example, additionally verify: bacteria doubling every hour, dish full at noon — half full at 11am. [MR]
 

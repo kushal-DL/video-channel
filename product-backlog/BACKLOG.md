@@ -43,7 +43,7 @@ The epics below are numbered in **execution order** — the authoritative order 
 | E2-I3 | storyboardist: per-shot reveal animation & hold content | Done | Fast Path (main session) | `storyboardist.md` requires reveal animation field per shot and no empty hold frames. |
 | E2-I4 | animator: palette & write-style animation default | Done | Fast Path (main session) | `animator.md` enforces `#0F172A` background and write-style equation reveals. |
 | E2-I5 | narration-engineer: mandatory TTS audio & measured timing | Done | Fast Path (main session) | `narration-engineer.md` requires per-beat audio, ffprobe measured timing.json, and voice profile reference. |
-| E2-I6 | editor: music bed, loudness, & duration gate | Done | Fast Path (main session) | `editor.md` enforces music bed, loudness normalization, and ffprobe duration gate [240s, 660s]. |
+| E2-I6 | editor: music bed, loudness, & duration gate | Done | Fast Path (main session) | `editor.md` enforces music bed, loudness normalization, and ffprobe duration gate [150s, 660s]. |
 | E2-I7 | qc-reviewer: frame extraction & hard rejection | Done | Fast Path (main session) | `qc-reviewer.md` requires frame extraction evidence and explicit rejection of silent/off-palette/out-of-range renders. |
 | E2-I8 | director: real sign-off on inspected frames | Done | Fast Path (main session) | `director.md` requires actual frame inspection and recording inspected timestamps in signoffs.md. |
 | E2-I9 | channel bible & REPO_STRUCTURE updates | Done | Fast Path (main session) | `channel-bible.md` includes Animation Style section; `REPO_STRUCTURE.md` includes scope.md in per-episode tree. |
@@ -76,7 +76,7 @@ The epics below are numbered in **execution order** — the authoritative order 
 | E4-I0 | Resolve the music-bed source | Done | Fast Path | Option (b): `editor.md` updated — music optional when `assets/music/` absent; pilot proceeds without bed, tracked under E7-I4. `narration-engineer.md` updated with mutagen fallback (ffprobe not on PATH on dev machine). |
 | E4-I1 | Write episode scope + script with worked example | Not started | producer + screenwriter | `scope.md` (all five sections) → brief references it; `script.md` has [MR] tags and ≥1 fully-solved worked example. |
 | E4-I2 | Math review and storyboard (per-shot reveal animation) | Not started | math-reviewer + storyboardist | `script-reviewed.md` re-derives the worked example; `storyboard.md` names a reveal animation per shot, plus the `concrete_visual` ↔ `abstract_symbol` pairing per shot (per House Style). |
-| E4-I3 | Full re-render pipeline test (narration + music, 4–11 min) | Not started | full studio team | New `final.mp4`: audio stream present, on-palette (`#0F172A`), ffprobe duration ∈ [240s, 660s], QC zero-critical with frame evidence; nemesis CLEAN. |
+| E4-I3 | Full re-render pipeline test (narration + music, 2.5–11 min) | Not started | full studio team | New `final.mp4`: audio stream present, on-palette (`#0F172A`), ffprobe duration ∈ [150s, 660s], QC zero-critical with frame evidence; nemesis CLEAN. |
 
 ---
 

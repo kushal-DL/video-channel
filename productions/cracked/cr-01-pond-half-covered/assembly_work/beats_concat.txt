@@ -1,0 +1,8 @@
+file '/home/doomlord/Documents/Work/repos/Video-channel/productions/cracked/cr-01-pond-half-covered/audio/beat_01.mp3'
+file '/home/doomlord/Documents/Work/repos/Video-channel/productions/cracked/cr-01-pond-half-covered/audio/beat_02.mp3'
+file '/home/doomlord/Documents/Work/repos/Video-channel/productions/cracked/cr-01-pond-half-covered/audio/beat_03.mp3'
+file '/home/doomlord/Documents/Work/repos/Video-channel/productions/cracked/cr-01-pond-half-covered/audio/beat_04.mp3'
+file '/home/doomlord/Documents/Work/repos/Video-channel/productions/cracked/cr-01-pond-half-covered/audio/beat_05.mp3'
+file '/home/doomlord/Documents/Work/repos/Video-channel/productions/cracked/cr-01-pond-half-covered/audio/beat_06.mp3'
+file '/home/doomlord/Documents/Work/repos/Video-channel/productions/cracked/cr-01-pond-half-covered/audio/beat_07.mp3'
+file '/home/doomlord/Documents/Work/repos/Video-channel/productions/cracked/cr-01-pond-half-covered/audio/beat_08.mp3'

@@ -1,6 +1,6 @@
 # Series Curriculum
 
-The channel-wide content roadmap. Four series cover the full NCERT/CBSE mathematics syllabus for Classes 1-12 concept-by-concept, plus a cross-cutting math/science riddle series. Each episode is a 4-11 minute animated explainer teaching one concept with one worked example. Full episode lists live in each series' `series-curriculum.md`.
+The channel-wide content roadmap. Four series cover the full NCERT/CBSE mathematics syllabus for Classes 1-12 concept-by-concept, plus a cross-cutting math/science riddle series. Each episode is a 2.5-11 minute animated explainer teaching one concept with one worked example. Full episode lists live in each series' `series-curriculum.md`.
 
 ## Series overview
 

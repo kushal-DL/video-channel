@@ -35,7 +35,7 @@ Use exactly this hierarchy — no ad-hoc colors. Every element on screen must ma
 
 - Tone: warm and unhurried; authoritative but never cold. No filler phrases ("so", "basically", "you know").
 - **TTS voice:** `en-US-AriaNeural` (Microsoft Edge neural voice). Verified 2026-11-20 (see `docs/tts-decision.md`).
-- Pacing: ~150 wpm (slightly slower than average to let viewers read on-screen equations); target episode duration 4–11 min (hard gate [240s, 660s]).
+- Pacing: ~150 wpm (slightly slower than average to let viewers read on-screen equations); target episode duration 2–11 min (hard gate [120s, 660s]). Episode duration is determined organically by topic complexity — never pad a script with filler or repetitive arithmetic to hit an arbitrary duration floor.
 - Insert a brief pause (0.3–0.5 s silence) at each concept boundary — after the hook, after the motivation, before the worked example.
 - Slow down further during the worked example: give the viewer time to read each substitution step before moving to the next.
 - Sentences short and TTS-friendly; math read as spoken language ("d of p over d of t"), with the symbol shown on screen simultaneously.

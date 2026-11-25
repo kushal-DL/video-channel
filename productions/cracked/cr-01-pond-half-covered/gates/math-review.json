@@ -1,0 +1,13 @@
+{
+  "gate": "math-review",
+  "episode": "cr-01-pond-half-covered",
+  "verdict": "PASS",
+  "claims_total": 11,
+  "claims_verified": 11,
+  "corrections_applied": [
+    "Beat 7: 'barely one sixteenth of its final volume' -> 'barely one eighth of its final volume'. From 9am to noon is exactly 3 doubling steps, so the fraction is (1/2)^3 = 1/8. The original 'one sixteenth' (= (1/2)^4) corresponds to 8am, not 9am."
+  ],
+  "uncertain_claims": [],
+  "worked_example_confirmed": true,
+  "reviewed_at": "2026-11-22"
+}
